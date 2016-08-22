@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{1B19158F-E398-40A6-8E3B-350508E125F1}") = "Fenealweb.Shared", "Fenealweb.Shared\Fenealweb.Shared.dxjsproj", "{AE56B60C-4F05-42DF-AC18-7AF4F0FF4E7C}"
+EndProject
+Project("{1B19158F-E398-40A6-8E3B-350508E125F1}") = "Fenealweb.Mobile", "Fenealweb.Mobile\Fenealweb.Mobile.dxjsproj", "{A1AE969B-FC0B-4387-AA53-3B14C560DF77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE56B60C-4F05-42DF-AC18-7AF4F0FF4E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE56B60C-4F05-42DF-AC18-7AF4F0FF4E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE56B60C-4F05-42DF-AC18-7AF4F0FF4E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE56B60C-4F05-42DF-AC18-7AF4F0FF4E7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1AE969B-FC0B-4387-AA53-3B14C560DF77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1AE969B-FC0B-4387-AA53-3B14C560DF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1AE969B-FC0B-4387-AA53-3B14C560DF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1AE969B-FC0B-4387-AA53-3B14C560DF77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

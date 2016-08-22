@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>a1ae969b-fc0b-4387-aa53-3b14c560df77</ProjectGuid>
+    <AutoAssignPort>True</AutoAssignPort>
+    <RunInSimulator>True</RunInSimulator>
+    <UploadPluginsToTheCourier>True</UploadPluginsToTheCourier>
+    <RootNamespace>Fenealweb</RootNamespace>
+    <ApplicationPage>index.html</ApplicationPage>
+    <Name>Fenealweb.Mobile</Name>
+    <PhoneGapTokenKey />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="fenealweb.config.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="index.html" />
+    <Content Include="index.css" />
+    <Content Include="cordova.js" />
+    <None Include="config.xml" />
+    <Content Include="index.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Navbar\NavbarLayout.css" />
+    <Content Include="layouts\Navbar\NavbarLayout.html" />
+    <Content Include="layouts\Navbar\NavbarLayout.js" />
+    <Content Include="layouts\Pivot\PivotLayout.css" />
+    <Content Include="layouts\Pivot\PivotLayout.html" />
+    <Content Include="layouts\Pivot\PivotLayout.js" />
+    <Content Include="layouts\SlideOut\SlideOutLayout.css" />
+    <Content Include="layouts\SlideOut\SlideOutLayout.html" />
+    <Content Include="layouts\SlideOut\SlideOutLayout.js" />
+    <Content Include="layouts\Empty\EmptyLayout.css" />
+    <Content Include="layouts\Empty\EmptyLayout.html" />
+    <Content Include="layouts\Empty\EmptyLayout.js" />
+    <Content Include="layouts\Simple\SimpleLayout.css" />
+    <Content Include="layouts\Simple\SimpleLayout.html" />
+    <Content Include="layouts\Simple\SimpleLayout.js" />
+    <Content Include="layouts\Popup\PopupLayout.css" />
+    <Content Include="layouts\Popup\PopupLayout.html" />
+    <Content Include="layouts\Popup\PopupLayout.js" />
+    <Content Include="layouts\Split\SplitLayout.css" />
+    <Content Include="layouts\Split\SplitLayout.html" />
+    <Content Include="layouts\Split\SplitLayout.js" />
+    <Content Include="views\aziende\searchCompanies.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\aziende\searchCompanies.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\dbnazionale\searchGlobalWorkers.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\dbnazionale\searchGlobalWorkers.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\home\home.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\home\home.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\home\home.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\iscritti\reportIscritti.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\iscritti\reportIscritti.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\searchWorkers.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\searchWorkers.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\login\login.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\login\login.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\noniscritti\reportNonIscritti.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\noniscritti\reportNonIscritti.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="js\" />
+    <Folder Include="layouts\" />
+    <Folder Include="layouts\Empty\" />
+    <Folder Include="layouts\Navbar\" />
+    <Folder Include="layouts\Pivot\" />
+    <Folder Include="layouts\Popup\" />
+    <Folder Include="layouts\Simple\" />
+    <Folder Include="layouts\SlideOut\" />
+    <Folder Include="layouts\Split\" />
+    <Folder Include="views\" />
+    <Folder Include="views\login" />
+    <Folder Include="views\home" />
+    <Folder Include="views\lavoratori" />
+    <Folder Include="views\dbnazionale" />
+    <Folder Include="views\aziende" />
+    <Folder Include="views\iscritti" />
+    <Folder Include="views\noniscritti" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fenealweb.Shared\Fenealweb.Shared.dxjsproj">
+      <Name>Fenealweb.Shared</Name>
+      <Project>{ae56b60c-4f05-42df-ac18-7af4f0ff4e7c}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Target Name="ResolveReferences">
+    <Message Text="Copying references to output dir..." Importance="high" />
+    <MSBuild Targets="Build" Projects="@(ProjectReference)" Properties="OutputPath=$([System.IO.Path]::GetFullPath('$(OutputPath)'))">
+    </MSBuild>
+  </Target>
+  <Target Name="CopyFilesToOutputDirectory">
+    <Message Text="Copying files to output dir..." Importance="high" />
+    <Copy SourceFiles="@(Content)" DestinationFiles="@(Content-&gt;'$(OutputPath)$([MSBuild]::MakeRelative($(MSBuildProjectDirectory),'%(FullPath)'))')" />
+  </Target>
+  <Target Name="CoreCompile">
+    <!--<Message Text="'$(MSBuildToolsPath)'"></Message>-->
+    <!--<Message Text="'$(BuildingProject)'"></Message>-->
+    <!--<Message Text="Build JSProject '$(MSBuildProjectFile)':" Importance="high"></Message>-->
+    <!--<Message Text="Finished Build JSProject '$(MSBuildProjectFile)'." Importance="high"></Message>-->
+  </Target>
+  <Target Name="CreateManifestResourceNames" Condition="'@(ResxWithNoCulture)@(ResxWithCulture)@(NonResxWithNoCulture)@(NonResxWithCulture)'!=''" />
+  <Target Name="Clean">
+    <!--
+    <Message Text="Cleaning Output files..." Importance="high" />
+    <Delete Files="@([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+    -->
+    <Message Text="Cleaning Output dir ($([System.IO.Path]::GetFullPath('$(OutputPath)')))..." Importance="high" />
+    <RemoveDir Directories="$([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+  </Target>
+</Project>

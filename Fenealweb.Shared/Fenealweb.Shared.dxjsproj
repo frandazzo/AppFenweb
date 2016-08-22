@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>ae56b60c-4f05-42df-ac18-7af4f0ff4e7c</ProjectGuid>
+    <AutoAssignPort>True</AutoAssignPort>
+    <RunInSimulator>True</RunInSimulator>
+    <UploadPluginsToTheCourier>True</UploadPluginsToTheCourier>
+    <Name>Shared</Name>
+    <RootNamespace>Fenealweb</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="css\font-awesome.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fontawesome\css\font-awesome.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fontawesome\fonts\fontawesome-webfont.eot">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fontawesome\fonts\fontawesome-webfont.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fontawesome\fonts\fontawesome-webfont.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fontawesome\fonts\fontawesome-webfont.woff">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fontawesome\fonts\fontawesome-webfont.woff2">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fontawesome\fonts\FontAwesome.otf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fonts\fontawesome-webfont.eot">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fonts\fontawesome-webfont.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fonts\fontawesome-webfont.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fonts\fontawesome-webfont.woff">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fonts\fontawesome-webfont.woff2">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\fonts\FontAwesome.otf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\general.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="data\core.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="data\db.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="data\services.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="fenealweb.shared.config.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\logo.png" />
+    <Content Include="js\dx.all.js" />
+    <Content Include="js\dx.all.debug.js" />
+    <Content Include="js\localization\dx.all.de.js" />
+    <Content Include="js\localization\dx.all.ja.js" />
+    <Content Include="js\localization\dx.all.ru.js" />
+    <Content Include="js\cldr.min.js" />
+    <Content Include="js\cldr\event.min.js" />
+    <Content Include="js\cldr\supplemental.min.js" />
+    <Content Include="js\cldr\unresolved.min.js" />
+    <Content Include="js\globalize.min.js" />
+    <Content Include="js\jquery-1.12.3.min.js" />
+    <Content Include="js\jquery-2.2.3.min.js" />
+    <Content Include="js\globalize\message.min.js" />
+    <Content Include="js\globalize\number.min.js" />
+    <Content Include="js\globalize\date.min.js" />
+    <Content Include="js\globalize\currency.min.js" />
+    <Content Include="js\knockout-3.4.0.js" />
+    <Content Include="css\dx.spa.css" />
+    <Content Include="css\dx.common.css" />
+    <Content Include="css\dx.contrast.compact.css" />
+    <Content Include="css\dx.contrast.css" />
+    <Content Include="css\dx.dark.compact.css" />
+    <Content Include="css\dx.light.compact.css" />
+    <Content Include="css\dx.dark.css" />
+    <Content Include="css\dx.light.css" />
+    <Content Include="css\dx.android5.light.css" />
+    <Content Include="css\dx.ios7.default.css" />
+    <Content Include="css\dx.win8.black.css" />
+    <Content Include="css\dx.win8.white.css" />
+    <Content Include="css\dx.win10.black.css" />
+    <Content Include="css\dx.win10.white.css" />
+    <Content Include="css\icons\dxicons.eot" />
+    <Content Include="css\icons\dxicons.ttf" />
+    <Content Include="css\icons\dxicons.woff" />
+    <Content Include="css\icons\dxiconsios.eot" />
+    <Content Include="css\icons\dxiconsios.ttf" />
+    <Content Include="css\icons\dxiconsios.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="css\fontawesome\css" />
+    <Folder Include="css\fontawesome\fonts\" />
+    <Folder Include="css\fonts\" />
+    <Folder Include="css\icons\" />
+    <Folder Include="css\fontawesome" />
+    <Folder Include="data\" />
+    <Folder Include="images\" />
+    <Folder Include="js\" />
+    <Folder Include="js\cldr\" />
+    <Folder Include="js\globalize\" />
+    <Folder Include="js\localization\" />
+    <Folder Include="views\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Target Name="ResolveReferences">
+    <Message Text="Copying references to output dir..." Importance="high" />
+    <MSBuild Targets="Build" Projects="@(ProjectReference)" Properties="OutputPath=$([System.IO.Path]::GetFullPath('$(OutputPath)'))">
+    </MSBuild>
+  </Target>
+  <Target Name="CopyFilesToOutputDirectory">
+    <Message Text="Copying files to output dir..." Importance="high" />
+    <Copy SourceFiles="@(Content)" DestinationFiles="@(Content-&gt;'$(OutputPath)$([MSBuild]::MakeRelative($(MSBuildProjectDirectory),'%(FullPath)'))')" />
+  </Target>
+  <Target Name="CoreCompile">
+    <!--<Message Text="'$(MSBuildToolsPath)'"></Message>-->
+    <!--<Message Text="'$(BuildingProject)'"></Message>-->
+    <!--<Message Text="Build JSProject '$(MSBuildProjectFile)':" Importance="high"></Message>-->
+    <!--<Message Text="Finished Build JSProject '$(MSBuildProjectFile)'." Importance="high"></Message>-->
+  </Target>
+  <Target Name="CreateManifestResourceNames" Condition="'@(ResxWithNoCulture)@(ResxWithCulture)@(NonResxWithNoCulture)@(NonResxWithCulture)'!=''" />
+  <Target Name="Clean">
+    <!--
+    <Message Text="Cleaning Output files..." Importance="high" />
+    <Delete Files="@([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+    -->
+    <Message Text="Cleaning Output dir ($([System.IO.Path]::GetFullPath('$(OutputPath)')))..." Importance="high" />
+    <RemoveDir Directories="$([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+  </Target>
+</Project>

@@ -1,0 +1,5 @@
+<div data-options="dxView : { name: 'reportIscritti', title: 'Report iscritti' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+       Questo è il report sugli iscritti
+    </div>
+</div>

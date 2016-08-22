@@ -1,0 +1,5 @@
+<div data-options="dxView : { name: 'searchCompanies', title: 'Ricerca aziende' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+      questa è la maschere di ricerca delle aziende
+    </div>
+</div>

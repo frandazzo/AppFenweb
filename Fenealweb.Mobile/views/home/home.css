@@ -1,0 +1,74 @@
+﻿#welcome{
+
+        margin-left: 12px;
+    margin-bottom: 25px;
+}
+
+.panel{
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.panel-heading {
+    height: 40px;
+    line-height: 36px;
+    background: #fafafa;
+    color: #666;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 8px;
+    border: 1px solid #e5e5e5;
+    border-top-right-radius: 1px;
+    border-top-left-radius: 1px;
+}
+.panel-title {
+    padding-left: 6px;
+    margin-top: 0;
+}
+
+.panel-controls > a {
+    padding-top: 1px;
+    display: inline-block;
+    opacity: 0.7;
+    width: 30px;
+    color: #999;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+  
+}
+
+.panel-controls > a:hover {
+    text-decoration: none;
+    opacity: 1;
+}
+
+/*questo codice serve per la customizzaizone dell'indicatore di caricamento li dove ci sono
+    più dxDeferRendering components
+    *************************************************
+    *************************************************
+*/
+
+.custom-defer-indicator.dx-loadindicator-container.dx-pending-rendering{
+
+    height:30px;
+}
+
+.custom-defer-indicator.dx-loadindicator-container>
+.dx-loadindicator.dx-loadindicator{
+    margin: 10px auto 0px auto;
+    display: block;
+}
+
+.custom-defer-indicator.dx-loadindicator-container>
+.dx-loadindicator{
+    left: 0px;
+    top: 0px;
+    position: relative;
+}
+
+/*
+    *************************************************
+    *************************************************
+*/

@@ -1,0 +1,5 @@
+<div data-options="dxView : { name: 'searchGlobalWorkers', title: 'Ricerca database nazionale' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+       questa è la maschera di ricerca nel database nazionale
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿.label{
+
+    float:left;
+   
+
+
+
+}
+.val{
+
+     float:right;
+      font-style: italic;
+}
+
+
+
+.infobox{
+    clear:both;
+    margin: 10px;
+    padding-bottom: 15px;
+}
