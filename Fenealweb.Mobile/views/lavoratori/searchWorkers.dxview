@@ -1,7 +1,32 @@
 <div data-options="dxView : { name: 'searchWorkers', title: 'Ricerca lavoratori' } " >
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
        
-        questa è la maschera di ricerca dei lavoratori
+        <div class="dx-fieldset">
+
+            <div class="dx-field">
+                <div class="dx-field-label">Cognome</div>
+                <div class="dx-field-value">
+                    <div data-bind="dxTextBox: cognomeOptions"></div>
+                </div>
+            </div>
+
+            <div class="dx-field">
+                <div class="dx-field-label">Nome</div>
+                <div class="dx-field-value">
+                    <div data-bind="dxTextBox: nomeOptions"></div>
+                </div>
+            </div>
+
+            <div class="dx-field">
+                <div class="dx-field-label">Codice fiscale</div>
+                <div class="dx-field-value">
+                    <div data-bind="dxTextBox: fiscaleOptions"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div data-bind="dxButton:{ onClick: search, text: 'Ricerca'}"></div>
 
     </div>
 </div>
