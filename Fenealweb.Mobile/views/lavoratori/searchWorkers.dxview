@@ -1,4 +1,4 @@
-<div data-options="dxView : { name: 'searchWorkers', title: 'Ricerca lavoratori' } " >
+<div data-options="dxView : { name: 'searchWorkers', title: 'Cerca lavoratori' } " >
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
        
         <div class="dx-fieldset">
@@ -26,7 +26,10 @@
 
         </div>
 
-        <div data-bind="dxButton:{ onClick: search, text: 'Ricerca'}"></div>
+        <div>
+            <div style="float:right; margin-right:10px" data-bind="dxButton:{ onClick: search, text: 'Ricerca'}"></div>
+        </div>
+        
 
     </div>
 </div>

@@ -7,7 +7,15 @@
 
     var viewModel = {
         search: function () {
-            alert('cognome: ' + cognome() + ' nome: ' + nome() + ' fiscale: ' + fiscale() );
+
+            if (!cognome() && !nome() && !fiscale()) {
+                DevExpress.ui.notify("Selezionare almeno un criterio di ricerca", 'error', 3000);
+                return;
+            }
+
+            Fenealweb.app.navigate({
+                view: 'lavoratori'
+            });
         },
         cognomeOptions:{
             value: cognome, mode: 'search', showClearButton: true

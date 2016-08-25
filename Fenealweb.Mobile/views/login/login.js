@@ -37,7 +37,8 @@
     }
 
 
-
+    
+    var loadingVisible = ko.observable(false);
     var viewModel = {
         username: ko.observable('maurizio'),
         password: ko.observable('maurizio'),
@@ -45,10 +46,11 @@
         //esci dallo slide out. Vedi metodo ExitApp in index.js
         modelIsReady: ko.observable(params.logout ? $.Deferred().resolve().promise() :checkFirstAccess()),
         login: function () {
-
+            loadingVisible(true);
             var sec = new Fenealweb.services.securityService()
             var promise = sec.login(viewModel.username(), viewModel.password());
             promise.done(function (data) {
+                loadingVisible(false);
                 //posso navigare verso la home
                 DevExpress.ui.notify("Benvenuto " + data.name + " " + data.surname, 'success', 600);
                 Fenealweb.app.navigate({
@@ -57,14 +59,32 @@
                 }, { root: true });
             })
             .fail(function (error) {
+                loadingVisible(false);
                 DevExpress.ui.notify(error, 'error', 2000);
             });
-
-
         }
-       
-
     };
 
+   
+
+    viewModel.loadOptions = {
+        visible: loadingVisible,
+        showIndicator: true,
+        showPane: true,
+        shading: true,
+        closeOnOutsideClick: false,
+        shadingColor: "rgba(0,0,0,0.4)",
+        position: { of: "body" },
+        //onShown: function () {
+        //    setTimeout(function () {
+        //        that.loadingVisible(false);
+        //    }, 3000);
+        //},
+        //onHidden: function () {
+        //    that.employee(employee);
+        //}
+    };
+
+  
     return viewModel;
 };

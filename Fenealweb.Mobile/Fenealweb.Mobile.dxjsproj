@@ -78,6 +78,12 @@
     <Content Include="views\iscritti\reportIscritti.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="views\lavoratori\lavoratori.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratori.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="views\lavoratori\searchWorkers.dxview">
       <SubType>Content</SubType>
     </Content>

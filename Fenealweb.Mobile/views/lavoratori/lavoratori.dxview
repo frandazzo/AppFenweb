@@ -1,0 +1,5 @@
+<div data-options="dxView : { name: 'lavoratori', title: 'Lavoratori' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+        questa è la maschera di ricerca dei lavoratori
+    </div>
+</div>

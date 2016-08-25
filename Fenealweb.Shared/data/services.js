@@ -170,13 +170,269 @@
 
     });
 
-    
+    var lavoratoriService = Fenealweb.core.AObject.extend({
+        ctor: function () {
+            lavoratoriService.super.ctor.call(this);
+        },
+        searchLavoratori: function (searchParams) {
+
+            var cognome = searchParams.cognome;
+            var nome = searchParams.nome;
+            var fiscale = searchParams.fiscale;
+
+            var d = $.Deferred();
+
+            setTimeout(function () {
+
+                if (cognome == '0')
+                    d.resolve([]);
+                else
+                    d.resolve(listaLavoratori);
+
+            }, 2000);
+
+            return d.promise();
+        },
+        searchLavoratoriDbNazionale: function (searchParams) {
+
+            var cognome = searchParams.cognome;
+            var nome = searchParams.nome;
+            var fiscale = searchParams.fiscale;
+            var sesso = searchParams.sesso;
+            var proRes = searchParams.ProvinciaResidenza;
+            var comRes = searchParams.comuneResidenza;
+            var naz = searchParams.nazione;
+
+            var d = $.Deferred();
+
+            setTimeout(function () {
+
+                if (cognome == '0')
+                    d.resolve([]);
+                else
+                    d.resolve(listaLavoratoriDbNazionale);
+
+            }, 2000);
+
+            return d.promise();
+        }
+
+    });
 
 
     Fenealweb.services = {};
     Fenealweb.services.securityService = securityService;
     Fenealweb.services.commonsService = commonsService;
     Fenealweb.services.dashboardService = dashboardService;
+    Fenealweb.services.lavoratoriService = lavoratoriService;
+
+
+    var listaLavoratori = [
+        {
+            id: 1,
+            nome: 'francesco',
+            cognome: 'randazzo',
+            dataNascita: '14/07/1977',
+            fiscale: 'rndfnc77l14f052f',
+            sesso: 'M',
+            provinciaResidenza: 'MT',
+            comuneResidenza: 'MATERA',
+            nazione: 'ITALIA',
+            provinciaNascita: 'MT',
+            comuneNascita: 'MATERA',
+            indirizzo: 'c.da serra d\'alto snc',
+            cap: '75100',
+            cellulare: '3385269726',
+            mail: 'fg.randazzo@hotmail.it',
+            telefono: ''
+        },
+        {
+            id: 2,
+            nome: 'silvana',
+            cognome: 'colomba',
+            dataNascita: '03/11/1974',
+            fiscale: 'clmsvn74n43f423k',
+            sesso: 'F',
+            provinciaResidenza: 'MT',
+            comuneResidenza: 'MATERA',
+            nazione: 'ITALIA',
+            provinciaNascita: 'TP',
+            comuneNascita: 'BUSETO PALIZZOLO',
+            indirizzo: 'c.da serra d\'alto snc',
+            cap: '75100',
+            cellulare: '3385226362',
+            mail: 'silvana.colomba@tiscali.it',
+            telefono: ''
+        },
+        {
+            id: 3,
+            nome: 'vittorio',
+            cognome: 'randazzo',
+            dataNascita: '16/02/2015',
+            fiscale: 'rndvtt15f16f052f',
+            sesso: 'M',
+            provinciaResidenza: 'MT',
+            comuneResidenza: 'MATERA',
+            nazione: 'ITALIA',
+            provinciaNascita: 'PZ',
+            comuneNascita: 'POTENZA',
+            indirizzo: 'c.da serra d\'alto snc',
+            cap: '75100',
+            cellulare: '',
+            mail: '',
+            telefono: ''
+        },
+        {
+            id: 4,
+            nome: 'mariaelena',
+            cognome: 'randazzo',
+            dataNascita: '16/02/2015',
+            fiscale: 'rndvtt15f56f052f',
+            sesso: 'F',
+            provinciaResidenza: 'MT',
+            comuneResidenza: 'MATERA',
+            nazione: 'ITALIA',
+            provinciaNascita: 'PZ',
+            comuneNascita: 'POTENZA',
+            indirizzo: 'c.da serra d\'alto snc',
+            cap: '75100',
+            cellulare: '',
+            mail: '',
+            telefono: ''
+        }
+    ];
+
+
+    var listaLavoratoriDbNazionale = [
+        {
+            id:1,
+            nome: 'francesco',
+            cognome: 'randazzo',
+            dataNascita: '14/07/1977',
+            fiscale: 'rndfnc77l14f052f',
+            sesso: 'M',
+            provinciaResidenza: 'MT',
+            comuneResidenza: 'MATERA',
+            nazione: 'ITALIA',
+            provinciaNascita: 'MT',
+            comuneNascita: 'MATERA',
+            indirizzo: 'c.da serra d\'alto snc',
+            cap: '75100',
+            cellulare: '3385269726',
+            mail: 'fg.randazzo@hotmail.it',
+            telefono: '',
+            iscrizioni: [
+                {
+                    provincia: 'MATERA',
+                    settore: 'EDILE',
+                    ente: 'CASSA EDILE',
+                    periodo: 1,
+                    anno: 2014,
+                    azienda: 'SAS srl',
+                    piva: '',
+                    livello: '',
+                    quota: '0.01',
+                    contratto: ''
+                },
+                {
+                    provincia: 'POTENZA',
+                    settore: 'INPS',
+                    ente: '',
+                    periodo: -1,
+                    anno: 2016,
+                    azienda: '',
+                    piva: '',
+                    livello: '',
+                    quota: '',
+                    contratto: ''
+                }
+            ]
+        },
+        {
+            id: 2,
+            nome: 'silvana',
+            cognome: 'colomba',
+            dataNascita: '03/11/1974',
+            fiscale: 'clmsvn74n43f423k',
+            sesso: 'F',
+            provinciaResidenza: 'MT',
+            comuneResidenza: 'MATERA',
+            nazione: 'ITALIA',
+            provinciaNascita: 'TP',
+            comuneNascita: 'BUSETO PALIZZOLO',
+            indirizzo: 'c.da serra d\'alto snc',
+            cap: '75100',
+            cellulare: '3385226362',
+            mail: 'silvana.colomba@tiscali.it',
+            telefono: '',
+            iscrizioni: [
+                {
+                    provincia: 'MATERA',
+                    settore: 'IMPIANTI FISSI',
+                    ente: '',
+                    periodo: 1,
+                    anno: 2014,
+                    azienda: 'Progetto popolare',
+                    piva: '',
+                    livello: '',
+                    quota: '',
+                    contratto: ''
+                }
+            ]
+        },
+        {
+            id: 3,
+            nome: 'vittorio',
+            cognome: 'randazzo',
+            dataNascita: '16/02/2015',
+            fiscale: 'rndvtt15f16f052f',
+            sesso: 'M',
+            provinciaResidenza: 'MT',
+            comuneResidenza: 'MATERA',
+            nazione: 'ITALIA',
+            provinciaNascita: 'PZ',
+            comuneNascita: 'POTENZA',
+            indirizzo: 'c.da serra d\'alto snc',
+            cap: '75100',
+            cellulare: '',
+            mail: '',
+            telefono: '',
+            iscrizioni: [
+                {
+                    provincia: 'MATERA',
+                    settore: 'IMPIANTI FISSI',
+                    ente: '',
+                    periodo: 1,
+                    anno: 2016,
+                    azienda: 'Progetto popolare',
+                    piva: '',
+                    livello: '',
+                    quota: '',
+                    contratto: ''
+                }
+            ]
+        },
+        {
+            id: 4,
+            nome: 'mariaelena',
+            cognome: 'randazzo',
+            dataNascita: '16/02/2015',
+            fiscale: 'rndvtt15f56f052f',
+            sesso: 'F',
+            provinciaResidenza: 'MT',
+            comuneResidenza: 'MATERA',
+            nazione: 'ITALIA',
+            provinciaNascita: 'PZ',
+            comuneNascita: 'POTENZA',
+            indirizzo: 'c.da serra d\'alto snc',
+            cap: '75100',
+            cellulare: '',
+            mail: '',
+            telefono: '',
+            iscrizioni: []
+        }
+    ];
+
 
 }());
 

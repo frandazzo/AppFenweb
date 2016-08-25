@@ -1,6 +1,6 @@
 <div data-options="dxView : { name: 'login', title: 'login', disableCache:true  } " >
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
-        <div  style="margin:5px" data-bind="dxDeferRendering: {renderWhen: modelIsReady, showLoadIndicator: true}">
+        <div class="loginpanel"  style="margin:5px" data-bind="dxDeferRendering: {renderWhen: modelIsReady, showLoadIndicator: true}">
 
             <h1>
                 Login Fenealweb
@@ -12,6 +12,8 @@
             <br />
             <div data-bind="dxButton: {onClick: login, text: 'Login' }"></div>
 
+
+            <div class="loadpanel" data-bind="dxLoadPanel: loadOptions"></div>
 
         </div>
         
