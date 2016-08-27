@@ -1,45 +1,52 @@
 ﻿Fenealweb.lavoratori = function (params) {
     "use strict";
 
-    var cognome = params.cognome;
-    var nome = params.nome;
-    var fiscale = params.fiscale;
 
-    function executeSearch() {
+    var dataSource = new DevExpress.data.DataSource({
+        load(loadOptions) {
+            // return $.Deferred().resolve(listaLavoratori).promise();
+            loadOptions = $.extend(loadOptions, JSON.parse(params.searchParams.replace('json:', '')))
+            var a = new Fenealweb.services.lavoratoriService();
+            var p = a.searchLavoratori(loadOptions);
+          
+            return p;
+        },
+        //store: listaLavoratori,
+        map: function (dataItem) {
+            
+            var comuneRes = dataItem.comuneResidenza;
+            var provRes = dataItem.provinciaResidenza;
+            var com = '';
+            if (comuneRes && provRes)
+                com =  comuneRes + ' (' + provRes + ')';
+            else if (comuneRes)
+                com = comuneRes;
 
-        var searchParams = {
-            cognome: cognome,
-            nome: nome,
-            fiscale: fiscale
-        };
+            return {
+                completeName: dataItem.cognome.toUpperCase() + ' ' + dataItem.nome.toUpperCase() + ' (' + dataItem.dataNascita + ')',
+                residenza: com,
+                cell: dataItem.cellulare,
+                showChevron: true,
+                //badge: '<b>ciaoooooo</b>'
+            };
+        }
 
-        var svc = new Fenealweb.services.lavoratoriService();
-        svc.searchLavoratori(searchParams).done(function (data) {
-
-            //todo caricare la lista se ci sono elementi
-           
-
-            viewModel.searchIsReady(true);
-        })
-        .fail(function (error) {
-            //mandare un messaggio di errore e visualizzare 
-            viewModel.searchIsReady(true);
-        });
-
-    };
-
+    });
 
 
     var viewModel = {
-        
-
-        searchIsReady: ko.observable(false),
-        viewShowing: function () {
-            
+        listOptions: {
+            dataSource: dataSource,
+            noDataText: 'Nessun lavoratore trovato!',
+            onItemSwipe: function (e) {
+                DevExpress.ui.notify("The \"" + e.itemData.completeName + "\" item is swiped", "success", 1500);
+            }
         }
-
-
     };
 
     return viewModel;
 };
+
+
+
+

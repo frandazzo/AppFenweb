@@ -5,8 +5,16 @@
     var nome = ko.observable('');
     var fiscale = ko.observable('');
 
+    
+
     var viewModel = {
         search: function () {
+
+            var searchParams = {
+                cognome: cognome(),
+                nome: nome(),
+                fiscale: fiscale()
+            };
 
             if (!cognome() && !nome() && !fiscale()) {
                 DevExpress.ui.notify("Selezionare almeno un criterio di ricerca", 'error', 3000);
@@ -14,7 +22,8 @@
             }
 
             Fenealweb.app.navigate({
-                view: 'lavoratori'
+                view: 'lavoratori',
+                searchParams: searchParams
             });
         },
         cognomeOptions:{

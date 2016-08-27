@@ -1,5 +1,25 @@
 <div data-options="dxView : { name: 'lavoratori', title: 'Lavoratori' } " >
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
-        questa è la maschera di ricerca dei lavoratori
+        
+            <div data-bind="dxList: listOptions">
+                <div data-options="dxTemplate: { name : 'item' }">
+
+                    <div class="lavoratoreItem">
+
+                        <div style="font-weight: bold;" data-bind="text: completeName"></div>
+                        <div  data-bind="style:{display: residenza?'block':'none'}">
+                            
+                                
+                            <span style="color:gray; font-size:small">residente a </span>
+                            <span style="font-style: italic;" data-bind="text: residenza"></span>
+                        </div>
+                        <a data-bind="text: cell, style:{color: cell?'green':'red'}, attr:{href: 'javascript:;'}"></a>
+
+                    </div>
+
+                </div>
+            </div>
+      
+
     </div>
 </div>
