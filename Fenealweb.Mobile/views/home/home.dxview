@@ -18,7 +18,7 @@
 
         <hr />
 
-        <div id="scrollview" data-bind="dxScrollView: {}">
+        <div class="home-scrollview" id="scrollview" data-bind="dxScrollView: {}">
 
            
             <!--primo grafico IscrittiTerritorioAccorpato-->
@@ -53,7 +53,8 @@
                         
                     </div>
                 </div>
-            </div> 
+            </div>
+            <div class="dx-fieldset">                        Rappresentanza e sindacalizzazione                    </div> 
 
             <!--terzo grafico Rappresentanza e Sindacalizzazione-->
             <div class="panel " >
@@ -64,10 +65,6 @@
                     </span>
                 </div>
                 <div class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen: rappresentanzaReady, showLoadIndicator: true}">
-                    <div class="dx-fieldset">
-                        Rappresentanza e sindacalizzazione
-
-                    </div>
                 </div>
             </div> 
 

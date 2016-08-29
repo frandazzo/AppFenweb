@@ -1,0 +1,102 @@
+<div data-options="dxView : { name: 'partialLavoratore', title: 'plav' } " >
+  
+    <div class="lavoratore-scrollview" data-bind="dxScrollView: {   }">
+
+        <div style="margin-top:50px;height: 100px;" class="dx-fieldset">
+            <div class="dx-fieldset-header worker">Stato iscrizione</div>
+
+
+            <div class="worker-iscrizione">
+                <div class="worker-smile">
+                    <i style="margin-top: 15px;" class="fa fa-smile-o"></i>
+                </div>
+                <div class="worker-info" style="margin-top: 15px;">
+                    <span class="worker-label">Iscritto: </span> <span> CASSA EDILE</span>  <span class="worker-label">Periodo:  </span> <span> 2-2016</span><br /><br />
+                    <div class="worker-azienda">
+                        <div class="worker-azienda-title">Azienda: </div>
+                        <div class="worker-azienda-text">   Cav. Pietr. Pietro. SPA ecc...  Cav.</div>
+                        <div data-bind="dxButton: {hint:'Vai all\'azienda', onClick:navigaAzienda, icon:'fa fa-building-o' }"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div style="clear:both; margin-top:60px" class="dx-fieldset">
+            <div  class="dx-fieldset-header worker">Tesseramento 2016</div>
+
+
+            <div class="worker-tesseramento">
+                <div class="worker-smile-tessera">
+                    <i style="margin-top:11px" class="fa fa-smile-o"></i>
+                </div>
+                <div class="worker-info-tessera">
+                    Tessera stampata
+                    <div data-bind="dxButton: { hint:'Verifica se altri territori hanno stampato la tessera',onClick: tessereClick, icon:'fa fa-file-text-o' }">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style=" margin-top:60px" class="dx-fieldset">
+
+                <div style="clear:both" class="dx-fieldset-header worker">Dati anagrafici</div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Codice fiscale</div>
+                    <div class="dx-field-value-static">RNDFNC77L14FF052F</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Data nascita</div>
+                    <div class="dx-field-value-static">14/07/1977</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Nazione</div>
+                    <div class="dx-field-value-static">Italia</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Provincia nas.</div>
+                    <div class="dx-field-value-static">MT</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Comune nas.</div>
+                    <div class="dx-field-value-static">Avigliano</div>
+                </div>
+
+                <div class="dx-fieldset-header worker">Residenza</div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Provincia</div>
+                    <div class="dx-field-value-static">MT</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Comune</div>
+                    <div class="dx-field-value-static">Matera</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Indirizzo</div>
+                    <div class="dx-field-value-static">Via Gravina 39</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Cap</div>
+                    <div class="dx-field-value-static">75100</div>
+                </div>
+
+                <div class="dx-fieldset-header worker">Contatti</div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Cellulare</div>
+                    <div class="dx-field-value-static">5436453565</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Telefono</div>
+                    <div class="dx-field-value-static">6555646646</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Mail</div>
+                    <div class="dx-field-value-static">fg.randazzo@hotmail.it</div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+</div>

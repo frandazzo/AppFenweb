@@ -63,6 +63,12 @@
     <Content Include="views\dbnazionale\searchGlobalWorkers.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="views\deleghe\delega.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\deleghe\delega.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="views\home\home.css">
       <SubType>Content</SubType>
     </Content>
@@ -76,6 +82,45 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\iscritti\reportIscritti.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\partialDeleghe.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\iscrizione.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\iscrizione.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\lavoratore.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\lavoratore.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\lavoratore.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\partialDbNazionale.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\partialDbNazionale.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\partialDeleghe.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\partialLavoratore.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\partialMagazzino.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\partialNonIscritto.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\partialNonIscritto.dxview">
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\lavoratori\lavoratori.dxview">
@@ -116,12 +161,14 @@
     <Folder Include="layouts\SlideOut\" />
     <Folder Include="layouts\Split\" />
     <Folder Include="views\" />
+    <Folder Include="views\lavoratori\lavoratore" />
     <Folder Include="views\login" />
     <Folder Include="views\home" />
     <Folder Include="views\lavoratori" />
     <Folder Include="views\dbnazionale" />
     <Folder Include="views\aziende" />
     <Folder Include="views\iscritti" />
+    <Folder Include="views\deleghe" />
     <Folder Include="views\noniscritti" />
   </ItemGroup>
   <ItemGroup>

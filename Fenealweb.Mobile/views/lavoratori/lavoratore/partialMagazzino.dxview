@@ -1,0 +1,28 @@
+<div data-options="dxView : { name: 'partialMagazzino', title: 'partialMagazzino' } " >
+   
+    <div class="partial-list-container" data-bind="dxList: magazzinoOptions">
+
+        <div data-options="dxTemplate: { name:'item' }">
+            <div class="delegheItem">
+                <div>
+                    <div class="deleghe-left-panel">
+                        <span class="deleghe-main" data-bind="text: provincia"></span>
+                    </div>
+                    <div class="deleghe-right-panel">
+                        <span class="delegheLabel"> Data: </span>  <span class="deleghe-italic" data-bind="text: data"></span>
+                    </div>
+
+                </div>
+
+                <div style="clear:both; padding-top: 5px;">
+                    <span class="deleghe-settore" data-bind="text: ente"></span>
+                </div>
+               
+            </div>
+        </div>
+
+
+
+    </div>
+   
+</div>

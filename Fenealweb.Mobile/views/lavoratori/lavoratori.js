@@ -23,6 +23,7 @@
                 com = comuneRes;
 
             return {
+                fiscale: dataItem.fiscale,
                 completeName: dataItem.cognome.toUpperCase() + ' ' + dataItem.nome.toUpperCase() + ' (' + dataItem.dataNascita + ')',
                 residenza: com,
                 cell: dataItem.cellulare,
@@ -40,6 +41,13 @@
             noDataText: 'Nessun lavoratore trovato!',
             onItemSwipe: function (e) {
                 DevExpress.ui.notify("The \"" + e.itemData.completeName + "\" item is swiped", "success", 1500);
+            },
+            onItemClick: function (e) {
+                
+                Fenealweb.app.navigate({
+                    view: 'lavoratore',
+                    fiscale: e.itemData.fiscale
+                });
             }
         }
     };

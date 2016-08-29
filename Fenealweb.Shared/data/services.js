@@ -215,6 +215,28 @@
             }, 2000);
 
             return d.promise();
+        },
+        getLavoratoreByFiscalCode: function (fiscalCode) {
+            var d = $.Deferred();
+
+            setTimeout(function () {
+
+                var lavoratore = undefined;
+                $.each(listaLavoratoriDbNazionale, function (index, elem) {
+                    if (fiscalCode.toUpperCase() == elem.fiscale.toUpperCase()) {
+                        lavoratore = elem;
+                        return false;
+                    }
+                        
+
+
+                });
+               
+               d.resolve(lavoratore);
+
+            }, 2000);
+
+            return d.promise();
         }
 
     });
@@ -321,6 +343,64 @@
             cellulare: '3385269726',
             mail: 'fg.randazzo@hotmail.it',
             telefono: '',
+            deleghe: [
+                {
+                    provincia: 'Bolzano',
+                    settore: 'EDILE',
+                    ente: 'CASSA EDILE',
+                    azienda:'',
+                    data: '31/12/2016',
+                    causale: 'NUOVA ISCRIZIONE',
+                    causaleAnnullamento: '',
+                    causaleRevoca: '',
+                    stato: 'SOTTOSCRITTA',
+                    collaboratore: 'Spinelli Patrizia'
+
+                },
+                {
+                    provincia: 'Bolzano',
+                    settore: 'IMPIANTI FISSI',
+                    ente: '',
+                    azienda: 'NATUZZI',
+                    data: '31/12/2016',
+                    causale: 'CON REVOCA FILCA',
+                    causaleAnnullamento: '',
+                    causaleRevoca: '',
+                    stato: 'ATTIVATA',
+                    collaboratore: ''
+                }
+            ],
+            magazzino: [
+                {
+                    provincia: 'Bolzano',
+                    ente: 'CASSA EDILE',
+                    data: '31/12/2016',
+                    collaboratore: 'Spinelli Patrizia'
+                   
+                },
+                {
+                    provincia: 'Bolzano',
+                    ente: 'EDILCASSA',
+                    data: '31/12/2016',
+                    collaboratore: 'Spinelli Patrizia'
+                }
+            ],
+            nonIscrizioni:[
+                {
+                    provincia: 'Bolzano',
+                    ente: 'CASSA EDILE',
+                    liberoAl: '31/12/2016',
+                    azienda: 'Alla Spa',
+                    iscrittoA: 'FILLEA'
+                },
+                {
+                    provincia: 'Trento',
+                    ente: 'CASSA EDILE',
+                    liberoAl: '15/07/2016',
+                    azienda: '',
+                    iscrittoA: ''
+                }
+            ],
             iscrizioni: [
                 {
                     provincia: 'MATERA',

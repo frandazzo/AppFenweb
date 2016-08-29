@@ -1,0 +1,52 @@
+<div data-options="dxView : { name: 'delega', title: 'delega' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+       
+
+        <div class="dx-fieldset">
+            <div class="dx-fieldset-header">Dati Lavoratore</div>
+            <div class="dx-field">
+                <div class="dx-field-label">Lavoratore</div>
+                <div class="dx-field-value-static" data-bind="text:delega.completeName "></div>
+            </div>
+            <div class="dx-fieldset-header">Dati iscrizione</div>
+            <div class="dx-field">
+                <div class="dx-field-label">Territorio</div>
+                <div class="dx-field-value-static" data-bind="text:delega.provincia ">Matera</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Settore</div>
+                <div class="dx-field-value-static" data-bind="text:delega.settore ">EDILE</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Ente</div>
+                <div class="dx-field-value-static" data-bind="text:delega.ente ">CASSA EDILE</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Azienda</div>
+                <div class="dx-field-value-static" data-bind="text:delega.azienda ">Pippo s.r.l.</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Causale iscrizione</div>
+                <div class="dx-field-value-static" data-bind="text:delega.causale ">1-2016</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Data delega</div>
+                <div class="dx-field-value-static" data-bind="text:delega.data ">xxxxxxxxxx</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Livello</div>
+                <div class="dx-field-value-static" data-bind="text:iscrizione.livello ">01</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Quota</div>
+                <div class="dx-field-value-static" data-bind="text:iscrizione.quota ">10,00</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Contratto</div>
+                <div class="dx-field-value-static" data-bind="text:iscrizione.contratto ">Metalmeccanico</div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

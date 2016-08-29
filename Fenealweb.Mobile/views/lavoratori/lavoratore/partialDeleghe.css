@@ -1,0 +1,36 @@
+﻿.delegheLabel
+{
+    font-size: 12px;
+    color: #999;
+    text-align:right;
+}
+
+.deleghe-right-panel{
+    float:left; width:30%; text-align:right
+}
+
+.deleghe-left-panel{
+    float:left; 
+    width:60%; 
+}
+
+.deleghe-italic{
+    font-style: italic;
+    font-size: 12px
+}
+
+.deleghe-main{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.deleghe-azienda{
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.deleghe-settore{
+    font-style: italic;
+    color: #999;
+    font-size: 15px;
+}

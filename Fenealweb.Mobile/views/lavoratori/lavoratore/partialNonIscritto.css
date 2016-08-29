@@ -1,0 +1,36 @@
+﻿.non-iscrizioneLabel
+{
+    font-size: 12px;
+    color: #999;
+    text-align:right;
+}
+
+.non-iscrizione-right-panel{
+    float:left; width:30%; text-align:right
+}
+
+.non-iscrizione-left-panel{
+    float:left; 
+    width:60%; 
+}
+
+.non-iscrizione-italic{
+    font-style: italic;
+    font-size: 12px
+}
+
+.non-iscrizione-main{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.non-iscrizione-azienda{
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.non-iscrizione-settore{
+    font-style: italic;
+    color: #999;
+    font-size: 15px;
+}

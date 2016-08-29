@@ -1,0 +1,36 @@
+﻿.iscrizioneLabel
+{
+    font-size: 12px;
+    color: #999;
+    text-align:right;
+}
+
+.iscrizione-right-panel{
+    float:left; width:30%; text-align:right
+}
+
+.iscrizione-left-panel{
+    float:left; 
+    width:60%; 
+}
+
+.iscrizione-italic{
+    font-style: italic;
+    font-size: 12px
+}
+
+.iscrizione-main{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.iscrizione-azienda{
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.iscrizione-settore{
+    font-style: italic;
+    color: #999;
+    font-size: 15px;
+}
