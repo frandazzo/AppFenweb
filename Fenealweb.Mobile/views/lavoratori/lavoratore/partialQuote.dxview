@@ -1,0 +1,33 @@
+<div data-options="dxView : { name: 'partialQuote', title: 'partialQuote' } " >
+   
+
+    <div class="partial-list-container" data-bind="dxList: quoteOptions">
+        <div data-options="dxTemplate: { name:'item' }">
+            <div class="iscrizioneItem">
+                <div>
+                    <div class="iscrizione-left-panel">
+                        <span class="iscrizione-main" data-bind="text: provincia"></span>
+                    </div>
+                    <div class="iscrizione-right-panel">
+                        <span class="iscrizioneLabel"> Competenza: </span>  <span class="iscrizione-italic" data-bind="text: competenza"></span>
+                    </div>
+
+                </div>
+
+                <div style="clear:both; padding-top: 5px;">
+                    <span class="iscrizione-settore" data-bind="text: settore == 'EDILE'?  settore + ' (' + ente + ')': settore "></span>
+                </div>
+                <div style="clear:both; padding-top: 5px;">
+                    <span class="iscrizione-azienda" data-bind="text: azienda"></span>
+                </div>
+                <div style="clear:both; padding-top: 5px;">
+                    <span class="iscrizione-settore">Quota (Euro): </span><span style="font-size:13px" data-bind="text: quota"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

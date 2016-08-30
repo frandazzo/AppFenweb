@@ -35,7 +35,9 @@
                 <!-- ko if: navSelectedIndex() == 4 -->
                 <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialMagazzino' } "></div>
                 <!-- /ko -->
-
+                <!-- ko if: navSelectedIndex() == 5 -->
+                <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialQuote' } "></div>
+                <!-- /ko -->
             </div>
 
 
@@ -46,6 +48,39 @@
                 dataSource: navData,
                 selectedIndex: navSelectedIndex
             }"></div>
+
+
+
+
+
+
+            <!--popup per la visualizzazione delle tessere stampate da altri-->
+            <div data-bind="dxPopup: { title: 'Tessera in altri territori',
+             visible:changeParamsPopupVisible,
+             showTitle: true,
+             dragEnabled: false,
+             closeOnOutsideClick: true }">
+
+                <div>
+                    <p>
+                        Territori che hanno stampato la tessera nell'anno corrente:
+                    </p>
+                    <p>
+                        <span style="font-weight:bold" data-bind="text: stampeTesseraLavoratore"></span>
+                    </p>
+                </div>
+
+                <br />
+                <div style="text-align:center">
+                    <div data-bind="dxButton: { visible:true, text: 'OK', onClick:hidePopup  }"></div> &nbsp;&nbsp;
+                    
+                </div>
+
+
+            </div>
+
+
+
 
         </div>
 

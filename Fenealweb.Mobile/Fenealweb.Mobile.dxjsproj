@@ -51,6 +51,27 @@
     <Content Include="layouts\Split\SplitLayout.css" />
     <Content Include="layouts\Split\SplitLayout.html" />
     <Content Include="layouts\Split\SplitLayout.js" />
+    <Content Include="views\aziende\azienda.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\aziende\azienda.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\aziende\aziende.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\aziende\partialAzienda.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\aziende\partialAzienda.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\aziende\partialIscritti.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\aziende\partialNonIscritti.dxview">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="views\aziende\searchCompanies.dxview">
       <SubType>Content</SubType>
     </Content>
@@ -67,6 +88,12 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\deleghe\delega.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\deleghe\magazzino.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\deleghe\magazzino.js">
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\home\home.css">
@@ -121,6 +148,15 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\lavoratori\lavoratore\partialNonIscritto.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\partialQuote.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\quota.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\lavoratore\quota.js">
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\lavoratori\lavoratori.dxview">

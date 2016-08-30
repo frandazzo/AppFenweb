@@ -1,0 +1,25 @@
+﻿.list-container {
+    width: 100%;
+    min-height: 440px;
+    height: auto;
+    position: absolute;
+    top: 0; 
+    bottom: 0;
+}
+
+.azienda-container{
+    height: 90%;
+    position: absolute;
+    top: 0; 
+    bottom: 0;
+    width:100%
+}
+
+
+.azienda-partial-list-container{
+     position:absolute;
+    height:87%;
+    right:0px;
+    left:  0px;
+    margin-top:10px;
+}

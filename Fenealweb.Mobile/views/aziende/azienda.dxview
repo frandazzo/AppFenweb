@@ -1,0 +1,36 @@
+<div data-options="dxView : { name: 'azienda', title: 'Azienda' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+       
+
+
+        <div data-bind="dxDeferRendering: { showLoadIndicator: true, renderWhen: dataReady }">
+
+
+            <div class="azienda-container">
+
+                <div class="worker-header" data-bind="text:currentAzienda().descrizione"></div>
+                
+
+
+                <!-- ko if: navSelectedIndex() == 0 -->
+                <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialAzienda' } "></div>
+                <!-- /ko -->
+                <!-- ko if: navSelectedIndex() == 1 -->
+                <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialIscritti' } "></div>
+                <!-- /ko -->
+                <!-- ko if: navSelectedIndex() == 2 -->
+                <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialNonIscritti' } "></div>
+                <!-- /ko -->
+              
+            </div>
+
+            <div data-bind="dxNavBar: {
+                dataSource: navData,
+                selectedIndex: navSelectedIndex
+            }"></div>
+
+        </div>
+
+
+    </div>
+</div>

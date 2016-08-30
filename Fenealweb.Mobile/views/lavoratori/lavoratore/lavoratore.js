@@ -20,6 +20,10 @@
      {
          text: "Mag. deleghe",
          icon: "tags"
+     },
+     {
+         text: "Quote versate",
+         icon: "fa fa-eur"
      }
     ]);
 
@@ -37,8 +41,23 @@
     var dataSourceDeleghe = ko.observable(new DevExpress.data.DataSource({ store: [] }));
     var dataSourceMagazzino = ko.observable(new DevExpress.data.DataSource({ store: [] }));
 
+    var dataSourceQuote = ko.observable(new DevExpress.data.DataSource({ store: [] }));
+
 
     var viewModel = {
+        //paramtri popup
+        changeParamsPopupVisible: ko.observable(false),
+        hidePopup: function(){
+            viewModel.changeParamsPopupVisible(false);
+        },
+        stampeTesseraLavoratore: ko.computed(function () {
+            if (!current().stampeTessera)
+                return 'Nessuno';
+            if (current().stampeTessera.length == 0)
+                return 'Nessuno';
+            return current().stampeTessera.join(', ');
+
+        }),
         //queste sono le proprietà della navbar
         navData: navData,
         navSelectedIndex: currentTab,
@@ -55,7 +74,7 @@
 
                 e.itemData.completeName = viewModel.currentWorkerCompleteName();
                 e.itemData.completePeriodo = periodo;
-                e.itemData.showChevron = true,
+                e.itemData.showChevron = true
 
                 Fenealweb.app.navigate({
                     view: 'iscrizione',
@@ -70,11 +89,27 @@
                 DevExpress.ui.notify("swiped", "success", 1500);
             },
             onItemClick: function (e) {
-
-                e.itemData.showChevron = true,
+                e.itemData.completeName = viewModel.currentWorkerCompleteName();
+                e.itemData.showChevron = true
 
                 Fenealweb.app.navigate({
                     view: 'delega',
+                    id: e.itemData
+                });
+            }
+        },
+        quoteOptions: {
+            dataSource: dataSourceQuote,
+            noDataText: 'Nessuna quota trovata',
+            onItemSwipe: function (e) {
+                DevExpress.ui.notify("swiped", "success", 1500);
+            },
+            onItemClick: function (e) {
+                e.itemData.completeName = viewModel.currentWorkerCompleteName();
+                
+
+                Fenealweb.app.navigate({
+                    view: 'quota',
                     id: e.itemData
                 });
             }
@@ -94,7 +129,7 @@
                 DevExpress.ui.notify("swiped", "success", 1500);
             },
             onItemClick: function (e) {
-
+                e.itemData.completeName = viewModel.currentWorkerCompleteName();
                 e.itemData.showChevron = true,
 
                 Fenealweb.app.navigate({
@@ -115,6 +150,8 @@
                 return 'Non iscrizioni';
             else if (currentTab() == 4)
                 return 'Mag. deleghe';
+            else if (currentTab() == 5)
+                return 'Quote versate';
             
         }),
         currentWorker: current,
@@ -128,7 +165,7 @@
             alert('call');
         },
         tessereClick: function(){
-            alert('tessera');
+            viewModel.changeParamsPopupVisible(true);
         },
         navigaAzienda: function(){
             alert('azienda');
@@ -157,6 +194,12 @@
                     if (data.magazzino) {
                         navData()[4].badge = data.magazzino.length;
                         dataSourceMagazzino(new DevExpress.data.DataSource(data.magazzino));
+                    }
+
+
+                    if (data.quote) {
+                        navData()[5].badge = data.quote.length;
+                        dataSourceQuote(new DevExpress.data.DataSource(data.quote));
                     }
 
                     current(data);

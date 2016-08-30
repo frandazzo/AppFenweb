@@ -242,12 +242,52 @@
     });
 
 
+
+    var aziendeService = Fenealweb.core.AObject.extend({
+        ctor: function () {
+            aziendeService.super.ctor.call(this);
+        },
+        searchAziende: function (descrizione) {
+
+            
+            
+            var d = $.Deferred();
+
+            setTimeout(function () {
+
+                if (!descrizione)
+                    d.resolve(listaAziende);
+                else
+                    d.resolve(listaAziende.slice(0,1));
+
+            }, 2000);
+
+            return d.promise();
+        },
+        getAziendaById: function (id) {
+
+           
+
+            var d = $.Deferred();
+
+            setTimeout(function () {
+
+               
+                    d.resolve(listaAziende[0]);
+
+            }, 2000);
+
+            return d.promise();
+        }
+
+    });
+
     Fenealweb.services = {};
     Fenealweb.services.securityService = securityService;
     Fenealweb.services.commonsService = commonsService;
     Fenealweb.services.dashboardService = dashboardService;
     Fenealweb.services.lavoratoriService = lavoratoriService;
-
+    Fenealweb.services.aziendeService = aziendeService;
 
     var listaLavoratori = [
         {
@@ -324,6 +364,75 @@
         }
     ];
 
+    var listaAziende = [
+        {
+            id: 1,
+            descrizione: 'Natuzzi',
+            provincia: 'MT',
+            comune: 'Matera',
+            indirizzo: 'via delle chianche 18',
+            cap: '75100',
+            iscritti: [
+                {
+                    nome: 'Silvana Colomba',
+                    fiscale: 'irewijgirwjo',
+                    provincia: 'Bolzano',
+                    settore: 'EDILE',
+                    ente: 'CASSA EDILE',
+                    azienda: 'zzzz',
+                    data: '31/12/2016',
+                    dataRegistrazione: '31/12/2016',
+                    tipo: 'IQA',
+                    competenza: '1-2016',
+                    livello: 'NUOVA ISCRIZIONE',
+                    quota: '0,01',
+                    contratto: '',
+                    showChevron: true
+
+                }],
+            nonIscritti: [
+               {
+                   nome: 'Francesco Randazzo',
+                   fiscale: 'rndfnc77l14f052f',
+                   provincia: 'Bolzano',
+                   ente: 'CASSA EDILE',
+                   liberoAl: '31/12/2016',
+                   azienda: 'Alla Spa',
+                   iscrittoA: 'FILLEA',
+                   
+               },
+               {
+                   nome: 'Francesco Randazzo1',
+                   fiscale: 'rndfnc77l14f052f11',
+                   provincia: 'Trento',
+                   ente: 'CASSA EDILE',
+                   liberoAl: '15/07/2016',
+                   azienda: '',
+                   iscrittoA: '',
+                   
+               }
+            ]
+        },
+        {
+            id: 2,
+            descrizione: 'Euroedil',
+            provincia: 'MT',
+            comune: 'Matera',
+            indirizzo: 'via dell\'acqua',
+            cap: '75100'
+        },
+        {
+            id: 3,
+            descrizione: 'Nicoletti',
+            provincia: 'MT',
+            comune: 'Matera',
+            indirizzo: 'zona paip 2',
+            cap: '75100'
+        }
+
+
+
+    ];
 
     var listaLavoratoriDbNazionale = [
         {
@@ -343,6 +452,26 @@
             cellulare: '3385269726',
             mail: 'fg.randazzo@hotmail.it',
             telefono: '',
+            stampeTessera:[
+                'TRENTO',
+                'BARI'
+            ],
+            quote: [
+                {
+                    provincia: 'Bolzano',
+                    settore: 'EDILE',
+                    ente: 'CASSA EDILE',
+                    azienda: 'zzzz',
+                    data: '31/12/2016',
+                    dataRegistrazione: '31/12/2016',
+                    tipo: 'IQA',
+                    competenza:'1-2016',
+                    livello: 'NUOVA ISCRIZIONE',
+                    quota: '0,01',
+                    contratto: '',
+                    showChevron : true
+
+                }],
             deleghe: [
                 {
                     provincia: 'Bolzano',
@@ -354,7 +483,10 @@
                     causaleAnnullamento: '',
                     causaleRevoca: '',
                     stato: 'SOTTOSCRITTA',
-                    collaboratore: 'Spinelli Patrizia'
+                    collaboratore: 'Spinelli Patrizia',
+                    note: '',
+                    showChevron: true
+                    
 
                 },
                 {
@@ -367,7 +499,9 @@
                     causaleAnnullamento: '',
                     causaleRevoca: '',
                     stato: 'ATTIVATA',
-                    collaboratore: ''
+                    collaboratore: '',
+                    note: '',
+                    showChevron: true
                 }
             ],
             magazzino: [
@@ -412,7 +546,8 @@
                     piva: '',
                     livello: '',
                     quota: '0.01',
-                    contratto: ''
+                    contratto: '',
+                    showChevron: true
                 },
                 {
                     provincia: 'POTENZA',
@@ -424,7 +559,8 @@
                     piva: '',
                     livello: '',
                     quota: '',
-                    contratto: ''
+                    contratto: '',
+                    showChevron: true
                 }
             ]
         },
@@ -445,6 +581,9 @@
             cellulare: '3385226362',
             mail: 'silvana.colomba@tiscali.it',
             telefono: '',
+            stampeTessera: [
+               
+            ],
             iscrizioni: [
                 {
                     provincia: 'MATERA',
@@ -477,6 +616,9 @@
             cellulare: '',
             mail: '',
             telefono: '',
+            stampeTessera: [
+                
+            ],
             iscrizioni: [
                 {
                     provincia: 'MATERA',
@@ -509,6 +651,10 @@
             cellulare: '',
             mail: '',
             telefono: '',
+            stampeTessera: [
+                
+                'BARI'
+            ],
             iscrizioni: []
         }
     ];

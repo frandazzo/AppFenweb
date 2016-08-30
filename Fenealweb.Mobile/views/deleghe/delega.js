@@ -1,8 +1,11 @@
 ﻿Fenealweb.delega = function (params) {
     "use strict";
 
+
+    var delega = params.id;
+
     var viewModel = {
-//  Put the binding properties here
+        delega: delega
     };
 
     return viewModel;

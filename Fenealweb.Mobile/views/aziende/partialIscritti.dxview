@@ -1,0 +1,27 @@
+<div data-options="dxView : { name: 'partialIscritti', title: 'partialIscritti' } " >
+   
+    <div class="azienda-partial-list-container" data-bind="dxList: iscrittiOptions">
+        <div data-options="dxTemplate: { name:'item' }">
+            <div class="iscrizioneItem">
+                <div class="iscrizione-main"data-bind="text:nome "> </div>
+                <div>
+                    <div class="iscrizione-left-panel">
+                        <span class="iscrizione-settore" data-bind="text: provincia"></span>
+                    </div>
+                    <div class="iscrizione-right-panel">
+                        <span class="iscrizioneLabel"> Periodo: </span>  <span class="iscrizione-italic" data-bind="text: competenza"></span>
+                    </div>
+
+                </div>
+
+                <div style="clear:both; padding-top: 5px;">
+                    <span class="iscrizione-settore" data-bind="text: settore == 'EDILE'?  settore + ' (' + ente + ')': settore "></span>
+                </div>
+                <div style="padding-top: 5px;">
+                    <span class="iscrizione-azienda" data-bind="text: azienda"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

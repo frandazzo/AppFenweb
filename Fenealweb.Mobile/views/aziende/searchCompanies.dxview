@@ -1,5 +1,20 @@
 <div data-options="dxView : { name: 'searchCompanies', title: 'Ricerca aziende' } " >
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
-      questa è la maschere di ricerca delle aziende
+      
+
+
+        <div id="list" class="list-container">
+            <div class="dx-searchbar">
+                <div data-bind="dxTextBox: searchOptions"></div>
+            </div>
+            <div data-bind="dxList: listOptions"></div>
+        </div>
+
+
+
+
+
+
+
     </div>
 </div>

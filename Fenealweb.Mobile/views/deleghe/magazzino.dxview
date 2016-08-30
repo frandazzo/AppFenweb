@@ -1,0 +1,35 @@
+<div data-options="dxView : { name: 'magazzino', title: 'Delega in magazino' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+     
+
+        <div class="dx-fieldset">
+            <div class="dx-fieldset-header">Dati Lavoratore</div>
+            <div class="dx-field">
+                <div class="dx-field-label">Lavoratore</div>
+                <div class="dx-field-value-static" data-bind="text:magazzino.completeName "></div>
+            </div>
+            <div class="dx-fieldset-header">Dati delega in magazzino</div>
+            <div class="dx-field">
+                <div class="dx-field-label">Data</div>
+                <div class="dx-field-value-static" data-bind="text:magazzino.data ">14/07/2015</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Territorio</div>
+                <div class="dx-field-value-static" data-bind="text:magazzino.provincia ">Matera</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Ente</div>
+                <div class="dx-field-value-static" data-bind="text:magazzino.ente ">CASSA EDILE</div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">Collaboratore</div>
+                <div class="dx-field-value-static" data-bind="text:magazzino.collaboratore ">Patrizia spinelli</div>
+            </div>
+           
+           
+        </div>
+
+
+
+    </div>
+</div>

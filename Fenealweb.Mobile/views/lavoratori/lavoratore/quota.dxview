@@ -1,0 +1,65 @@
+<div data-options="dxView : { name: 'quota', title: 'Quota versata' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+       
+
+        <div data-bind="dxScrollView: {  }">
+
+            <div class="dx-fieldset">
+                <div class="dx-fieldset-header">Dati Lavoratore</div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Lavoratore</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.completeName "></div>
+                </div>
+                <div style="margin-top:20px" class="dx-fieldset-header">Dati quota</div>
+
+                <div class="dx-field">
+                    <div class="dx-field-label">Data registrazione</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.dataRegistrazione "></div>
+
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Data documento</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.data ">14/07/2015</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Tipo documento</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.tipo "></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Territorio</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.provincia ">Matera</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Settore</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.settore ">EDILE</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Ente</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.ente ">CASSA EDILE</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Azienda</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.azienda ">Pippo s.r.l.</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Competenza</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.competenza ">1-2016</div>
+                </div>
+               
+                <div class="dx-field">
+                    <div class="dx-field-label">Livello</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.collaboratore ">01</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Quota</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.quota "></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Contratto</div>
+                    <div class="dx-field-value-static" data-bind="text:quota.contratto "></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

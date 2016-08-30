@@ -1,54 +1,55 @@
 <div data-options="dxView : { name: 'iscrizione', title: 'Iscrizione' } " >
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
       
+        <div data-bind="dxScrollView: {  }">
 
-        <div class="dx-fieldset">
-              <div class="dx-fieldset-header">Dati Lavoratore</div>
-              <div class="dx-field">
-                  <div class="dx-field-label">Lavoratore</div>
-                  <div class="dx-field-value-static" data-bind="text:iscrizione.completeName "></div>
-              </div>
-              <div class="dx-fieldset-header">Dati iscrizione</div>
-              <div class="dx-field">
-                  <div class="dx-field-label">Territorio</div>
-                  <div class="dx-field-value-static" data-bind="text:iscrizione.provincia ">Matera</div>
-              </div>
-              <div class="dx-field">
-                  <div class="dx-field-label">Settore</div>
-                  <div class="dx-field-value-static" data-bind="text:iscrizione.settore ">EDILE</div>
-              </div>
-              <div class="dx-field">
-                  <div class="dx-field-label">Ente</div>
-                  <div class="dx-field-value-static" data-bind="text:iscrizione.ente ">CASSA EDILE</div>
-              </div>
-              <div class="dx-field">
-                  <div class="dx-field-label">Azienda</div>
-                  <div class="dx-field-value-static" data-bind="text:iscrizione.azienda ">Pippo s.r.l.</div>
-              </div>
-              <div class="dx-field">
-                  <div class="dx-field-label">Periodo</div>
-                  <div class="dx-field-value-static" data-bind="text:iscrizione.completePeriodo ">1-2016</div>
-              </div>
-              <div class="dx-field">
-                  <div class="dx-field-label">P. Iva</div>
-                  <div class="dx-field-value-static" data-bind="text:iscrizione.piva ">xxxxxxxxxx</div>
-              </div>
-              <div class="dx-field">
-                  <div class="dx-field-label">Livello</div>
-                  <div class="dx-field-value-static" data-bind="text:iscrizione.livello ">01</div>
-              </div>
-              <div class="dx-field">
-                  <div class="dx-field-label">Quota</div>
-                  <div class="dx-field-value-static" data-bind="text:iscrizione.quota ">10,00</div>
-              </div>
-              <div class="dx-field">
-                  <div class="dx-field-label">Contratto</div>
-                  <div class="dx-field-value-static" data-bind="text:iscrizione.contratto ">Metalmeccanico</div>
-              </div>
-          </div>
+            <div class="dx-fieldset">
+                <div class="dx-fieldset-header">Dati Lavoratore</div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Lavoratore</div>
+                    <div class="dx-field-value-static" data-bind="text:iscrizione.completeName "></div>
+                </div>
+                <div class="dx-fieldset-header">Dati iscrizione</div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Territorio</div>
+                    <div class="dx-field-value-static" data-bind="text:iscrizione.provincia ">Matera</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Settore</div>
+                    <div class="dx-field-value-static" data-bind="text:iscrizione.settore ">EDILE</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Ente</div>
+                    <div class="dx-field-value-static" data-bind="text:iscrizione.ente ">CASSA EDILE</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Azienda</div>
+                    <div class="dx-field-value-static" data-bind="text:iscrizione.azienda ">Pippo s.r.l.</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Periodo</div>
+                    <div class="dx-field-value-static" data-bind="text:iscrizione.completePeriodo ">1-2016</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">P. Iva</div>
+                    <div class="dx-field-value-static" data-bind="text:iscrizione.piva ">xxxxxxxxxx</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Livello</div>
+                    <div class="dx-field-value-static" data-bind="text:iscrizione.livello ">01</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Quota</div>
+                    <div class="dx-field-value-static" data-bind="text:iscrizione.quota ">10,00</div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Contratto</div>
+                    <div class="dx-field-value-static" data-bind="text:iscrizione.contratto ">Metalmeccanico</div>
+                </div>
+            </div>
 
-        
 
+        </div>
 
 
     </div>
