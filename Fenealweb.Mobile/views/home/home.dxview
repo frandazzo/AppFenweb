@@ -31,11 +31,7 @@
                 </div>
                 <div  class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen: iscrittiTerritorioAccorpatoReady,showLoadIndicator: true}">
                    
-                    <div class="dx-fieldset">
-
-                        Iscritti per territorio accorpato
-        
-                    </div>
+                    <div id="pieterraccorpato" data-bind="dxPieChart: iscrittiTerritorioAccorpatoChartOptions"></div>
                </div> 
 
             </div>
@@ -48,10 +44,9 @@
                     </span>-->
                 </div>
                 <div  class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen: andamentoIscrittiTerritorioAccorpatoReady, showLoadIndicator: true}">
-                    <div class="dx-fieldset">
-                        Andamento iscritti per territorio accorpato
-                        
-                    </div>
+                   <div class="dx-fieldset">
+                       andamento iscritti per territorio accorpato
+                   </div>
                 </div>
             </div>
            
@@ -90,10 +85,7 @@
                     </span>
                 </div>
                 <div class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen:andamentoIscrittiSettoreReady, showLoadIndicator: true}">
-                    <div class="dx-fieldset">
-                        Andamento iscritti per settore
-
-                    </div>
+                    <div id="chart" data-bind="dxChart: andamentoIscrittiSettoreChartOptions"></div>
                 </div>
             </div> 
 

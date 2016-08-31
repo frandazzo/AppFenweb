@@ -128,8 +128,6 @@
                 }
             ];
 
-            
-
             if (!ente)
                 ente = "CASSA EDILE";
 
@@ -165,9 +163,47 @@
         getAndamentoIscrittiSettore: function (provincia) {
             var d = $.Deferred();
 
+            var data = [
+               {
+                   anno: "2009",
+                   edile: 1110,
+                   impiantiFissi: 200,
+                   inps: 54
+               }, {
+                   anno: "2012",
+                   edile: 1700,
+                   impiantiFissi: 100,
+                   inps: 154
+               }, {
+                   anno: "2014",
+                   edile: 800,
+                   impiantiFissi: 0,
+                   inps: 10
+               },
+                {
+                    anno: "2015",
+                    edile: 1310,
+                    impiantiFissi: 100,
+                    inps: 22
+                },
+                 {
+                     anno: "2016",
+                     edile: 990,
+                     impiantiFissi: 300,
+                     inps: 0
+                 }
+            ];
+
+
+
             setTimeout(function () {
-                d.resolve();
-            }, 5000);
+                d.resolve({
+
+                    provincia: provincia,
+                    data:data
+
+                });
+            }, 1000);
 
             return d.promise();
         },
@@ -178,8 +214,21 @@
             if (!anno) 
                 anno = new Date().getFullYear();
 
+            var data = [
+                {
+                    territorio: "Trento",
+                    iscritti: 1110
+                }, {
+                    territorio: "Bolzano",
+                    iscritti: 1150
+                }, {
+                    territorio: "Padova",
+                    iscritti: 1290
+                }
+            ];
+
             setTimeout(function () {
-                d.resolve({ anno: anno });
+                d.resolve({ anno: anno, data: data });
             }, 3000);
 
             return d.promise();

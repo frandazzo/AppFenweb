@@ -1,11 +1,23 @@
 ﻿Fenealweb.home = function (params) {
     "use strict";
 
-    
+ 
+   
+    //dati per il grafico della rappresentanza
     var dataSourceRappresentanza = ko.observable(new DevExpress.data.DataSource({ store: [] }));
     var titleRappresentanza = ko.observable('');
     var rappresentanzaChartVisible = ko.observable(true);
     var rappresentanzaNoDataText = ko.observable('');
+
+    //dati per il grafico del terriotrio accorpato
+    var dataSourceIscrittiTerritorioAccorpato = ko.observable(new DevExpress.data.DataSource({ store: [] }));
+    var titleIscrittiTerritorioAccorpato = ko.observable('');
+
+    //dati per il grafico dell'andamento iscritti per settore
+    var dataSourceIscrittiPerSettore = ko.observable(new DevExpress.data.DataSource({ store: [] }));
+    var titleIscrittiPerSettore = ko.observable('');
+
+
     var data = JSON.parse(params.loggedUser.replace('json:', ''));
   
     //variabili per la selezione da popup dei dati di inizializzaizone dei grafici
@@ -30,7 +42,14 @@
 
             //todo
             //creare il grafico
-
+            if (!data.data || data.data.length == 0) {
+                titleIscrittiTerritorioAccorpato('Nessun dato disponibile. Anno: ' + data.anno);
+                viewModel.iscrittiTerritorioAccorpatoReady(true);
+                return;
+            }
+            
+            dataSourceIscrittiTerritorioAccorpato(new DevExpress.data.DataSource({ store: data.data }));
+            titleIscrittiTerritorioAccorpato('Anno: ' + data.anno);
             viewModel.iscrittiTerritorioAccorpatoReady(true);
         })
         .fail(function (error) {
@@ -81,7 +100,14 @@
 
             //todo
             //creare il grafico
+            if (!data.data || data.data.length == 0) {
+                titleIscrittiPerSettore('Nessun dato disponibile. Territorio: ' + data.provincia);
+                viewModel.andamentoIscrittiSettoreReady(true);
+                return;
+            }
 
+            dataSourceIscrittiPerSettore(new DevExpress.data.DataSource({ store: data.data }));
+            titleIscrittiPerSettore(data.provincia);
             viewModel.andamentoIscrittiSettoreReady(true);
         })
         .fail(function (error) {
@@ -176,13 +202,72 @@
         completeName : ko.computed(function(){
             return data.name + " " + data.surname;
         }),
+        //grafico iscritti territorio accorpato
+        //***************************************************
         iscrittiTerritorioAccorpatoReady: ko.observable(false),
         iscrittiTerritorioAccorpatoChangeParams: function (e) {
            
+            provinceSelectVisible(false);
+            anniSelectVisible(true)
+            entiSelectVisible(false);
+
             currentGrafico = graficiArray[0];
             this.changeParamsPopupTitle('Iscritti per territori accorpati');
             this.changeParamsPopupVisible(true);
         },
+        iscrittiTerritorioAccorpatoChartOptions: {
+            dataSource: dataSourceIscrittiTerritorioAccorpato,
+            title: titleIscrittiTerritorioAccorpato,
+            legend: {
+                orientation: "horizontal",
+                itemTextPosition: "center",
+                horizontalAlignment: "center",
+                verticalAlignment: "bottom",
+                columnCount: 3,
+                customizeText: function (pointInfo) {
+                    //return pointInfo.pointName + ' - ' + dataSource1.filter(function (elem) {
+                    //    return elem.country === pointInfo.pointName
+                    //})[0].medals;
+
+
+                    var pieChart = $("#pieterraccorpato").dxPieChart('instance');
+                    var point = pieChart.getAllSeries()[0].getAllPoints()[pointInfo.pointIndex];
+                    return pointInfo.pointName + ' ' + point.originalValue + ' iscr.';
+                    //var percentValue = (pieChart.getAllSeries()[0].getAllPoints()[pointInfo.pointIndex].percent * 100).toFixed(2);
+
+                    //return pointInfo.pointName + ": " + percentValue + '%';
+
+
+                }
+            },
+            "export": {
+                enabled: false
+            },
+            series: [{
+                argumentField: "territorio",
+                valueField: "iscritti",
+                label: {
+                    visible: true,
+                    font: {
+                        size: 16
+                    },
+                    connector: {
+                        visible: true,
+                        width: 0.5
+                    },
+                    position: "inside",
+                    customizeText: function (arg) {
+
+                        var percentValue = (arg.percent * 100).toFixed(2);
+
+                        return percentValue + "%";
+                    }
+
+                }
+            }]
+        },
+        //***************************************************
+
 
         andamentoIscrittiTerritorioAccorpatoReady: ko.observable(false),
         andamentoIscrittiTerritorioAccorpatoChangeParams: function (e) {
@@ -193,13 +278,50 @@
         },
 
 
+        //dati per il grafico degli iscritti per settore
+        //***************************************************
         andamentoIscrittiSettoreReady: ko.observable(false),
         andamentoIscrittiSettoreChangeParams: function (e) {
+
+            provinceSelectVisible(true);
+            anniSelectVisible(false)
+            entiSelectVisible(false);
 
             currentGrafico = graficiArray[3];
             this.changeParamsPopupTitle('Andamento iscritti per settore');
             this.changeParamsPopupVisible(true);
         },
+        andamentoIscrittiSettoreChartOptions: {
+            dataSource: dataSourceIscrittiPerSettore,
+            commonSeriesSettings: {
+                argumentField: "anno",
+                type: "bar",
+                hoverMode: "allArgumentPoints",
+                selectionMode: "allArgumentPoints",
+                label: {
+                    visible: true,
+                    
+                }
+            },
+            series: [
+                { valueField: "edile", name: "Edile", type: "bar" },
+                { valueField: "impiantiFissi", name: "Impianti fissi", type: "bar" },
+                { valueField: "inps", name: "Inps", type: "bar" }
+            ],
+            title: titleIscrittiPerSettore,
+            legend: {
+                verticalAlignment: "bottom",
+                horizontalAlignment: "center"
+            },
+            "export": {
+                enabled: false
+            }
+        },
+       
+        //***************************************************
+
+
+
 
         andamentoIscrittiEnteReady: ko.observable(false),
         andamentoIscrittiEnteChangeParams: function (e) {
