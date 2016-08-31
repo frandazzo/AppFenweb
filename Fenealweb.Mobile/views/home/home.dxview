@@ -54,7 +54,7 @@
                     </div>
                 </div>
             </div>
-            <div class="dx-fieldset">                        Rappresentanza e sindacalizzazione                    </div> 
+           
 
             <!--terzo grafico Rappresentanza e Sindacalizzazione-->
             <div class="panel " >
@@ -65,6 +65,19 @@
                     </span>
                 </div>
                 <div class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen: rappresentanzaReady, showLoadIndicator: true}">
+                   
+                    <!-- ko if: rappresentanzaChartVisible -->
+                    <div id="pierappresentanza" data-bind="dxPieChart: rappresentanzaChartOptions"></div>
+                    <div style="margin-left: 16px">
+                        <span>Numero lavoratori liberi: 6758</span>
+                        <br />
+                        <span>Tasso di sindacalizzazione: 50.7%</span>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko ifnot: rappresentanzaChartVisible -->
+                    <div style="margin-left: 16px" data-bind="text:rappresentanzaNoDataText"> Nessun dato trovato</div>
+                    <!-- /ko -->
+
                 </div>
             </div> 
 
@@ -112,21 +125,21 @@
             <!-- select per la scelta degli input dei grafici-->
             <div class="dx-fieldset">
                
-                <div class="dx-field">
+                <div class="dx-field" data-bind="style:{display: anniSelectVisible()?'block': 'none'}">
                     <div class="dx-field-label">Anno</div>
                     <div class="dx-field-value">
                         <div data-bind="dxSelectBox: anniSelectOptions"></div>
                     </div>
                 </div>
         
-                <div class="dx-field">
+                <div class="dx-field" data-bind="style:{display: entiSelectVisible()?'block': 'none'}">
                     <div class="dx-field-label">Ente</div>
                     <div class="dx-field-value">
                         <div data-bind="dxSelectBox: entiSelectOptions"></div>
                     </div>
                 </div>
 
-                <div class="dx-field">
+                <div class="dx-field" data-bind="style:{display: provinceSelectVisible()?'block': 'none'}">
                     <div class="dx-field-label">Provincia</div>
                     <div class="dx-field-value">
                         <div data-bind="dxSelectBox: provinceSelectOptions"></div>

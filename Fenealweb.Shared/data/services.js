@@ -111,17 +111,34 @@
 
             return $.Deferred().promise();
         },
-        getRappresentanza: function (anno, ente) {
+        getRappresentanza: function (provincia, ente) {
             var d = $.Deferred();
 
-            if (!anno)
-                anno = new Date().getFullYear();
+           
+            var data = [
+                {
+                    sindacato: "Feneal",
+                    iscritti: 1110
+                }, {
+                    sindacato: "Filca",
+                    iscritti: 1150
+                }, {
+                    sindacato: "Fillea",
+                    iscritti: 1290
+                }
+            ];
+
+            
 
             if (!ente)
                 ente = "CASSA EDILE";
 
+
+            if (ente != 'CASSA EDILE')
+                data = [];
+
             setTimeout(function () {
-                d.resolve({ anno: anno, ente: ente });
+                d.resolve({ provincia: provincia, ente: ente, data: data });
             }, 2000);
 
             return d.promise();

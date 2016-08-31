@@ -1,13 +1,22 @@
 ﻿Fenealweb.home = function (params) {
     "use strict";
 
-
+    
+    var dataSourceRappresentanza = ko.observable(new DevExpress.data.DataSource({ store: [] }));
+    var titleRappresentanza = ko.observable('');
+    var rappresentanzaChartVisible = ko.observable(true);
+    var rappresentanzaNoDataText = ko.observable('');
     var data = JSON.parse(params.loggedUser.replace('json:', ''));
   
     //variabili per la selezione da popup dei dati di inizializzaizone dei grafici
     var selectedYear = ko.observable(new Date().getFullYear());
     var selectedEnte = ko.observable('CASSA EDILE');
     var selectedProvincia = ko.observable(data.provinces[0]);
+
+
+    var provinceSelectVisible = ko.observable(true);
+    var anniSelectVisible = ko.observable(true);
+    var entiSelectVisible = ko.observable(true);
 
     //variabile per l'identificazione del grafico di cui si vogliono cambiare i 
     //paramtri
@@ -29,13 +38,22 @@
             viewModel.iscrittiTerritorioAccorpatoReady(true);
         });
     }
-    function getRappresentanza(anno, ente) {
+    function getRappresentanza(provincia, ente) {
         var svc = new Fenealweb.services.dashboardService();
-        svc.getRappresentanza(anno, ente).done(function (data) {
+        svc.getRappresentanza(provincia, ente).done(function (data) {
 
             //todo
             //creare il grafico
 
+            if (!data.data || data.data.length == 0) {
+                rappresentanzaChartVisible(false);
+                rappresentanzaNoDataText('Nessun dato disponibile per ' + data.provincia + ' (' + data.ente + ')');
+                viewModel.rappresentanzaReady(true);
+                return;
+            }
+            rappresentanzaChartVisible(true);
+            dataSourceRappresentanza(new DevExpress.data.DataSource({ store: data.data }));
+            titleRappresentanza(data.provincia + ' (' + data.ente + ')');
             viewModel.rappresentanzaReady(true);
         })
         .fail(function (error) {
@@ -43,7 +61,6 @@
             viewModel.rappresentanzaReady(true);
         });
     }
-
     function getAndamentoIscrittiTerritorioAccorpato() {
         var svc = new Fenealweb.services.dashboardService();
         svc.getAndamentoIscrittiTerritorioAccorpato().done(function (data) {
@@ -58,7 +75,6 @@
             viewModel.andamentoIscrittiTerritorioAccorpatoReady(true);
         });
     }
-
     function getAndamentoIscrittiSettore(provincia) {
         var svc = new Fenealweb.services.dashboardService();
         svc.getAndamentoIscrittiSettore(provincia).done(function (data) {
@@ -73,7 +89,6 @@
             viewModel.andamentoIscrittiSettoreReady(true);
         });
     }
-
     function getAndamentoIscrittiEnte(provincia) {
         var svc = new Fenealweb.services.dashboardService();
         svc.getAndamentoIscrittiEnte(provincia).done(function (data) {
@@ -91,7 +106,72 @@
 
 
     var viewModel = {
+        //view model per il grafico di rappresentanza e rappresentatività
+        //************************************
+        rappresentanzaChartVisible: rappresentanzaChartVisible,
+        rappresentanzaNoDataText: rappresentanzaNoDataText,
+        rappresentanzaChartOptions: {
+            dataSource: dataSourceRappresentanza,
+            title: titleRappresentanza,
+            legend: {
+                orientation: "horizontal",
+                itemTextPosition: "center",
+                horizontalAlignment: "center",
+                verticalAlignment: "bottom",
+                columnCount: 3,
+                customizeText: function (pointInfo) {
+                    //return pointInfo.pointName + ' - ' + dataSource1.filter(function (elem) {
+                    //    return elem.country === pointInfo.pointName
+                    //})[0].medals;
+                    
 
+                    var pieChart = $("#pierappresentanza").dxPieChart('instance');
+                    var point = pieChart.getAllSeries()[0].getAllPoints()[pointInfo.pointIndex];
+                    return pointInfo.pointName + ' ' + point.originalValue + ' iscr.';
+                    //var percentValue = (pieChart.getAllSeries()[0].getAllPoints()[pointInfo.pointIndex].percent * 100).toFixed(2);
+
+                    //return pointInfo.pointName + ": " + percentValue + '%';
+
+
+                }
+            },
+            "export": {
+                enabled: false
+            },
+            series: [{
+                argumentField: "sindacato",
+                valueField: "iscritti",
+                label: {
+                    visible: true,
+                    font: {
+                        size: 16
+                    },
+                    connector: {
+                        visible: true,
+                        width: 0.5
+                    },
+                    position: "inside",
+                    customizeText: function (arg) {
+
+                        var percentValue = (arg.percent * 100).toFixed(2);
+
+                        return percentValue + "%";
+                    }
+                    
+                }
+            }]
+        },
+        rappresentanzaReady: ko.observable(false),
+        rappresentanzaChangeParams: function (e) {
+
+            provinceSelectVisible(true);
+            anniSelectVisible(false)
+            entiSelectVisible(true);
+            currentGrafico = graficiArray[2];
+            this.changeParamsPopupTitle('Rappresentanza e sindacalizzazione');
+            this.changeParamsPopupVisible(true);
+        },
+        //************************************
         loggedUser: data,
         completeName : ko.computed(function(){
             return data.name + " " + data.surname;
@@ -129,13 +209,7 @@
             this.changeParamsPopupVisible(true);
         },
 
-        rappresentanzaReady: ko.observable(false),
-        rappresentanzaChangeParams: function (e) {
-
-            currentGrafico = graficiArray[2];
-            this.changeParamsPopupTitle('Rappresentanza e sindacalizzazione');
-            this.changeParamsPopupVisible(true);
-        },
+       
 
         provinceSelectOptions: {
             //onInitialized: function (e) {
@@ -156,7 +230,7 @@
             }),
 
             value: selectedProvincia,
-            visible: ko.observable(true),
+            visible: provinceSelectVisible,
         },
         entiSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
@@ -170,7 +244,7 @@
             }),
            
             value: selectedEnte,
-            visible: ko.observable(true),
+            visible: entiSelectVisible,
         },
         anniSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
@@ -184,37 +258,44 @@
             }),
             
             value: selectedYear,
-            visible: ko.observable(true),
+            visible: anniSelectVisible,
             
         },
+        provinceSelectVisible :provinceSelectVisible,
+        anniSelectVisible : anniSelectVisible,
+        entiSelectVisible : entiSelectVisible,
+
+        //gestione del popup per settera i parametri di un grafcio
+        //************************************
         changeParamsPopupVisible: ko.observable(false),
         changeParamsPopupTitle: ko.observable(''),
         hidePopup: function () {
             this.changeParamsPopupVisible(false);
         },
+        //************************************
         reloadWidget: function () {
 
             this.changeParamsPopupVisible(false);
 
             if (currentGrafico == graficiArray[0]) {
                 viewModel.iscrittiTerritorioAccorpatoReady(false);
-                getIscrittiTerritorioAccorpato(selectedYear);
+                getIscrittiTerritorioAccorpato(selectedYear());
             } else if (currentGrafico == graficiArray[1]) {
                 viewModel.andamentoIscrittiTerritorioAccorpatoReady(false);
                 getAndamentoIscrittiTerritorioAccorpato();
             } else if (currentGrafico == graficiArray[2]) {
                 viewModel.rappresentanzaReady(false);
-                getRappresentanza(selectedYear, selectedEnte);
+                getRappresentanza(selectedProvincia(), selectedEnte());
             } else if (currentGrafico == graficiArray[3]) {
                 viewModel.andamentoIscrittiSettoreReady(false);
-                getAndamentoIscrittiSettore(selectedProvincia);
+                getAndamentoIscrittiSettore(selectedProvincia());
             } else if (currentGrafico == graficiArray[4]) {
                 viewModel.andamentoIscrittiEnteReady(false);
-                getAndamentoIscrittiEnte(selectedProvincia);
+                getAndamentoIscrittiEnte(selectedProvincia());
             }
 
         },
-        viewShowing: function () {
+        viewRendered: function () {
             getIscrittiTerritorioAccorpato();
             getAndamentoIscrittiTerritorioAccorpato();
             getRappresentanza();
