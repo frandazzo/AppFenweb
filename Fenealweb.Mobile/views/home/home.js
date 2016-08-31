@@ -304,9 +304,9 @@
                 }
             },
             series: [
-                { valueField: "edile", name: "Edile", type: "bar" },
-                { valueField: "impiantiFissi", name: "Impianti fissi", type: "bar" },
-                { valueField: "inps", name: "Inps", type: "bar" }
+                { valueField: "edile", name: "Edile" },
+                { valueField: "impiantiFissi", name: "Impianti fissi"},
+                { valueField: "inps", name: "Inps" }
             ],
             title: titleIscrittiPerSettore,
             legend: {
