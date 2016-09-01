@@ -144,18 +144,182 @@
         getAndamentoIscrittiTerritorioAccorpato : function(){
             var d = $.Deferred();
 
+            var serverdata = {
+                anni: [
+                    2014,
+                    2015,
+                    2016
+                ],
+                values: [
+                    {
+                        name: 'Caserta',
+                        data: [
+                            1000,
+                            1210,
+                            900
+                        ]
+                    },
+                    {
+                        name: 'Avellino',
+                        data: [
+                            100,
+                            121,
+                            90
+                        ]
+                    },
+                    {
+                        name: 'Benevento',
+                        data: [
+                            199,
+                            1216,
+                            700
+                        ]
+                    }
+                ]
+            };
+
+           
+
+          
+
+            var transformedData = this.__normalizeData(serverdata);
+
             setTimeout(function () {
-                d.resolve();
-            }, 6000);
+                d.resolve({
+
+                    data: transformedData.data,
+                    series: transformedData.series
+
+
+                });
+            }, 4500);
 
             return d.promise();
         },
 
+        __normalizeData: function(serverData){
+
+            var result = {
+                data: [],
+                series: []
+            };
+
+
+            //recupero la lista dei dati in piu' step
+            //step 1: creo una lista di oggetti con l'anno
+            $.each(serverData.anni, function (index, elem) {
+                result.data.push({
+                    anno: elem.toString()
+                });
+            });
+            //step 2: ciclo l'array dei values per calcolare (la proprietà name di ogni value puo avere spazi, essere cmel case ecc ad esempio Cassa Edile deve diventare cassaedile)
+            //il nome della proprietà. Posso inoltre costruire la lista delle serie
+            $.each(serverData.values, function (index, elem) {
+
+                //da ogni value recupero la proprietà name
+                var name = elem.name;
+                //il nome sarà anche la descrizione della serie
+                var normalizedName = name.toLowerCase().replace(' ', '');
+
+                //creo l'oggetto serie e lo inserisco  nella lista
+                var serie =  {
+                    valueField: normalizedName,
+                    name: name
+                }
+                result.series.push(serie);
+
+                //adesso posso creare per ogni elemento nell'array dei dati unaproprieta di nome normalizedname
+                //e assegnargli il relativo valore nell'array values.data
+                for (var i = 0; i < result.data.length; i++) {
+                    var seriesData = result.data[i];
+                    //ne creo la proprietà
+                    seriesData[normalizedName] = elem.data[i];
+                }
+
+
+            });
+
+            return result;
+        },
         getAndamentoIscrittiEnte: function (provincia) {
             var d = $.Deferred();
 
+            //definisci i dati cosi come mi arriiveranno
+            var serverdata = {
+                anni: [
+                    2014,
+                    2015,
+                    2016
+                ],
+                values: [
+                    {
+                        name: 'Cassa edile',
+                        data: [
+                            1000,
+                            1210,
+                            900
+                        ]
+                    },
+                    {
+                        name: 'Edilcassa',
+                        data: [
+                            100,
+                            121,
+                            90
+                        ]
+                    }
+                ]
+            };
+
+            if (!provincia) {
+                serverdata = {
+                    anni: [
+                        2014,
+                        2015,
+                        2016
+                    ],
+                    values: [
+                        {
+                            name: 'Cassa edile',
+                            data: [
+                                1000,
+                                1210,
+                                900
+                            ]
+                        }
+                    ]
+                };
+            }
+
+            ////devo trasformare questo dato in una funzione per il grafico
+            ////del tipo
+            //var normalizedData = [
+            //    {
+            //        anno: 2014, cassaedile: 1000, edilcassa: 100
+            //    },
+            //    {
+            //        anno: 2015, cassaedile: 1210, edilcassa: 121
+            //    },
+            //    {
+            //        anno: 2016, cassaedile: 900, edilcassa: 90
+            //    }
+            //];
+            //var series = [
+            //    { valueField: "edilcassa", name: "Edilcassa" },
+            //    { valueField: "cassaedile", name: "Cassa edile" },
+            //];
+
+            var transformedData = this.__normalizeData(serverdata);
+
             setTimeout(function () {
-                d.resolve();
+                d.resolve({
+
+                    provincia: provincia,
+                    data: transformedData.data,
+                    series: transformedData.series
+
+
+                });
             }, 4500);
 
             return d.promise();
@@ -168,7 +332,7 @@
                    anno: "2009",
                    edile: 1110,
                    impiantiFissi: 200,
-                   inps: 54
+                  
                }, {
                    anno: "2012",
                    edile: 1700,

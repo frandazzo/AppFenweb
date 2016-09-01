@@ -20,39 +20,9 @@
 
         <div class="home-scrollview" id="scrollview" data-bind="dxScrollView: {}">
 
-           
-            <!--primo grafico IscrittiTerritorioAccorpato-->
-            <div class="panel">
-                <div class="panel-heading">
-                    <span class="panel-title">Iscritti territorio accorpato</span>
-                    <span class="panel-controls">
-                        <a class="panel-control-title" data-bind="click: iscrittiTerritorioAccorpatoChangeParams"><i class="fa fa-pencil"></i></a>
-                    </span>
-                </div>
-                <div  class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen: iscrittiTerritorioAccorpatoReady,showLoadIndicator: true}">
-                   
-                    <div id="pieterraccorpato" data-bind="dxPieChart: iscrittiTerritorioAccorpatoChartOptions"></div>
-               </div> 
 
-            </div>
-            <!--secondo grafico AndamentoIscrittiTerritorioAccorpato-->
-            <div class="panel " >
-                <div class="panel-heading">
-                    <span class="panel-title">Andamento iscritti territorio accorpato</span>
-                    <!--<span class="panel-controls">
-                        <a class="panel-control-title" data-bind="click: andamentoIscrittiTerritorioAccorpatoChangeParams"><i class="fa fa-pencil"></i></a>
-                    </span>-->
-                </div>
-                <div  class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen: andamentoIscrittiTerritorioAccorpatoReady, showLoadIndicator: true}">
-                   <div class="dx-fieldset">
-                       andamento iscritti per territorio accorpato
-                   </div>
-                </div>
-            </div>
-           
-
-            <!--terzo grafico Rappresentanza e Sindacalizzazione-->
-            <div class="panel " >
+            <!--primo grafico Rappresentanza e Sindacalizzazione-->
+            <div class="panel ">
                 <div class="panel-heading">
                     <span class="panel-title">Rappresentanza e sindacalizzazione</span>
                     <span class="panel-controls">
@@ -60,7 +30,7 @@
                     </span>
                 </div>
                 <div class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen: rappresentanzaReady, showLoadIndicator: true}">
-                   
+
                     <!-- ko if: rappresentanzaChartVisible -->
                     <div id="pierappresentanza" data-bind="dxPieChart: rappresentanzaChartOptions"></div>
                     <div style="margin-left: 16px">
@@ -76,7 +46,21 @@
                 </div>
             </div> 
 
-            <!--quarto grafico AndamentoIscrittiSettore-->
+            <!--secondo grafico AndamentoIscrittiEnte-->
+            <div class="panel ">
+                <div class="panel-heading">
+                    <span class="panel-title">Andamento iscritti per ente</span>
+                    <span class="panel-controls">
+                        <a class="panel-control-title" data-bind="click: andamentoIscrittiEnteChangeParams"><i class="fa fa-pencil"></i></a>
+                    </span>
+                </div>
+                <div class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen:andamentoIscrittiEnteReady, showLoadIndicator: true, onRendered: onRendered}">
+                    <div id="perEnteChartContainer" data-bind="dxChart: andamentoIscrittiEnteChartOptions"></div>
+                </div>
+
+            </div>
+
+            <!--terzo grafico AndamentoIscrittiSettore-->
             <div class="panel ">
                 <div class="panel-heading">
                     <span class="panel-title">Andamento iscritti per settore</span>
@@ -88,22 +72,37 @@
                     <div id="chart" data-bind="dxChart: andamentoIscrittiSettoreChartOptions"></div>
                 </div>
             </div> 
-
-            <!--quinto grafico AndamentoIscrittiEnte-->
-            <div class="panel ">
+           
+            <!--quarto grafico IscrittiTerritorioAccorpato-->
+            <div class="panel">
                 <div class="panel-heading">
-                    <span class="panel-title">Andamento iscritti per ente</span>
+                    <span class="panel-title">Iscritti territorio accorpato</span>
                     <span class="panel-controls">
-                        <a class="panel-control-title" data-bind="click: andamentoIscrittiEnteChangeParams"><i class="fa fa-pencil"></i></a>
+                        <a class="panel-control-title" data-bind="click: iscrittiTerritorioAccorpatoChangeParams"><i class="fa fa-pencil"></i></a>
                     </span>
                 </div>
-                <div class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen:andamentoIscrittiEnteReady, showLoadIndicator: true}">
-                    <div class="dx-fieldset">
-                        Andamento iscritti per ente
+                <div  class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen: iscrittiTerritorioAccorpatoReady,showLoadIndicator: true}">
+                   
+                    <div id="pieterraccorpato" data-bind="dxPieChart: iscrittiTerritorioAccorpatoChartOptions"></div>
+               </div> 
 
-                    </div>
+            </div>
+            <!--quinto grafico AndamentoIscrittiTerritorioAccorpato-->
+            <div class="panel " >
+                <div class="panel-heading">
+                    <span class="panel-title">Andamento iscritti territorio accorpato</span>
+                </div>
+                <div  class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen: andamentoIscrittiTerritorioAccorpatoReady, showLoadIndicator: true, onRendered: onRenderedTA}">
+                    <div id="perTerritorioAccorpatoChartContainer" data-bind="dxChart: andamentoIscrittiTAChartOptions"></div>
                 </div>
             </div>
+           
+
+         
+
+           
+
+           
         </div> <!--end scrollo view-->
 
         <!--popup per il contenuto delle select dei parametri da cambiare-->

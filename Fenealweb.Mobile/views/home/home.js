@@ -1,7 +1,7 @@
 ﻿Fenealweb.home = function (params) {
     "use strict";
 
- 
+    
    
     //dati per il grafico della rappresentanza
     var dataSourceRappresentanza = ko.observable(new DevExpress.data.DataSource({ store: [] }));
@@ -16,6 +16,24 @@
     //dati per il grafico dell'andamento iscritti per settore
     var dataSourceIscrittiPerSettore = ko.observable(new DevExpress.data.DataSource({ store: [] }));
     var titleIscrittiPerSettore = ko.observable('');
+
+
+    //dati per il grafico dell'andamento iscritti per ente
+    var dataSourceIscrittiPerEnte = ko.observable(new DevExpress.data.DataSource({ store: [] }));
+    var titleIscrittiPerEnte = ko.observable('');
+    //variabile globale per definire il valore delle serie per il grafico
+    //tali valori saranno cambiati a runtime percio' una funzione asincrona li recupera e l'eventi ready del
+    //container le associa al relativo grafico
+    var enteSeries = [];
+
+    //dati per il grafico dell'andamento iscritti per territorio accorpato
+    var dataSourceIscrittiPerTA = ko.observable(new DevExpress.data.DataSource({ store: [] }));
+    var titleIscrittiPerTA = ko.observable('test');
+    //variabile globale per definire il valore delle serie per il grafico
+    //tali valori saranno cambiati a runtime percio' una funzione asincrona li recupera e l'eventi ready del
+    //container le associa al relativo grafico
+    var taSeries = [];
+    
 
 
     var data = JSON.parse(params.loggedUser.replace('json:', ''));
@@ -86,7 +104,27 @@
 
             //todo
             //creare il grafico
+            if (!data.data || data.data.length == 0) {
+                titleIscrittiPerTA('Nessun dato disponibile.');
+                viewModel.andamentoIscrittiTerritorioAccorpatoReady(true);
+                return;
+            }
 
+            //prima di impostare il titolo e il datasource per il grafico
+            //ne imposto le serie in dipendenza e rielaboro i risultati
+            //ottenuti dal server:
+            taSeries = data.series
+
+           
+            //dal server ottengo un array che contiene tutti gli anni
+            //e una lista di righe dove per ogni riga si intende una serie definita nel campo name della riga
+            //nella riga inoltre oltre al campo name cè la lista dei valori che la serie ha.
+            //Attenzione. qui per serie (quella del server si intende una lista di valori per una entità definita
+            //da nome 'name')
+
+
+            dataSourceIscrittiPerTA(new DevExpress.data.DataSource({ store: data.data }));
+            titleIscrittiPerTA('Riepilogo');
             viewModel.andamentoIscrittiTerritorioAccorpatoReady(true);
         })
         .fail(function (error) {
@@ -122,6 +160,35 @@
             //todo
             //creare il grafico
 
+
+            if (!data.data || data.data.length == 0) {
+                titleIscrittiPerSettore('Nessun dato disponibile. Territorio: ' + data.provincia);
+                viewModel.andamentoIscrittiEnteReady(true);
+                return;
+            }
+
+            //prima di impostare il titolo e il datasource per il grafico
+            //ne imposto le serie in dipendenza e rielaboro i risultati
+            //ottenuti dal server:
+            enteSeries = data.series
+
+            if (provincia) {
+                //se non cè una provincia vuol dire che è la prima volta che entro nella funzione
+                //e che quindi tale funzione è chiamata nel caricamento iniziale
+                //se chiamassi queste righre di codice mi direbbe che il grafico non è inizializzato
+                //e questo spiega il motivo dellevento onredered del dxdeferrendering widget
+                var chartInstance = $("#perEnteChartContainer").dxChart('instance');
+                chartInstance.option('series', enteSeries);
+            }
+            //dal server ottengo un array che contiene tutti gli anni
+            //e una lista di righe dove per ogni riga si intende una serie definita nel campo name della riga
+            //nella riga inoltre oltre al campo name cè la lista dei valori che la serie ha.
+            //Attenzione. qui per serie (quella del server si intende una lista di valori per una entità definita
+            //da nome 'name')
+
+
+            dataSourceIscrittiPerEnte(new DevExpress.data.DataSource({ store: data.data }));
+            titleIscrittiPerEnte(provincia);
             viewModel.andamentoIscrittiEnteReady(true);
         })
         .fail(function (error) {
@@ -129,6 +196,7 @@
             viewModel.andamentoIscrittiEnteReady(true);
         });
     }
+  
 
 
     var viewModel = {
@@ -270,12 +338,42 @@
 
 
         andamentoIscrittiTerritorioAccorpatoReady: ko.observable(false),
-        andamentoIscrittiTerritorioAccorpatoChangeParams: function (e) {
-
-            //currentGrafico = graficiArray[1];
-            //this.changeParamsPopupTitle('Andamento iscritti per territori accorpati');
-            //this.changeParamsPopupVisible(true);
+        onRenderedTA: function (e) {
+            var chartInstance = $("#perTerritorioAccorpatoChartContainer").dxChart('instance');
+            chartInstance.option('series', taSeries);
         },
+        andamentoIscrittiTAChartOptions: {
+            dataSource: dataSourceIscrittiPerTA,
+            commonSeriesSettings: {
+                argumentField: "anno",
+                type: "bar",
+                hoverMode: "allArgumentPoints",
+                selectionMode: "allArgumentPoints",
+                label: {
+                    visible: true,
+
+                }
+            },
+            series: [
+                //non metto nessuna serie perche verrà calcolata a runtime
+                //non appena recupero i dati da visualizzare nel grafico
+
+            ],
+            title: titleIscrittiPerTA,
+            legend: {
+                verticalAlignment: "bottom",
+                horizontalAlignment: "center"
+            },
+            "export": {
+                enabled: false
+            }
+        },
+        //andamentoIscrittiTerritorioAccorpatoChangeParams: function (e) {
+
+        //    //currentGrafico = graficiArray[1];
+        //    //this.changeParamsPopupTitle('Andamento iscritti per territori accorpati');
+        //    //this.changeParamsPopupVisible(true);
+        //},
 
 
         //dati per il grafico degli iscritti per settore
@@ -320,17 +418,47 @@
        
         //***************************************************
 
+     
 
-
-
+        onRendered: function (e) {
+            var chartInstance = $("#perEnteChartContainer").dxChart('instance');
+            chartInstance.option('series', enteSeries);
+        },
         andamentoIscrittiEnteReady: ko.observable(false),
         andamentoIscrittiEnteChangeParams: function (e) {
-
+            provinceSelectVisible(true);
+            anniSelectVisible(false)
+            entiSelectVisible(false);
             currentGrafico = graficiArray[4];
             this.changeParamsPopupTitle('Andamento iscritti per ente');
             this.changeParamsPopupVisible(true);
         },
+        andamentoIscrittiEnteChartOptions: {
+            dataSource: dataSourceIscrittiPerEnte,
+            commonSeriesSettings: {
+                argumentField: "anno",
+                type: "bar",
+                hoverMode: "allArgumentPoints",
+                selectionMode: "allArgumentPoints",
+                label: {
+                    visible: true,
 
+                }
+            },
+            series: [
+                //non metto nessuna serie perche verrà calcolata a runtime
+                //non appena recupero i dati da visualizzare nel grafico
+               
+            ],
+            title: titleIscrittiPerEnte,
+            legend: {
+                verticalAlignment: "bottom",
+                horizontalAlignment: "center"
+            },
+            "export": {
+                enabled: false
+            }
+        },
        
 
         provinceSelectOptions: {
@@ -427,13 +555,6 @@
 
     };
 
-  
-
-
-
-
-   
-
-
     return viewModel;
 };
+
