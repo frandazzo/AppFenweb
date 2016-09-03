@@ -32,13 +32,60 @@
         prepareParams: function (params) {
             var d = $.Deferred();
 
-            var tokenStore = new securityLocalStore();
-            tokenStore.getToken().done(function (token) {
-                params.token = token;
-                d.resolve(params);
-            });
+            //var tokenStore = new securityLocalStore();
+            //tokenStore.getToken().done(function (token) {
+            //    params.token = token;
+            //    d.resolve(params);
+            //});
 
-            return d;
+            //return d;
+            
+            //qui devo verificare la validità del token
+            //se il login lo ho effettuato piu di venti minuti fa allora lo rifaccio
+            //e rimemorizzo il token
+            var tokenStr = localStorage.getItem('currentToken');
+            var token = JSON.parse(tokenStr);
+            var actualTimeStamp = new Date().getTime();
+            var elapsedTimeInMillis = actualTimeStamp - token.creationTimeStamp;
+            var localStore = new securityLocalStore();
+            if (!token || elapsedTimeInMillis > 20 * 60 * 1000) {
+                //devo rifare il login
+                //se non cè proprio il token redirigo alla pagina di login
+               
+                if (!token) {
+                    
+                    localStore.clearCredentials();
+                    d.reject('Refresh token non riuscito. Token non trovato');
+                } else {
+
+                    //devo rifare il login per rinfrescare il token
+                    localStore.getCredentials().done(function (cred) {
+
+                        //una volta ottenute le credenziali
+                        //posso eseguire nuovamente il login
+                        var svc = new securityRemoteStore();
+                        svc.login(cred.username, cred.password)
+                            .done(function (data) {
+                                //reimposto le nuove credenziali con il token aggiornato
+                                localStore.setCredentials(data, cred.password)
+                                params.token = token.token;
+                                d.resolve(params);
+                            }).fail(function (error) {
+                                localStore.clearCredentials();
+                                d.reject('Refresh token non riuscito. Login non riuscito');
+                                
+                            });
+
+                    });
+
+                }
+                return d.promise();
+            }
+
+
+            //metto nei parametri il valore del token
+            params.token = token.token;
+            return d.resolve(params).promise();
 
         },
         loadProtectedService: function (params) {
@@ -142,6 +189,9 @@
             insertCredResult = self.store.insert(cred);
             insertTokenResult = self.store.insert(token);
             
+            //pe motivi STRANI di ritardo nel local storage inserisco il token anche nel namespace dell'aplicazione
+            localStorage.setItem('currentToken', JSON.stringify(token));
+
 
             $.when(insertCredResult, insertTokenResult).done(function(){
                 d.resolve();
@@ -210,15 +260,16 @@
 
     //*********************************************
     //*********************************************
-    //creo una classe per l'accesso al dbLocale per la verifica dell'esistenza delle credenziali
+    //classe per la gesrione della sicurezza remota
     var securityRemoteStore = AbstractRemoteStore.extend({
         ctor: function () {
-            AbstractRemoteStore.super.ctor.call(this);
+            securityRemoteStore.super.ctor.call(this);
         },
         checkConnection : function () {
 
             var params = {
-                route: 'connection'
+                route: 'connection',
+
             }
 
             return this.loadProtectedService(params);
@@ -249,7 +300,46 @@
 
 
  
+    //*********************************************
+    //*********************************************
+    //classe per la gesrione delle entita geografiche
+    var geoRemoteStore = AbstractRemoteStore.extend({
+        ctor: function () {
+            geoRemoteStore.super.ctor.call(this);
+        },
+        getCountries: function () {
 
+            var params = {
+                route: 'values/allcountries',
+                method:'GET'
+
+            }
+
+            return this.loadProtectedService(params);
+        },
+        getProvinces: function () {
+
+            var params = {
+                route: 'values/allprovinces',
+                method:'GET'
+            }
+            return this.loadProtectedService(params);
+
+        },
+        getCities: function (provincia) {
+
+            var params = {
+                route: 'values/cities?keyword=' + encodeURIComponent(provincia),
+                 method:'GET'
+            }
+            return this.loadProtectedService(params);
+
+        }
+
+    });
+
+    //*********************************************
+    //*********************************************
    
 
 
@@ -257,4 +347,5 @@
     Fenealweb.db = {};
     Fenealweb.db.securityLocalStore = securityLocalStore;
     Fenealweb.db.securityRemoteStore = securityRemoteStore;
+    Fenealweb.db.geoRemoteStore = geoRemoteStore;
 }());

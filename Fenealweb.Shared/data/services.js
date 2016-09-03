@@ -62,6 +62,16 @@
 
             return $.Deferred().resolve(lista).promise();
         },
+        getSettori: function () {
+            var lista = [
+                 "EDILE",
+                 "IMPIANTI FISSI",
+                 "INPS"
+
+            ];
+
+            return $.Deferred().resolve(lista).promise();
+        },
         getListaAnniRiferimento: function () {
             var lista = new Array();
             var j = 1989;
@@ -69,6 +79,14 @@
                 lista.push(j + i);
                 
             }
+            return $.Deferred().resolve(lista).promise();
+        },
+        getListaIscrittoA:function(){
+            var lista = ["",
+                 "FILCA",
+                 "FILLEA"
+            ];
+
             return $.Deferred().resolve(lista).promise();
         },
         getListaProvince: function () {
@@ -81,6 +99,19 @@
                 d.resolve(data.provinces);
             });
             return d.promise();
+        },
+
+        getGeoNazioni:function(){
+            var svc = new Fenealweb.db.geoRemoteStore();
+            return svc.getCountries();
+        },
+        getGeoProvinces: function () {
+            var svc = new Fenealweb.db.geoRemoteStore();
+            return svc.getProvinces();
+        },
+        getGeoComuni: function (provincia) {
+            var svc = new Fenealweb.db.geoRemoteStore();
+            return svc.getCities(provincia);
         }
 
     });

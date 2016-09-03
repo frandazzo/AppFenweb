@@ -5,9 +5,16 @@
     var dataSource = new DevExpress.data.DataSource({
         load(loadOptions) {
             // return $.Deferred().resolve(listaLavoratori).promise();
-            loadOptions = $.extend(loadOptions, JSON.parse(params.searchParams.replace('json:', '')))
+            loadOptions = $.extend(loadOptions, JSON.parse(params.searchParams.replace('json:', '')));
             var a = new Fenealweb.services.lavoratoriService();
-            var p = a.searchLavoratori(loadOptions);
+            var p = null;
+            if (loadOptions.dbNazionaleSearch == true)
+                p = a.searchLavoratoriDbNazionale(loadOptions);
+            else
+                p = a.searchLavoratori(loadOptions);
+
+
+           
           
             return p;
         },

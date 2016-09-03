@@ -4,30 +4,30 @@
         <div class="dx-fieldset">
 
             <div class="dx-field">
-                <div class="dx-field-label">Cognome</div>
-                <div class="dx-field-value">
+                <!--<div class="dx-field-label">Cognome</div>-->
+                <!--<div class="dx-field-value">-->
                     <div data-bind="dxTextBox: cognomeOptions"></div>
-                </div>
+                <!--</div>-->
             </div>
 
             <div class="dx-field">
-                <div class="dx-field-label">Nome</div>
-                <div class="dx-field-value">
+                <!--<div class="dx-field-label">Nome</div>-->
+                <!--<div class="dx-field-value">-->
                     <div data-bind="dxTextBox: nomeOptions"></div>
-                </div>
+                <!--</div>-->
             </div>
 
             <div class="dx-field">
-                <div class="dx-field-label">Codice fiscale</div>
-                <div class="dx-field-value">
+               <!-- <div class="dx-field-label">Codice fiscale</div>-->
+                <!--<div class="dx-field-value">-->
                     <div data-bind="dxTextBox: fiscaleOptions"></div>
-                </div>
+               <!--   </div>-->
             </div>
 
         </div>
 
         <div>
-            <div style="float:right; margin-right:10px" data-bind="dxButton:{ onClick: search, text: 'Ricerca'}"></div>
+            <div style="margin-left: 10px;" data-bind="dxButton:{ onClick: search, text: 'Ricerca'}"></div>
         </div>
         
 

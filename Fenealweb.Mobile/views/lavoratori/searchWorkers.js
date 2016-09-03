@@ -26,14 +26,14 @@
                 searchParams: searchParams
             });
         },
-        cognomeOptions:{
-            value: cognome, mode: 'search', showClearButton: true
+        cognomeOptions: {
+            value: cognome, mode: 'search', showClearButton: true, placeholder: 'Cognome'
         },
         nomeOptions: {
-            value : nome, mode: 'search', showClearButton: true
+            value: nome, mode: 'search', showClearButton: true, placeholder: 'Nome'
         },
         fiscaleOptions: {
-            value: fiscale, mode: 'search', showClearButton: true
+            value: fiscale, mode: 'search', showClearButton: true, placeholder: 'Codice fiscale'
         },
     };
 

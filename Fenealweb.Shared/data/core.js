@@ -169,7 +169,9 @@
                     d.reject(merror);
                 },
                 beforeSend: function (xhr) {
+                    
                     if (self.token) {
+                      // xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
                         xhr.setRequestHeader('TOKEN', self.token);
                     }
                 }
