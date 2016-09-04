@@ -18,9 +18,6 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="css\font-awesome.min.css">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="css\fontawesome\css\font-awesome.css">
       <SubType>Content</SubType>
     </Content>
@@ -40,24 +37,6 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="css\fontawesome\fonts\FontAwesome.otf">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="css\fonts\fontawesome-webfont.eot">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="css\fonts\fontawesome-webfont.svg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="css\fonts\fontawesome-webfont.ttf">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="css\fonts\fontawesome-webfont.woff">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="css\fonts\fontawesome-webfont.woff2">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="css\fonts\FontAwesome.otf">
       <SubType>Content</SubType>
     </Content>
     <Content Include="css\general.css">
@@ -118,7 +97,6 @@
     <Folder Include="css\" />
     <Folder Include="css\fontawesome\css" />
     <Folder Include="css\fontawesome\fonts\" />
-    <Folder Include="css\fonts\" />
     <Folder Include="css\icons\" />
     <Folder Include="css\fontawesome" />
     <Folder Include="data\" />

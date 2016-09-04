@@ -12,6 +12,11 @@
     <PhoneGapTokenKey>rgSNprqo8opS7myT_BPL</PhoneGapTokenKey>
     <KeyApkPath>certificates\android_certificate.p12</KeyApkPath>
     <KeyApkAlias>tmpl</KeyApkAlias>
+    <VersionCode>1</VersionCode>
+    <TemplateFileApk />
+    <UseCustomTemplateNameApk>False</UseCustomTemplateNameApk>
+    <ApkDexFilePackageName>com.devextreme.Fenealweb.Mobile</ApkDexFilePackageName>
+    <KeyDebuggable>False</KeyDebuggable>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -187,6 +192,18 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\readme.txt" />
+    <None Include="Resources\PackageIcons.Android.ic_launcher_36_36.png" />
+    <None Include="Resources\PackageIcons.Android.ic_launcher_48_48.png" />
+    <None Include="Resources\PackageIcons.Android.ic_launcher_72_72.png" />
+    <None Include="Resources\PackageIcons.Android.ic_launcher_96_96.png" />
+    <None Include="Resources\PackageIcons.Android.splash_1280_720.png" />
+    <None Include="Resources\PackageIcons.Android.splash_200_320.png" />
+    <None Include="Resources\PackageIcons.Android.splash_320_200.png" />
+    <None Include="Resources\PackageIcons.Android.splash_320_480.png" />
+    <None Include="Resources\PackageIcons.Android.splash_480_320.png" />
+    <None Include="Resources\PackageIcons.Android.splash_480_800.png" />
+    <None Include="Resources\PackageIcons.Android.splash_720_1280.png" />
+    <None Include="Resources\PackageIcons.Android.splash_800_480.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="certificates\" />
@@ -200,6 +217,7 @@
     <Folder Include="layouts\Simple\" />
     <Folder Include="layouts\SlideOut\" />
     <Folder Include="layouts\Split\" />
+    <Folder Include="Resources\" />
     <Folder Include="views\" />
     <Folder Include="views\lavoratori\lavoratore" />
     <Folder Include="views\login" />

@@ -1,45 +1,45 @@
 <div data-options="dxView : { name: 'reportNonIscritti', title: 'Report non iscritti' } " >
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+        <div data-bind="dxScrollView: {}">
+            <div class="dx-fieldset">
 
-        <div class="dx-fieldset">
+                <div class="dx-fieldset-header">Dati generali</div>
+                <div class="dx-field">
+                    <div data-bind="dxSelectBox: provinceCasseEdiliSelectOptions"></div>
+                </div>
 
-            <div class="dx-fieldset-header">Dati generali</div>
-            <div class="dx-field">
-                <div data-bind="dxSelectBox: provinceCasseEdiliSelectOptions"></div>
+                <div class="dx-field">
+                    <div data-bind="dxSelectBox: entiSelectOptions"></div>
+                </div>
+
+                <div class="dx-field">
+                    <div data-bind="dxSelectBox: iscrittoASelectOptions"></div>
+                </div>
+
+                <div class="dx-field">
+                    <div data-bind="dxLookup: aziendeLookupOptions"></div>
+                </div>
+
+                <div style="margin-top:30px" class="dx-fieldset-header">Dati lavoratore</div>
+                <div class="dx-field">
+                    <div data-bind="dxSelectBox: nazioniSelectOptions"></div>
+                </div>
+
+                <div class="dx-field">
+                    <div data-bind="dxSelectBox: provinceSelectOptions"></div>
+                </div>
+
+                <div class="dx-field">
+                    <div data-bind="dxSelectBox: comuniSelectOptions"></div>
+                </div>
+
+
             </div>
 
-            <div class="dx-field">
-                <div data-bind="dxSelectBox: entiSelectOptions"></div>
+            <div>
+                <div style="margin-left: 10px;" data-bind="dxButton:{ onClick: search, text: 'Ricerca'}"></div>
             </div>
 
-            <div class="dx-field">
-                <div data-bind="dxSelectBox: iscrittoASelectOptions"></div>
-            </div>
-
-            <div class="dx-field">
-                <div data-bind="dxLookup: aziendeLookupOptions"></div>
-            </div>
-
-            <div style="margin-top:30px" class="dx-fieldset-header">Dati lavoratore</div>
-            <div class="dx-field">
-                <div data-bind="dxSelectBox: nazioniSelectOptions"></div>
-            </div>
-
-            <div class="dx-field">
-                <div data-bind="dxSelectBox: provinceSelectOptions"></div>
-            </div>
-
-            <div class="dx-field">
-                <div data-bind="dxSelectBox: comuniSelectOptions"></div>
-            </div>
-
-
-            </div>
-
-        <div>
-            <div style="margin-left: 10px;" data-bind="dxButton:{ onClick: search, text: 'Ricerca'}"></div>
         </div>
-
-
-    </div>
+        </div>
 </div>
