@@ -1,7 +1,7 @@
 <widget id="com.devexpress.apptemplate" version="1.0" versionCode="1">
   <name>ApplicationTemplate</name>
   <description>Template</description>
-  <author email="email@sample.com" href="http://sample.com">Author</author>
+  <author email="fg.randazzo@hotmail.it" href="http://www.fenealgest.it:8080">Francesco Randazzo</author>
   <preference name="permissions" value="none" />
   <preference name="prerendered-icon" value="true" />
   <preference name="android-windowSoftInputMode" value="adjustPan" />

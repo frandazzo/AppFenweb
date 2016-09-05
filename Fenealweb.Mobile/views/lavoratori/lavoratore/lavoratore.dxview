@@ -10,10 +10,10 @@
                 <br />
                 <div class="worker-call" data-bind="style:{display: currentWorker().cellulare ? 'block': 'none' }">
 
-                    <div  class="worker-cell " data-bind="text: currentWorker().cellulare"></div>
+                    <span class="worker-cell " data-bind="text: currentWorker().cellulare"></span>
                     <div class="worker-cell-functions">
-                        <div data-bind="dxButton:{ onClick: smsClick, icon:'tel'}"></div>
-                        <div data-bind="dxButton:{ onClick: callClick, icon:'message'}"></div>
+                        <a style="text-decoration: initial;" data-bind="attr:{href:'sms:' + currentWorker().cellulare }" ><span class="dx-icon-tel base-icon"></span></a>
+                        <a style="text-decoration: initial;" data-bind="attr:{href:'sms:' + currentWorker().cellulare }"><span class="dx-icon-message  base-icon"></span></a>
                         
                     </div>
                     

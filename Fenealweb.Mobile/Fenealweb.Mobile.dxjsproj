@@ -12,11 +12,15 @@
     <PhoneGapTokenKey>rgSNprqo8opS7myT_BPL</PhoneGapTokenKey>
     <KeyApkPath>certificates\android_certificate.p12</KeyApkPath>
     <KeyApkAlias>tmpl</KeyApkAlias>
-    <VersionCode>1</VersionCode>
+    <VersionCode>3</VersionCode>
     <TemplateFileApk />
     <UseCustomTemplateNameApk>False</UseCustomTemplateNameApk>
     <ApkDexFilePackageName>com.devextreme.Fenealweb.Mobile</ApkDexFilePackageName>
     <KeyDebuggable>False</KeyDebuggable>
+    <ScreenOrientation>Default</ScreenOrientation>
+    <ApplicationTitle>Fenealweb</ApplicationTitle>
+    <VersionPackage>1.0.0.0</VersionPackage>
+    <ShowSplashScreen>True</ShowSplashScreen>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

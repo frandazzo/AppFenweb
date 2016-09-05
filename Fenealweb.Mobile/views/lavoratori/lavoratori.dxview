@@ -13,7 +13,7 @@
                             <span style="color:gray; font-size:small">residente a </span>
                             <span style="font-style: italic;" data-bind="text: residenza"></span>
                         </div>
-                        <a data-bind="text: cell, style:{color: cell?'green':'red'}, attr:{href: 'javascript:;'}"></a>
+                        <a data-bind="text: cell, attr:{href: 'javascript:;'}"></a>
 
                     </div>
 
