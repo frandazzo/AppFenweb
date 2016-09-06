@@ -483,41 +483,51 @@
             var nome = searchParams.nome;
             var fiscale = searchParams.fiscale;
 
-            var d = $.Deferred();
 
-            setTimeout(function () {
+            var svc = new Fenealweb.db.lavoratoriStore();
+            return svc.getLavoratori(cognome, nome, fiscale);
+            
 
-                if (cognome == '0')
-                    d.resolve([]);
-                else
-                    d.resolve(listaLavoratori);
 
-            }, 2000);
 
-            return d.promise();
+
+            //var d = $.Deferred();
+
+            //setTimeout(function () {
+
+            //    if (cognome == '0')
+            //        d.resolve([]);
+            //    else
+            //        d.resolve(listaLavoratori);
+
+            //}, 2000);
+
+            //return d.promise();
         },
         searchLavoratoriDbNazionale: function (searchParams) {
 
             var cognome = searchParams.cognome;
             var nome = searchParams.nome;
             var fiscale = searchParams.fiscale;
-            var sesso = searchParams.sesso;
-            var proRes = searchParams.ProvinciaResidenza;
+            var proRes = searchParams.provinciaResidenza;
             var comRes = searchParams.comuneResidenza;
             var naz = searchParams.nazione;
 
-            var d = $.Deferred();
+            var svc = new Fenealweb.db.lavoratoriStore();
+            return svc.getLavoratoriDbNazionale(cognome, nome, fiscale, proRes, comRes, naz);
 
-            setTimeout(function () {
+            //var d = $.Deferred();
 
-                if (cognome == '0')
-                    d.resolve([]);
-                else
-                    d.resolve(listaLavoratoriDbNazionale);
+            //setTimeout(function () {
 
-            }, 2000);
+            //    if (cognome == '0')
+            //        d.resolve([]);
+            //    else
+            //        d.resolve(listaLavoratoriDbNazionale);
 
-            return d.promise();
+            //}, 2000);
+
+            //return d.promise();
         },
         getLavoratoreByFiscalCode: function (fiscalCode) {
             var d = $.Deferred();
@@ -755,6 +765,7 @@
             cellulare: '3385269726',
             mail: 'fg.randazzo@hotmail.it',
             telefono: '',
+            badge:'6',
             stampeTessera:[
                 'TRENTO',
                 'BARI'

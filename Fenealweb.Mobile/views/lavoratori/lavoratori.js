@@ -34,8 +34,8 @@
                 completeName: dataItem.cognome.toUpperCase() + ' ' + dataItem.nome.toUpperCase() + ' (' + dataItem.dataNascita + ')',
                 residenza: com,
                 cell: dataItem.cellulare,
-                showChevron: true,
-                //badge: '<b>ciaoooooo</b>'
+                showChevron: false,
+                badge: dataItem.badge
             };
         }
 

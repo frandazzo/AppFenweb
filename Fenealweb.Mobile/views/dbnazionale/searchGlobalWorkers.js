@@ -5,6 +5,10 @@
     var nome = ko.observable('');
     var fiscale = ko.observable('');
 
+    var comune = ko.observable('');
+    var provincia = ko.observable('');
+    var nazione = ko.observable('');
+
     var  comuniDataSource=  new DevExpress.data.DataSource({
         load(loadOptions) {
 
@@ -29,10 +33,14 @@
                 cognome: cognome(),
                 nome: nome(),
                 fiscale: fiscale(),
+                comuneResidenza: comune(),
+                provinciaResidenza: provincia(),
+                nazione: nazione(),
+
                 dbNazionaleSearch: true
             };
 
-            if (!cognome() && !nome() && !fiscale()) {
+            if (!cognome() && !nome() && !fiscale() && !comune() && !provincia && !nazione) {
                 DevExpress.ui.notify("Selezionare almeno un criterio di ricerca", 'error', 3000);
                 return;
             }
@@ -52,6 +60,7 @@
             value: fiscale, mode: 'search', showClearButton: true, placeholder: 'Codice fiscale'
         },
         provinceSelectOptions: {
+            value: provincia,
             dataSource: new DevExpress.data.DataSource({
                 load(loadOptions) {
                     var a = new Fenealweb.services.commonsService();
@@ -73,6 +82,7 @@
 
         },
         nazioniSelectOptions: {
+            value: nazione,
             dataSource: new DevExpress.data.DataSource({
                 load(loadOptions) {
                     var a = new Fenealweb.services.commonsService();
@@ -87,11 +97,12 @@
             placeholder: 'Nazione'
         },
         comuniSelectOptions: {
+            value: comune,
             dataSource: comuniDataSource,
             placeholder: 'Comune residenza',
             valueExpr: 'value',
             displayExpr: 'label',
-            value: comuneValue
+           
         },
         
        

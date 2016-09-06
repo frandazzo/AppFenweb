@@ -406,7 +406,7 @@
 
             if (ente) {
                 if (provincia) {
-                    queryString = queryString + ':ente=' + encodeURIComponent(ente);
+                    queryString = queryString + '&ente=' + encodeURIComponent(ente);
                 } else {
                     queryString = '?ente=' + encodeURIComponent(ente);
                 }
@@ -428,10 +428,113 @@
     //*********************************************
 
 
+
+    //*********************************************
+    //*********************************************
+    //classe per la gesrione delle entita geografiche
+    var lavoratoriStore = AbstractRemoteStore.extend({
+        ctor: function () {
+            lavoratoriStore.super.ctor.call(this);
+        },
+       
+        getLavoratori: function (cognome, nome, fiscale) {
+            var queryString = '';
+            if (fiscale) {   
+                queryString = '?fiscalcode=' + encodeURIComponent(fiscale);
+            } else {
+                if (cognome)
+                    queryString = '?surname=' + encodeURIComponent(cognome);
+
+                if (nome) {
+                    if (cognome) {
+                        queryString = queryString + '&name=' + encodeURIComponent(nome);
+                    } else {
+                        queryString = '?name=' + encodeURIComponent(nome);
+                    }
+                }
+            }
+
+            var params = {
+                route: 'localworkersforapp' + queryString,
+                method: 'GET'
+
+            }
+
+            return this.loadProtectedService(params);
+        },
+        getLavoratoriDbNazionale: function (cognome, nome, fiscale, provinciaResidenza, comuneResidanze, nazione) {
+            var queryString = '';
+            
+
+
+            if (cognome)
+                queryString = '?surname=' + encodeURIComponent(cognome);
+
+            if (nome) {
+                if (queryString) {
+                    queryString = queryString + '&name=' + encodeURIComponent(nome);
+                } else {
+                    queryString = '?name=' + encodeURIComponent(nome);
+                }
+            }
+
+            if (fiscale) {
+                if (queryString) {
+                    queryString = queryString + '&fiscalcode=' + encodeURIComponent(fiscale);
+                } else {
+                    queryString = '?fiscalcode=' + encodeURIComponent(fiscale);
+                }
+            }
+
+            if (provinciaResidenza) {
+                if (queryString) {
+                    queryString = queryString + '&livingProvince=' + encodeURIComponent(provinciaResidenza);
+                } else {
+                    queryString = '?livingProvince=' + encodeURIComponent(provinciaResidenza);
+                }
+            }
+
+            if (comuneResidanze) {
+                if (queryString) {
+                    queryString = queryString + '&livingCity=' + encodeURIComponent(comuneResidanze);
+                } else {
+                    queryString = '?livingCity=' + encodeURIComponent(comuneResidanze);
+                }
+            }
+
+            if (nazione) {
+                if (queryString) {
+                    queryString = queryString + '&nationality=' + encodeURIComponent(nazione);
+                } else {
+                    queryString = '?nationality=' + encodeURIComponent(nazione);
+                }
+            }
+          
+
+            var params = {
+                route: 'remoteworkersforapp' + queryString,
+                method: 'GET'
+
+            }
+
+            return this.loadProtectedService(params);
+        }
+
+
+    });
+
+    //*********************************************
+    //*********************************************
+
+
+
+
+
+
     Fenealweb.db = {};
     Fenealweb.db.securityLocalStore = securityLocalStore;
     Fenealweb.db.securityRemoteStore = securityRemoteStore;
     Fenealweb.db.geoRemoteStore = geoRemoteStore;
-
+    Fenealweb.db.lavoratoriStore = lavoratoriStore;
     Fenealweb.db.dashboardStore = dashboardStore
 }());
