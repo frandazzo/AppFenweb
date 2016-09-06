@@ -173,6 +173,7 @@
                     if (self.token) {
                       // xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
                         xhr.setRequestHeader('TOKEN', self.token);
+                      
                     }
                 }
             });

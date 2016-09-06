@@ -341,11 +341,97 @@
     //*********************************************
     //*********************************************
    
+    //*********************************************
+    //*********************************************
+    //classe per la gesrione delle entita geografiche
+    var dashboardStore = AbstractRemoteStore.extend({
+        ctor: function () {
+            dashboardStore.super.ctor.call(this);
+        },
+        getAndamentoIscrittiEnte: function(provincia){
+            var queryString = '';
 
+            if (provincia)
+                queryString = '?province=' + encodeURIComponent(provincia);
+
+            var params = {
+                route: 'widget/real/andamentoIscrittiPerSettoreEdile/getAppData' + queryString,
+                method: 'GET'
+
+            }
+            return this.loadProtectedService(params);
+        },
+        getIscrittiTerritorioAccorpato: function (anno) {
+
+            var queryString = '?anno=' + anno;
+
+            var params = {
+                route: 'widget/real/contatoreIscrittiTerritorioAccorpato/getAppData' + queryString,
+                method: 'GET'
+
+            }
+            return this.loadProtectedService(params);
+        },
+        getAndamentoIscrittiSettore: function (provincia) {
+            var queryString = '';
+
+            if (provincia)
+                queryString = '?province=' + encodeURIComponent(provincia);
+
+            var params = {
+                route: 'widget/real/andamentoIscrittiPerProvincia/getAppData' + queryString,
+                method: 'GET'
+
+            }
+            return this.loadProtectedService(params);
+        },
+        getAndamentoIscrittiTerritorioAccorpato: function(){
+           
+
+            var params = {
+                route: 'widget/real/andamentoIscrittiPerTerritorioAccorpato/getData',
+                method: 'GET'
+
+            }
+            return this.loadProtectedService(params);
+        },
+        getRappresentanza: function (provincia, ente) {
+
+
+
+            var queryString = '';
+
+            if (provincia)
+                queryString = '?province=' + encodeURIComponent(provincia);
+
+            if (ente) {
+                if (provincia) {
+                    queryString = queryString + ':ente=' + encodeURIComponent(ente);
+                } else {
+                    queryString = '?ente=' + encodeURIComponent(ente);
+                }
+            }
+
+            var params = {
+                route: 'widget/real/sindacalizzazione/getAppData' + queryString,
+                method: 'GET'
+
+            }
+
+            return this.loadProtectedService(params);
+        }
+       
+
+    });
+
+    //*********************************************
+    //*********************************************
 
 
     Fenealweb.db = {};
     Fenealweb.db.securityLocalStore = securityLocalStore;
     Fenealweb.db.securityRemoteStore = securityRemoteStore;
     Fenealweb.db.geoRemoteStore = geoRemoteStore;
+
+    Fenealweb.db.dashboardStore = dashboardStore
 }());

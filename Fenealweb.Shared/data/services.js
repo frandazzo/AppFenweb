@@ -143,89 +143,107 @@
             return $.Deferred().promise();
         },
         getRappresentanza: function (provincia, ente) {
-            var d = $.Deferred();
+
+
+            var svc = new Fenealweb.db.dashboardStore();
+            return svc.getRappresentanza(provincia, ente);
+           
+
+            //var d = $.Deferred();
 
            
-            var data = [
-                {
-                    sindacato: "Feneal",
-                    iscritti: 1110
-                }, {
-                    sindacato: "Filca",
-                    iscritti: 1150
-                }, {
-                    sindacato: "Fillea",
-                    iscritti: 1290
-                }
-            ];
+            //var data = [
+            //    {
+            //        sindacato: "Feneal",
+            //        iscritti: 1110
+            //    }, {
+            //        sindacato: "Filca",
+            //        iscritti: 1150
+            //    }, {
+            //        sindacato: "Fillea",
+            //        iscritti: 1290
+            //    }
+            //];
 
-            if (!ente)
-                ente = "CASSA EDILE";
+            //if (!ente)
+            //    ente = "CASSA EDILE";
 
 
-            if (ente != 'CASSA EDILE')
-                data = [];
+            //if (ente != 'CASSA EDILE')
+            //    data = [];
 
-            setTimeout(function () {
-                d.resolve({ provincia: provincia, ente: ente, data: data });
-            }, 2000);
+            //setTimeout(function () {
+            //    d.resolve({ provincia: provincia, ente: ente, data: data });
+            //}, 2000);
 
-            return d.promise();
+            //return d.promise();
         },
-        getAndamentoIscrittiTerritorioAccorpato : function(){
+        getAndamentoIscrittiTerritorioAccorpato: function () {
+
+            var self = this;
             var d = $.Deferred();
 
-            var serverdata = {
-                anni: [
-                    2014,
-                    2015,
-                    2016
-                ],
-                values: [
-                    {
-                        name: 'Caserta',
-                        data: [
-                            1000,
-                            1210,
-                            900
-                        ]
-                    },
-                    {
-                        name: 'Avellino',
-                        data: [
-                            100,
-                            121,
-                            90
-                        ]
-                    },
-                    {
-                        name: 'Benevento',
-                        data: [
-                            199,
-                            1216,
-                            700
-                        ]
-                    }
-                ]
-            };
-
-           
-
-          
-
-            var transformedData = this.__normalizeData(serverdata);
-
-            setTimeout(function () {
-                d.resolve({
-
-                    data: transformedData.data,
-                    series: transformedData.series
-
-
+            var svc = new Fenealweb.db.dashboardStore();
+            svc.getAndamentoIscrittiTerritorioAccorpato()
+                .done(function (data) {
+                    var transformedData = self.__normalizeData(data);
+                    d.resolve({
+                        data: transformedData.data,
+                        series: transformedData.series
+                    });
                 });
-            }, 4500);
+
 
             return d.promise();
+            //var d = $.Deferred();
+
+            //var serverdata = {
+            //    anni: [
+            //        2014,
+            //        2015,
+            //        2016
+            //    ],
+            //    values: [
+            //        {
+            //            name: 'Caserta',
+            //            data: [
+            //                1000,
+            //                1210,
+            //                900
+            //            ]
+            //        },
+            //        {
+            //            name: 'Avellino',
+            //            data: [
+            //                100,
+            //                121,
+            //                90
+            //            ]
+            //        },
+            //        {
+            //            name: 'Benevento',
+            //            data: [
+            //                199,
+            //                1216,
+            //                700
+            //            ]
+            //        }
+            //    ]
+            //};
+
+            //var transformedData = this.__normalizeData(serverdata);
+
+            //setTimeout(function () {
+            //    d.resolve({
+
+            //        data: transformedData.data,
+            //        series: transformedData.series
+
+
+            //    });
+            //}, 4500);
+
+            //return d.promise();
         },
 
         __normalizeData: function(serverData){
@@ -273,160 +291,184 @@
             return result;
         },
         getAndamentoIscrittiEnte: function (provincia) {
+            var self = this;
             var d = $.Deferred();
 
-            //definisci i dati cosi come mi arriiveranno
-            var serverdata = {
-                anni: [
-                    2014,
-                    2015,
-                    2016
-                ],
-                values: [
-                    {
-                        name: 'Cassa edile',
-                        data: [
-                            1000,
-                            1210,
-                            900
-                        ]
-                    },
-                    {
-                        name: 'Edilcassa',
-                        data: [
-                            100,
-                            121,
-                            90
-                        ]
-                    }
-                ]
-            };
+            var svc = new Fenealweb.db.dashboardStore();
+            svc.getAndamentoIscrittiEnte(provincia)
+                .done(function (data) {
+                    var transformedData = self.__normalizeData(data);
+                        d.resolve({
 
-            if (!provincia) {
-                serverdata = {
-                    anni: [
-                        2014,
-                        2015,
-                        2016
-                    ],
-                    values: [
-                        {
-                            name: 'Cassa edile',
-                            data: [
-                                1000,
-                                1210,
-                                900
-                            ]
-                        }
-                    ]
-                };
-            }
-
-            ////devo trasformare questo dato in una funzione per il grafico
-            ////del tipo
-            //var normalizedData = [
-            //    {
-            //        anno: 2014, cassaedile: 1000, edilcassa: 100
-            //    },
-            //    {
-            //        anno: 2015, cassaedile: 1210, edilcassa: 121
-            //    },
-            //    {
-            //        anno: 2016, cassaedile: 900, edilcassa: 90
-            //    }
-            //];
-            //var series = [
-            //    { valueField: "edilcassa", name: "Edilcassa" },
-            //    { valueField: "cassaedile", name: "Cassa edile" },
-            //];
-
-            var transformedData = this.__normalizeData(serverdata);
-
-            setTimeout(function () {
-                d.resolve({
-
-                    provincia: provincia,
-                    data: transformedData.data,
-                    series: transformedData.series
+                            provincia: data.provincia,
+                            data: transformedData.data,
+                            series: transformedData.series
 
 
+                        });
                 });
-            }, 4500);
 
+           
             return d.promise();
+            ////definisci i dati cosi come mi arriiveranno
+            //var serverdata = {
+            //    anni: [
+            //        2014,
+            //        2015,
+            //        2016
+            //    ],
+            //    values: [
+            //        {
+            //            name: 'Cassa edile',
+            //            data: [
+            //                1000,
+            //                1210,
+            //                900
+            //            ]
+            //        },
+            //        {
+            //            name: 'Edilcassa',
+            //            data: [
+            //                100,
+            //                121,
+            //                90
+            //            ]
+            //        }
+            //    ]
+            //};
+
+            //if (!provincia) {
+            //    serverdata = {
+            //        anni: [
+            //            2014,
+            //            2015,
+            //            2016
+            //        ],
+            //        values: [
+            //            {
+            //                name: 'Cassa edile',
+            //                data: [
+            //                    1000,
+            //                    1210,
+            //                    900
+            //                ]
+            //            }
+            //        ]
+            //    };
+            //}
+
         },
         getAndamentoIscrittiSettore: function (provincia) {
+            var self = this;
             var d = $.Deferred();
 
-            var data = [
-               {
-                   anno: "2009",
-                   edile: 1110,
-                   impiantiFissi: 200,
-                  
-               }, {
-                   anno: "2012",
-                   edile: 1700,
-                   impiantiFissi: 100,
-                   inps: 154
-               }, {
-                   anno: "2014",
-                   edile: 800,
-                   impiantiFissi: 0,
-                   inps: 10
-               },
-                {
-                    anno: "2015",
-                    edile: 1310,
-                    impiantiFissi: 100,
-                    inps: 22
-                },
-                 {
-                     anno: "2016",
-                     edile: 990,
-                     impiantiFissi: 300,
-                     inps: 0
-                 }
-            ];
+            var svc = new Fenealweb.db.dashboardStore();
+            svc.getAndamentoIscrittiSettore(provincia)
+                .done(function (data) {
+                    var transformedData = self.__normalizeData(data);
+                    d.resolve({
+
+                        provincia: data.provincia,
+                        data: transformedData.data,
+                        series: transformedData.series
 
 
-
-            setTimeout(function () {
-                d.resolve({
-
-                    provincia: provincia,
-                    data:data
-
+                    });
                 });
-            }, 1000);
+
 
             return d.promise();
+            //var d = $.Deferred();
+
+            //var data = [
+            //   {
+            //       anno: "2009",
+            //       edile: 1110,
+            //       impiantiFissi: 200,
+                  
+            //   }, {
+            //       anno: "2012",
+            //       edile: 1700,
+            //       impiantiFissi: 100,
+            //       inps: 154
+            //   }, {
+            //       anno: "2014",
+            //       edile: 800,
+            //       impiantiFissi: 0,
+            //       inps: 10
+            //   },
+            //    {
+            //        anno: "2015",
+            //        edile: 1310,
+            //        impiantiFissi: 100,
+            //        inps: 22
+            //    },
+            //     {
+            //         anno: "2016",
+            //         edile: 990,
+            //         impiantiFissi: 300,
+            //         inps: 0
+            //     }
+            //];
+
+
+
+            //setTimeout(function () {
+            //    d.resolve({
+
+            //        provincia: provincia,
+            //        data:data
+
+            //    });
+            //}, 1000);
+
+            //return d.promise();
         },
 
         getIscrittiTeritorioAccorpato: function (anno) {
-            var d = $.Deferred();
 
-            if (!anno) 
+            if (!anno)
                 anno = new Date().getFullYear();
 
-            var data = [
-                {
-                    territorio: "Trento",
-                    iscritti: 1110
-                }, {
-                    territorio: "Bolzano",
-                    iscritti: 1150
-                }, {
-                    territorio: "Padova",
-                    iscritti: 1290
-                }
-            ];
+            var self = this;
+            var d = $.Deferred();
 
-            setTimeout(function () {
-                d.resolve({ anno: anno, data: data });
-            }, 3000);
+            var svc = new Fenealweb.db.dashboardStore();
+            svc.getIscrittiTerritorioAccorpato(anno)
+                .done(function (data) {
+                    var transformedData = self.__normalizeData(data);
+                    d.resolve({
+                        data: data,
+                        anno: anno
+                    });
+                });
+
 
             return d.promise();
+
+            //var d = $.Deferred();
+
+            //if (!anno) 
+            //    anno = new Date().getFullYear();
+
+            //var data = [
+            //    {
+            //        territorio: "Trento",
+            //        numIiscritti: 1110
+            //    }, {
+            //        territorio: "Bolzano",
+            //        numIiscritti: 1150
+            //    }, {
+            //        territorio: "Padova",
+            //        numIiscritti: 1290
+            //    }
+            //];
+
+            //setTimeout(function () {
+            //    d.resolve({ anno: anno, data: data });
+            //}, 3000);
+
+            //return d.promise();
         }
 
     });

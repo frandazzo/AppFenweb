@@ -34,9 +34,9 @@
                     <!-- ko if: rappresentanzaChartVisible -->
                     <div id="pierappresentanza" data-bind="dxPieChart: rappresentanzaChartOptions"></div>
                     <div style="margin-left: 16px">
-                        <span>Numero lavoratori liberi: 6758</span>
+                        <span>Numero lavoratori liberi: <span data-bind="text:  rappresentanzaNumLiberi"></span></span>
                         <br />
-                        <span>Tasso di sindacalizzazione: 50.7%</span>
+                        <span>Tasso di sindacalizzazione: <span data-bind="text:  rappresentanzaTassoSindacalizzazione() + '%'"></span> </span>
                     </div>
                     <!-- /ko -->
                     <!-- ko ifnot: rappresentanzaChartVisible -->
@@ -68,7 +68,7 @@
                         <a class="panel-control-title" data-bind="click: andamentoIscrittiSettoreChangeParams"><i class="fa fa-pencil"></i></a>
                     </span>
                 </div>
-                <div class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen:andamentoIscrittiSettoreReady, showLoadIndicator: true}">
+                <div class="custom-defer-indicator" data-bind="dxDeferRendering: {renderWhen:andamentoIscrittiSettoreReady, showLoadIndicator: true, onRendered:onRenderedSettore}">
                     <div id="chart" data-bind="dxChart: andamentoIscrittiSettoreChartOptions"></div>
                 </div>
             </div> 

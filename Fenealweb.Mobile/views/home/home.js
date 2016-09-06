@@ -8,6 +8,8 @@
     var titleRappresentanza = ko.observable('');
     var rappresentanzaChartVisible = ko.observable(true);
     var rappresentanzaNoDataText = ko.observable('');
+    var rappresentanzaNumLiberi = ko.observable('');
+    var rappresentanzaTassoSindacalizzazione = ko.observable('');
 
     //dati per il grafico del terriotrio accorpato
     var dataSourceIscrittiTerritorioAccorpato = ko.observable(new DevExpress.data.DataSource({ store: [] }));
@@ -16,7 +18,7 @@
     //dati per il grafico dell'andamento iscritti per settore
     var dataSourceIscrittiPerSettore = ko.observable(new DevExpress.data.DataSource({ store: [] }));
     var titleIscrittiPerSettore = ko.observable('');
-
+    var settSeries = [];
 
     //dati per il grafico dell'andamento iscritti per ente
     var dataSourceIscrittiPerEnte = ko.observable(new DevExpress.data.DataSource({ store: [] }));
@@ -82,16 +84,18 @@
             //todo
             //creare il grafico
 
-            if (!data.data || data.data.length == 0) {
+            if (!data.iscritti || data.iscritti.length == 0) {
                 rappresentanzaChartVisible(false);
                 rappresentanzaNoDataText('Nessun dato disponibile per ' + data.provincia + ' (' + data.ente + ')');
                 viewModel.rappresentanzaReady(true);
                 return;
             }
             rappresentanzaChartVisible(true);
-            dataSourceRappresentanza(new DevExpress.data.DataSource({ store: data.data }));
+            dataSourceRappresentanza(new DevExpress.data.DataSource({ store: data.iscritti }));
             titleRappresentanza(data.provincia + ' (' + data.ente + ')');
             viewModel.rappresentanzaReady(true);
+            rappresentanzaNumLiberi(data.liberi);
+            rappresentanzaTassoSindacalizzazione(data.tassoSindacalizzazione);
         })
         .fail(function (error) {
             //mandare un messaggio di errore e visualizzare 
@@ -143,6 +147,26 @@
                 viewModel.andamentoIscrittiSettoreReady(true);
                 return;
             }
+
+
+            //prima di impostare il titolo e il datasource per il grafico
+            //ne imposto le serie in dipendenza e rielaboro i risultati
+            //ottenuti dal server:
+            settSeries = data.series
+
+            if (provincia) {
+                //se non cè una provincia vuol dire che è la prima volta che entro nella funzione
+                //e che quindi tale funzione è chiamata nel caricamento iniziale
+                //se chiamassi queste righre di codice mi direbbe che il grafico non è inizializzato
+                //e questo spiega il motivo dellevento onredered del dxdeferrendering widget
+                var chartInstance = $("#chart").dxChart('instance');
+                chartInstance.option('series', settSeries);
+            }
+            //dal server ottengo un array che contiene tutti gli anni
+            //e una lista di righe dove per ogni riga si intende una serie definita nel campo name della riga
+            //nella riga inoltre oltre al campo name cè la lista dei valori che la serie ha.
+            //Attenzione. qui per serie (quella del server si intende una lista di valori per una entità definita
+            //da nome 'name')
 
             dataSourceIscrittiPerSettore(new DevExpress.data.DataSource({ store: data.data }));
             titleIscrittiPerSettore(data.provincia);
@@ -265,6 +289,8 @@
             this.changeParamsPopupTitle('Rappresentanza e sindacalizzazione');
             this.changeParamsPopupVisible(true);
         },
+        rappresentanzaNumLiberi:rappresentanzaNumLiberi,
+        rappresentanzaTassoSindacalizzazione:rappresentanzaTassoSindacalizzazione,
         //************************************
         loggedUser: data,
         completeName : ko.computed(function(){
@@ -313,7 +339,7 @@
             },
             series: [{
                 argumentField: "territorio",
-                valueField: "iscritti",
+                valueField: "numIscritti",
                 label: {
                     visible: true,
                     font: {
@@ -415,7 +441,10 @@
                 enabled: false
             }
         },
-       
+        onRenderedSettore: function (e) {
+            var chartInstance = $("#chart").dxChart('instance');
+            chartInstance.option('series', settSeries);
+        },
         //***************************************************
 
      
