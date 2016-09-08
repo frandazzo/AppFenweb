@@ -36,12 +36,7 @@
                 DevExpress.ui.notify("swiped", "success", 1500);
             },
             onItemClick: function (e) {
-                e.itemData.completeName = e.itemData.nome;
-
-                Fenealweb.app.navigate({
-                    view: 'quota',
-                    id: e.itemData
-                });
+                alert('clickkk');
             }
         },
         nonIscrittiOptions: {

@@ -559,8 +559,6 @@
 
     });
 
-
-
     var aziendeService = Fenealweb.core.AObject.extend({
         ctor: function () {
             aziendeService.super.ctor.call(this);
@@ -692,31 +690,35 @@
             cap: '75100',
             iscritti: [
                 {
-                    nome: 'Silvana Colomba',
-                    fiscale: 'irewijgirwjo',
-                    provincia: 'Bolzano',
-                    settore: 'EDILE',
-                    ente: 'CASSA EDILE',
-                    azienda: 'zzzz',
-                    data: '31/12/2016',
-                    dataRegistrazione: '31/12/2016',
-                    tipo: 'IQA',
-                    competenza: '1-2016',
-                    livello: 'NUOVA ISCRIZIONE',
-                    quota: '0,01',
-                    contratto: '',
-                    showChevron: true
+                    nome: 'francesco',
+                    cognome: 'randazzo',
+                    dataNascita: '14/07/1977',
+                    fiscale: 'rndfnc77l14f052f',
+                    sesso: 'M',
+                    provinciaResidenza: 'MT',
+                    comuneResidenza: 'MATERA',
+                    nazione: 'ITALIA',
+                    provinciaNascita: 'MT',
+                    comuneNascita: 'MATERA',
+                    indirizzo: 'c.da serra d\'alto snc',
+                    cap: '75100',
+                    cellulare: '3385269726',
+                    mail: 'fg.randazzo@hotmail.it',
+                    telefono: ''
 
                 }],
             nonIscritti: [
                {
-                   nome: 'Francesco Randazzo',
+                   nome: 'Francesco Randazzo DellaVedova di Magliano Sabina',
                    fiscale: 'rndfnc77l14f052f',
                    provincia: 'Bolzano',
                    ente: 'CASSA EDILE',
                    liberoAl: '31/12/2016',
                    azienda: 'Alla Spa',
                    iscrittoA: 'FILLEA',
+                   badge: '3',
+                   delegheOwner: true
+
                    
                },
                {
@@ -727,6 +729,7 @@
                    liberoAl: '15/07/2016',
                    azienda: '',
                    iscrittoA: '',
+                   delegheOwner: false
                    
                }
             ]
