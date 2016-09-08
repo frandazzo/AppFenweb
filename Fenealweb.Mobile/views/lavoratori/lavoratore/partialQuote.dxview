@@ -8,7 +8,7 @@
                     <div class="iscrizione-left-panel">
                         <span class="iscrizione-main" data-bind="text: provincia"></span>
                     </div>
-                    <div class="iscrizione-right-panel">
+                    <div class="iscrizione-right-panel" style="width:100%; text-align: left;">
                         <span class="iscrizioneLabel"> Competenza: </span>  <span class="iscrizione-italic" data-bind="text: competenza"></span>
                     </div>
 

@@ -1,6 +1,17 @@
 <div data-options="dxView : { name: 'iscrizione', title: 'Iscrizione' } " >
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
       
+
+        <div data-bind="dxActionSheet: {
+                dataSource: actionSheetData,
+                visible: actionSheetVisible,
+                title: 'Scegli operazione',
+                onItemClick: processSheetClick,
+                showTitle: true,
+                showCancelButton: true,
+                cancelText: 'Annulla'
+            }"></div>
+
         <div data-bind="dxScrollView: {  }">
 
             <div class="dx-fieldset">
@@ -24,11 +35,13 @@
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Azienda</div>
-                    <div class="dx-field-value-static" data-bind="text:iscrizione.azienda ">Pippo s.r.l.</div>
+
+                    <div style="text-decoration:underline; cursor:pointer" class="dx-field-value-static" data-bind="text:iscrizione.azienda, click:navigaAzienda ">Pippo s.r.l.</div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Periodo</div>
                     <div class="dx-field-value-static" data-bind="text:iscrizione.completePeriodo ">1-2016</div>
+
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">P. Iva</div>

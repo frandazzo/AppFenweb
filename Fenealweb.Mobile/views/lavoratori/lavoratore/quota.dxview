@@ -1,6 +1,14 @@
 <div data-options="dxView : { name: 'quota', title: 'Quota versata' } " >
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
-       
+        <div data-bind="dxActionSheet: {
+                dataSource: actionSheetData,
+                visible: actionSheetVisible,
+                title: 'Scegli operazione',
+                onItemClick: processSheetClick,
+                showTitle: true,
+                showCancelButton: true,
+                cancelText: 'Annulla'
+            }"></div>
 
         <div data-bind="dxScrollView: {  }">
 
@@ -39,7 +47,7 @@
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Azienda</div>
-                    <div class="dx-field-value-static" data-bind="text:quota.azienda ">Pippo s.r.l.</div>
+                    <div style="text-decoration:underline; cursor:pointer" class="dx-field-value-static" data-bind="text:quota.azienda, click:navigaAzienda ">Pippo s.r.l.</div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Competenza</div>

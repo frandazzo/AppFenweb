@@ -4,8 +4,17 @@
     var iscrizione = params.id;
 
     var viewModel = {
-        //  Put the binding properties here
-        iscrizione: iscrizione
+        actionSheetData: [
+          { text: "Vai all'azienda" }
+        ],
+        actionSheetVisible: ko.observable(false),
+        iscrizione: iscrizione,
+        navigaAzienda: function (e) {
+            viewModel.actionSheetVisible(true);
+        },
+        processSheetClick: function (e) {
+            alert(iscrizione.azienda);
+        }
     };
 
     return viewModel;

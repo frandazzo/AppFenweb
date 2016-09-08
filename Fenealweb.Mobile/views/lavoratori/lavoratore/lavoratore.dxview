@@ -1,4 +1,6 @@
 <div data-options="dxView : { name: 'lavoratore' } " >
+    <div data-bind="dxCommand: {icon:'edit', onExecute:modifica, title: 'Modifica', id: 'edit' }"></div>
+    <div data-bind="dxCommand: { onExecute: tessereClick, title: 'Verifica tesseramento', id: 'checkTesseramento' }"></div>
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
 
         <div data-bind="dxDeferRendering: { showLoadIndicator: true, renderWhen: dataReady }">
@@ -14,7 +16,6 @@
                     <div class="worker-cell-functions">
                         <a style="text-decoration: initial;" data-bind="attr:{href:'sms:' + currentWorker().cellulare }" ><span class="dx-icon-tel base-icon"></span></a>
                         <a style="text-decoration: initial;" data-bind="attr:{href:'sms:' + currentWorker().cellulare }"><span class="dx-icon-message  base-icon"></span></a>
-                        
                     </div>
                     
                 </div>

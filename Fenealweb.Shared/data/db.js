@@ -436,7 +436,16 @@
         ctor: function () {
             lavoratoriStore.super.ctor.call(this);
         },
-       
+        getLavoratore: function (fiscale) {
+           
+            var params = {
+                route: '/workerforapp/' + fiscale,
+                method: 'GET'
+
+            }
+
+            return this.loadProtectedService(params);
+        },
         getLavoratori: function (cognome, nome, fiscale) {
             var queryString = '';
             if (fiscale) {   

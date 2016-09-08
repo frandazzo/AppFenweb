@@ -3,7 +3,7 @@
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a1ae969b-fc0b-4387-aa53-3b14c560df77</ProjectGuid>
-    <AutoAssignPort>True</AutoAssignPort>
+    <AutoAssignPort>False</AutoAssignPort>
     <RunInSimulator>True</RunInSimulator>
     <UploadPluginsToTheCourier>True</UploadPluginsToTheCourier>
     <RootNamespace>Fenealweb</RootNamespace>
@@ -21,6 +21,11 @@
     <ApplicationTitle>Fenealweb</ApplicationTitle>
     <VersionPackage>1.0.0.0</VersionPackage>
     <ShowSplashScreen>True</ShowSplashScreen>
+    <DebugSitePortNumber>50000</DebugSitePortNumber>
+    <UseWebDev>False</UseWebDev>
+    <DefaultDevice>iPhone6</DefaultDevice>
+    <DeviceOrientation>Portrait</DeviceOrientation>
+    <DisplayUnhandledExceptions>True</DisplayUnhandledExceptions>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +37,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="fenealweb.config.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="HtmlPage1.html">
       <SubType>Content</SubType>
     </Content>
     <Content Include="index.html" />

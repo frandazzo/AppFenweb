@@ -3,6 +3,7 @@
 
 
     var dataSource = new DevExpress.data.DataSource({
+        paginate:false,
         load(loadOptions) {
             // return $.Deferred().resolve(listaLavoratori).promise();
             loadOptions = $.extend(loadOptions, JSON.parse(params.searchParams.replace('json:', '')));
@@ -44,6 +45,7 @@
 
     var viewModel = {
         listOptions: {
+            bounceEnabled:false,
             dataSource: dataSource,
             noDataText: 'Nessun lavoratore trovato!',
             onItemSwipe: function (e) {

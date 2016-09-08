@@ -1,96 +1,115 @@
 <div data-options="dxView : { name: 'partialLavoratore', title: 'plav' } " >
-  
+    <div data-bind="dxActionSheet: {
+                dataSource: actionSheetData,
+                visible: actionSheetVisible,
+                title: 'Scegli operazione',
+                onItemClick: processSheetClick,
+                showTitle: true,
+                showCancelButton: true,
+                cancelText: 'Annulla'
+            }"></div>
     <div class="lavoratore-scrollview" data-bind="dxScrollView: {   }">
 
-        <div style="margin-top:50px;height: 100px;" class="dx-fieldset">
+        <div style="margin-top:50px;" class="dx-fieldset">
             <div class="dx-fieldset-header worker">Stato iscrizione</div>
 
-
+            <!-- ko if: currentWorker().iscrizioneCorrente -->
             <div class="worker-iscrizione">
                 <div class="worker-smile">
                     <i style="margin-top: 15px;" class="fa fa-smile-o"></i>
                 </div>
                 <div class="worker-info" style="margin-top: 15px;">
-                    <span class="worker-label">Iscritto: </span> <span> CASSA EDILE</span>  <span class="worker-label">Periodo:  </span> <span> 2-2016</span><br /><br />
+                    <span class="worker-label">Iscritto: </span> <span data-bind="text:currentWorker().iscrizioneCorrente.ente"> </span>  <span class="worker-label">Periodo:  </span> <span data-bind="text:currentWorker().iscrizioneCorrente.stringPeriodo"></span><br /><br />
                     <div class="worker-azienda">
                         <div class="worker-azienda-title">Azienda: </div>
-                        <div class="worker-azienda-text">   Cav. Pietr. Pietro. SPA ecc...  Cav.</div>
-                        <div data-bind="dxButton: {hint:'Vai all\'azienda', onClick:navigaAzienda, icon:'fa fa-building-o' }"></div>
+                        <a class="worker-azienda-text" data-bind="text:currentWorker().iscrizioneCorrente.azienda, click:navigaAzienda">  </a>
+                        
                     </div>
                 </div>
+                <div style="clear:both; margin-bottom:3px"></div>
             </div>
+            <!-- /ko -->
+            <!-- ko ifnot: currentWorker().iscrizioneCorrente -->
+                <p>NON ISCRITTO nell'anno in corso</p>
+              
+            <!-- /ko -->
+           
 
         </div>
         <div style="clear:both; margin-top:60px" class="dx-fieldset">
             <div  class="dx-fieldset-header worker">Tesseramento 2016</div>
 
-
+            <!-- ko if: currentWorker().tesseraStampata  -->
             <div class="worker-tesseramento">
                 <div class="worker-smile-tessera">
                     <i style="margin-top:11px" class="fa fa-smile-o"></i>
                 </div>
                 <div class="worker-info-tessera">
-                    Tessera stampata
-                    <div data-bind="dxButton: { hint:'Verifica se altri territori hanno stampato la tessera',onClick: tessereClick, icon:'fa fa-file-text-o' }">
-
-                    </div>
+                    <p style="margin-top:5px; margin-bottom:5px">Tessera stampata</p>
+                  
                 </div>
             </div>
+            <!-- /ko -->
+            <!-- ko ifnot: currentWorker().tesseraStampata -->
+            <p style="margin-top:5px; margin-bottom:5px">Tessera non stampata nell'anno in corso</p>
+           
+            <!-- /ko -->
+            
         </div>
         <div style="margin-top:60px" class="dx-fieldset">
 
                 <div style="clear:both" class="dx-fieldset-header worker">Dati anagrafici</div>
                 <div class="dx-field">
                     <div class="dx-field-label">Codice fiscale</div>
-                    <div class="dx-field-value-static">RNDFNC77L14FF052F</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().fiscale"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Data nascita</div>
-                    <div class="dx-field-value-static">14/07/1977</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().dataNascita"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Nazione</div>
-                    <div class="dx-field-value-static">Italia</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().nazione"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Provincia nas.</div>
-                    <div class="dx-field-value-static">MT</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().provinciaNascita"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Comune nas.</div>
-                    <div class="dx-field-value-static">Avigliano</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().comuneNascita"></div>
                 </div>
 
                 <div class="dx-fieldset-header worker">Residenza</div>
                 <div class="dx-field">
                     <div class="dx-field-label">Provincia</div>
-                    <div class="dx-field-value-static">MT</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().provinciaResidenza"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Comune</div>
-                    <div class="dx-field-value-static">Matera</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().comuneResidenza"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Indirizzo</div>
-                    <div class="dx-field-value-static">Via Gravina 39</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().indirizzo"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Cap</div>
-                    <div class="dx-field-value-static">75100</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().cap"></div>
                 </div>
 
                 <div class="dx-fieldset-header worker">Contatti</div>
                 <div class="dx-field">
                     <div class="dx-field-label">Cellulare</div>
-                    <div class="dx-field-value-static">5436453565</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().cellulare"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Telefono</div>
-                    <div class="dx-field-value-static">6555646646</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().telefono"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Mail</div>
-                    <div class="dx-field-value-static">fg.randazzo@hotmail.it</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().mail"></div>
                 </div>
 
 

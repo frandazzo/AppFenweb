@@ -43,8 +43,21 @@
 
     var dataSourceQuote = ko.observable(new DevExpress.data.DataSource({ store: [] }));
 
+    var currentSelectedAzienda = ko.observable('');
 
     var viewModel = {
+        modifica:function(){
+            alert('modifca');
+        },
+        //parametri actionsheet
+        actionSheetData: [
+            { text: "Vai all'azienda" }
+        ],
+        actionSheetVisible: ko.observable(false),
+        processSheetClick: function (e) {
+            //document.location.href = 'tel:445546456';
+           alert(currentSelectedAzienda());
+        },
         //paramtri popup
         changeParamsPopupVisible: ko.observable(false),
         hidePopup: function(){
@@ -65,9 +78,9 @@
         dbNazionaleOptions:{
             dataSource: dataSourceIscrizioni,
             noDataText: 'Nessuna iscrizione trovata',
-            onItemSwipe: function (e) {
-                DevExpress.ui.notify("swiped", "success", 1500);
-            },
+            //onItemSwipe: function (e) {
+            //    DevExpress.ui.notify("swiped", "success", 1500);
+            //},
             onItemClick: function (e) {
 
                 var periodo = e.itemData.settore == "EDILE" ? e.itemData.periodo + ' - ' + e.itemData.anno : e.itemData.anno;
@@ -85,9 +98,9 @@
         delegheOptions: {
             dataSource: dataSourceDeleghe,
             noDataText: 'Nessuna delega trovata',
-            onItemSwipe: function (e) {
-                DevExpress.ui.notify("swiped", "success", 1500);
-            },
+            //onItemSwipe: function (e) {
+            //    DevExpress.ui.notify("swiped", "success", 1500);
+            //},
             onItemClick: function (e) {
                 e.itemData.completeName = viewModel.currentWorkerCompleteName();
                 e.itemData.showChevron = true
@@ -101,9 +114,9 @@
         quoteOptions: {
             dataSource: dataSourceQuote,
             noDataText: 'Nessuna quota trovata',
-            onItemSwipe: function (e) {
-                DevExpress.ui.notify("swiped", "success", 1500);
-            },
+            //onItemSwipe: function (e) {
+            //    DevExpress.ui.notify("swiped", "success", 1500);
+            //},
             onItemClick: function (e) {
                 e.itemData.completeName = viewModel.currentWorkerCompleteName();
                 
@@ -117,17 +130,21 @@
         nonIscrittoOptions:{
             dataSource: dataSourceNonIscritto,
             noDataText: 'Nessuna segnalazione',
-            onItemSwipe: function (e) {
-                DevExpress.ui.notify("swiped", "success", 1500);
-            },
+            ////onItemSwipe: function (e) {
+            ////    DevExpress.ui.notify("swiped", "success", 1500);
+            ////},
+            onItemClick: function (e) {
+                currentSelectedAzienda(e.itemData.azienda);
+                viewModel.actionSheetVisible(true);
+            }
             
         },
         magazzinoOptions: {
             dataSource: dataSourceDeleghe,
             noDataText: 'Nessuna delega in magazzino',
-            onItemSwipe: function (e) {
-                DevExpress.ui.notify("swiped", "success", 1500);
-            },
+            //onItemSwipe: function (e) {
+            //    DevExpress.ui.notify("swiped", "success", 1500);
+            //},
             onItemClick: function (e) {
                 e.itemData.completeName = viewModel.currentWorkerCompleteName();
                 e.itemData.showChevron = true,
@@ -158,17 +175,18 @@
         currentWorkerCompleteName: function(){
             return current().nome.toUpperCase() + ' ' + current().cognome.toUpperCase();
         },
-        smsClick: function(){
-            alert('sms');
-        },
-        callClick: function () {
-            alert('call');
-        },
+        //smsClick: function(){
+        //    alert('sms');
+        //},
+        //callClick: function () {
+        //    alert('call');
+        //},
         tessereClick: function(){
             viewModel.changeParamsPopupVisible(true);
         },
-        navigaAzienda: function(){
-            alert('azienda');
+        navigaAzienda: function () {
+            currentSelectedAzienda(current().iscrizioneCorrente.azienda)
+            viewModel.actionSheetVisible(true);
         },
         dataReady: ko.observable(false),
         viewRendered: function () {

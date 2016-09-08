@@ -53,7 +53,7 @@
 
 .worker-iscrizione{
     clear: both;
-
+    height:auto;
 }
 
 .worker-tesseramento{
@@ -61,7 +61,8 @@
 }
 
 .dx-fieldset-header.worker{
-    font-size:11pt
+    font-size:11pt;
+    clear: both;
 }
 
 
@@ -100,8 +101,8 @@
 }
 .worker-azienda-text{
     float:left;
-    width: 60%;
-       
+    width: 70%;
+    cursor: pointer;
 }
 
 .worker-smile-tessera{

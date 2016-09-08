@@ -11,6 +11,10 @@
                 </div>
                 <div style="margin-top:20px"  class="dx-fieldset-header">Dati delega</div>
                 <div class="dx-field">
+                    <div class="dx-field-label">Stato delega</div>
+                    <div class="dx-field-value-static" data-bind="text:delega.stato ">Matera</div>
+                </div>
+                <div class="dx-field">
                     <div class="dx-field-label">Territorio</div>
                     <div class="dx-field-value-static" data-bind="text:delega.provincia ">Matera</div>
                 </div>
@@ -24,7 +28,8 @@
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Azienda</div>
-                    <div class="dx-field-value-static" data-bind="text:delega.azienda ">Pippo s.r.l.</div>
+                    <!--<a class="worker-azienda-text" data-bind="text:delega.azienda, click:navigaAzienda">  </a>-->
+                    <div  style="text-decoration:underline; cursor:pointer" class="dx-field-value-static" data-bind="text:delega.azienda, click:navigaAzienda ">Pippo s.r.l.</div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Causale iscrizione</div>
@@ -42,26 +47,22 @@
                     <div class="dx-field-label">Note</div>
                     <div class="dx-field-value-static" data-bind="text:delega.note ">...</div>
                 </div>
-                <div class="dx-fieldset-header">Altri dati</div>
+                <div class="dx-fieldset-header" style="clear:both">Altri dati</div>
                 <div class="dx-field">
                     <div class="dx-field-label">Data inoltro</div>
-                    <div class="dx-field-value-static" data-bind="text:delega.data ">14/07/2015</div>
-                </div>
-                <div class="dx-field">
-                    <div class="dx-field-label">Data inoltro</div>
-                    <div class="dx-field-value-static" data-bind="text:delega.dataInoltro "></div>
+                    <div class="dx-field-value-static" data-bind="text:delega.sendDate "></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Data accettazione</div>
-                    <div class="dx-field-value-static" data-bind="text:delega.dataAccettazione "></div>
+                    <div class="dx-field-value-static" data-bind="text:delega.acceptDate "></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Data attivazione</div>
-                    <div class="dx-field-value-static" data-bind="text:delega.dataAttivazione "></div>
+                    <div class="dx-field-value-static" data-bind="text:delega.activationDate "></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Data annullamento</div>
-                    <div class="dx-field-value-static" data-bind="text:delega.dataAnnullamento"></div>
+                    <div class="dx-field-value-static" data-bind="text:delega.cancelDate"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Causale annullamento</div>
@@ -69,7 +70,7 @@
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Data revoca</div>
-                    <div class="dx-field-value-static" data-bind="text:delega.dataRevoca"></div>
+                    <div class="dx-field-value-static" data-bind="text:delega.revokeData"></div>
                 </div>
                 <div class="dx-field">
                     <div class="dx-field-label">Causale revoca</div>
@@ -79,7 +80,15 @@
 
 
         </div>
-        
+        <div data-bind="dxActionSheet: {
+                dataSource: actionSheetData,
+                visible: actionSheetVisible,
+                title: 'Scegli operazione',
+                onItemClick: processSheetClick,
+                showTitle: true,
+                showCancelButton: true,
+                cancelText: 'Annulla'
+            }"></div>
 
 
     </div>

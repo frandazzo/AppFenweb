@@ -58,6 +58,9 @@
     <Content Include="js\dx.all.js" />
     <Content Include="js\dx.all.debug.js" />
     <Content Include="js\localization\dx.all.de.js" />
+    <Content Include="js\localization\dx.all.it.json">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="js\localization\dx.all.ja.js" />
     <Content Include="js\localization\dx.all.ru.js" />
     <Content Include="js\cldr.min.js" />
@@ -92,6 +95,12 @@
     <Content Include="css\icons\dxiconsios.eot" />
     <Content Include="css\icons\dxiconsios.ttf" />
     <Content Include="css\icons\dxiconsios.woff" />
+    <Content Include="js\localization\localization.default.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\localization.it.js">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\" />

@@ -5,7 +5,17 @@
     var delega = params.id;
 
     var viewModel = {
-        delega: delega
+        actionSheetData: [
+           { text: "Vai all'azienda" }
+        ],
+        actionSheetVisible: ko.observable(false),
+        delega: delega,
+        navigaAzienda: function (e) {
+            viewModel.actionSheetVisible(true);
+        },
+        processSheetClick: function (e) {
+            alert(delega.azienda);
+        }
     };
 
     return viewModel;

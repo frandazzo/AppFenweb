@@ -1,6 +1,5 @@
 <div data-options="dxView : { name: 'partialDbNazionale', title: 'partialDbNazionale' } " >
-    
-
+ 
     <div class="partial-list-container" data-bind="dxList: dbNazionaleOptions">
         <div data-options="dxTemplate: { name:'item' }">
             <div class="iscrizioneItem">

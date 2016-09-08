@@ -530,26 +530,31 @@
             //return d.promise();
         },
         getLavoratoreByFiscalCode: function (fiscalCode) {
-            var d = $.Deferred();
 
-            setTimeout(function () {
 
-                var lavoratore = undefined;
-                $.each(listaLavoratoriDbNazionale, function (index, elem) {
-                    if (fiscalCode.toUpperCase() == elem.fiscale.toUpperCase()) {
-                        lavoratore = elem;
-                        return false;
-                    }
+            var svc = new Fenealweb.db.lavoratoriStore();
+            return svc.getLavoratore(fiscalCode);
+
+            //var d = $.Deferred();
+
+            //setTimeout(function () {
+
+            //    var lavoratore = undefined;
+            //    $.each(listaLavoratoriDbNazionale, function (index, elem) {
+            //        if (fiscalCode.toUpperCase() == elem.fiscale.toUpperCase()) {
+            //            lavoratore = elem;
+            //            return false;
+            //        }
                         
 
 
-                });
+            //    });
                
-               d.resolve(lavoratore);
+            //   d.resolve(lavoratore);
 
-            }, 2000);
+            //}, 2000);
 
-            return d.promise();
+            //return d.promise();
         }
 
     });
