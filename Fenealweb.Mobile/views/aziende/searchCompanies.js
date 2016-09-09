@@ -2,7 +2,8 @@
     "use strict";
 
 
-    var  dataSource = new DevExpress.data.DataSource({
+    var dataSource = new DevExpress.data.DataSource({
+        paginate:false,
         load(loadOptions) {
             
             var a = new Fenealweb.services.aziendeService();
@@ -17,17 +18,17 @@
     var viewModel = {
         
         listOptions: {
+            
             dataSource: dataSource,
+            bounceEnabled: false,
             nodataText:'Nessuna azienda trovata',
             height: "95%",
-            itemTemplate: function (data) {
-                return $("<div>").text(data.descrizione).css('font-size', '17px');
-            },
+           
             onItemClick: function (e) {
 
                 Fenealweb.app.navigate({
                     view: 'azienda',
-                    fiscale: e.itemData.id
+                    id: e.itemData.descrizione
                 });
             }
         },

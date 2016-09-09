@@ -30,27 +30,44 @@
         }
     });
 
-    var comuneValue = ko.observable('');
-    var selectedEnte = ko.observable('CASSA EDILE');
+
     var selectedProvincia = ko.observable('');
-    var selectedIscrittoA = ko.observable('');
+
+    var selectedNazione = ko.observable('');
+    var geoProvinceSelected = ko.observable('');
+    var comuneValue = ko.observable('');
+
+    var selectedEnte = ko.observable('CASSA EDILE');
     var selectedAzienda = ko.observable('');
+    var selectedIscrittoA = ko.observable('');
+
+   
+
+
+
+
+    
+    
+    
 
     var viewModel = {
         search: function () {
 
             var searchParams = {
+                selectedProvincia: selectedProvincia,
+                geoNazioneSelected: selectedNazione(),
+                geoProvinceSelected: geoProvinceSelected(),
+                geoComuneSelected: comuneValue(),
+                iscrittiA: selectedIscrittoA,
+                selectedEnte: selectedEnte(),
+                selectedAzienda: selectedAzienda(),
                
             };
 
-            
-            DevExpress.ui.notify("Avvio della ricerca", 'info', 3000);
-               
-
-            //Fenealweb.app.navigate({
-            //    view: 'lavoratori',
-            //    searchParams: searchParams
-            //});
+            Fenealweb.app.navigate({
+                view: 'nonIscrittiResult',
+                id: searchParams
+            });
         },
         aziendeLookupOptions:{
             dataSource: aziendaDataSource,
@@ -61,6 +78,10 @@
             placeholder: "Azienda",
             displayExpr: "descrizione",
             valueExpr: "id",
+            showClearButton: true,
+            clearButtonText: 'Pulisci',
+            cancelButtonText: 'Annulla'
+            
         },
         iscrittoASelectOptions:{
             dataSource: new DevExpress.data.DataSource({
@@ -93,7 +114,8 @@
                 comuneValue('');
                 comuniDataSource.searchValue(idProvincia);
                 comuniDataSource.load();
-            }
+            },
+            value: geoProvinceSelected
 
         },
         nazioniSelectOptions: {
@@ -108,7 +130,8 @@
             }),
             valueExpr: 'value',
             displayExpr: 'label',
-            placeholder: 'Nazione'
+            placeholder: 'Nazione',
+            value: selectedNazione
         },
         comuniSelectOptions: {
             dataSource: comuniDataSource,

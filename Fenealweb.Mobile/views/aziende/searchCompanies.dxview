@@ -7,7 +7,15 @@
             <div class="dx-searchbar">
                 <div data-bind="dxTextBox: searchOptions"></div>
             </div>
-            <div data-bind="dxList: listOptions"></div>
+            <div data-bind="dxList: listOptions">
+
+                <div data-options="dxTemplate: { name:'item' }">
+                    <div style="margin-bottom:18px; overflow:hidden"  data-bind="text:descrizione">
+                        
+                    </div>
+                </div>
+
+            </div>
         </div>
 
 

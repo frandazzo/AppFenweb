@@ -1,5 +1,73 @@
 ﻿(function () {
-    
+    var listaIscritti = [
+       {
+           completeName: 'francesco randazzp',
+           tipo: 'IQA',
+           fiscale: 'rndfnc77l14f052w',
+           data: '14/07/1999',
+           dataRegistrazione: '20/10/2016',
+           provincia: 'Bolzano',
+           competenza: '01/10/2015 - 30/03/2016',
+           settore: 'EDILE',
+           ente: 'EDILCASSA',
+           azienda: 'Natuzzi spa',
+           quota: '0,01',
+           livello: '',
+           contratto: 'ARTIGIANI',
+           showShevron: true
+       },
+       {
+           completeName: 'francesco randazzp',
+           tipo: 'IQA',
+           fiscale: 'rndfnc77l14f052f',
+           data: '14/07/1999',
+           dataRegistrazione: '20/10/2016',
+           fiscale: 'rndfnc77l14f052f',
+           provincia: 'Bolzano',
+           competenza: '01/10/2015 - 30/03/2016',
+           settore: 'EDILE',
+           ente: 'EDILCASSA',
+           azienda: 'Natuzzi spa',
+           quota: '0,01',
+           livello: '',
+           contratto: 'ARTIGIANI',
+           showShevron: true
+       },
+       {
+           completeName: 'francesco randazzp',
+           tipo: 'IQA',
+           fiscale: 'rndfnc77l14f052f',
+           data: '14/07/1999',
+           dataRegistrazione: '20/10/2016',
+           fiscale: 'rndfnc77l14f052f',
+           provincia: 'Bolzano',
+           competenza: '01/10/2015 - 30/03/2016',
+           settore: 'EDILE',
+           ente: 'EDILCASSA',
+           azienda: 'Natuzzi spa',
+           quota: '0,01',
+           livello: '',
+           contratto: 'ARTIGIANI',
+           showShevron: true
+       },
+       {
+           completeName: 'francesco randazzp',
+           tipo: 'IQA',
+           fiscale: 'rndfnc77l14f052f',
+           data: '14/07/1999',
+           dataRegistrazione: '20/10/2016',
+           fiscale: 'rndfnc77l14f052f',
+           provincia: 'Bolzano',
+           competenza: '01/10/2015 - 30/03/2016',
+           settore: 'EDILE',
+           ente: 'EDILCASSA',
+           azienda: 'Natuzzi spa',
+           quota: '0,01',
+           livello: '',
+           contratto: 'ARTIGIANI',
+           showShevron: true
+       }
+    ];
    
     var securityService = Fenealweb.core.AObject.extend({
         ctor: function(){
@@ -67,6 +135,44 @@
                  "EDILE",
                  "IMPIANTI FISSI",
                  "INPS"
+
+            ];
+
+            return $.Deferred().resolve(lista).promise();
+        },
+        getSettoriBase: function () {
+            var lista = [
+                 "EDILE",
+                 "IMPIANTI FISSI"
+
+            ];
+
+            return $.Deferred().resolve(lista).promise();
+        },
+        getTipoQuote: function () {
+            var lista = [
+                 "Quote associative",
+                 "Quote inps",
+                 "quote previsionali"
+
+            ];
+
+            return $.Deferred().resolve(lista).promise();
+        },
+        getMesi: function () {
+            var lista = [
+                 "Gennaio",
+                 "Febbraio",
+                 "Marzo",
+                 "Aprile",
+                  "Maggio",
+                 "Giugno",
+                  "Luglio",
+                 "Agosto",
+                  "Settembre",
+                 "Ottobre",
+                  "Novembre",
+                 "Dicembre",
 
             ];
 
@@ -565,31 +671,77 @@
         },
         searchAziende: function (descrizione) {
 
+            var svc = new Fenealweb.db.aziendeStore();
+            return svc.getAziende(descrizione);
             
             
+            //var d = $.Deferred();
+
+            //setTimeout(function () {
+
+            //    if (!descrizione)
+            //        d.resolve(listaAziende);
+            //    else
+            //        d.resolve(listaAziende.slice(0,1));
+
+            //}, 2000);
+
+            //return d.promise();
+        },
+        getAziendaById: function (descrizione) {
+
+            var svc = new Fenealweb.db.aziendeStore();
+            return svc.getAzienda(descrizione);
+           
+
+            //var d = $.Deferred();
+
+            //setTimeout(function () {
+
+               
+            //        d.resolve(listaAziende[0]);
+
+            //}, 2000);
+
+            //return d.promise();
+        }
+
+    });
+
+
+    var reportService = Fenealweb.core.AObject.extend({
+        ctor: function () {
+            reportService.super.ctor.call(this);
+        },
+        reportIscritti: function (params) {
+
             var d = $.Deferred();
 
             setTimeout(function () {
 
-                if (!descrizione)
-                    d.resolve(listaAziende);
-                else
-                    d.resolve(listaAziende.slice(0,1));
+
+                d.resolve({
+                    params: params,
+                    result: listaIscritti
+                });
+               
 
             }, 2000);
 
             return d.promise();
         },
-        getAziendaById: function (id) {
-
-           
+        reportNonIscritti: function (params) {
 
             var d = $.Deferred();
 
             setTimeout(function () {
 
-               
-                    d.resolve(listaAziende[0]);
+
+                d.resolve({
+                    params: params,
+                    result: listaNonIscritti
+                });
+
 
             }, 2000);
 
@@ -604,402 +756,53 @@
     Fenealweb.services.dashboardService = dashboardService;
     Fenealweb.services.lavoratoriService = lavoratoriService;
     Fenealweb.services.aziendeService = aziendeService;
+    Fenealweb.services.reportService = reportService;
 
-    var listaLavoratori = [
+    var listaNonIscritti = [
         {
-            id: 1,
-            nome: 'francesco',
-            cognome: 'randazzo',
-            dataNascita: '14/07/1977',
+            
+            nome: 'Francesco Randazzo',
             fiscale: 'rndfnc77l14f052f',
-            sesso: 'M',
-            provinciaResidenza: 'MT',
-            comuneResidenza: 'MATERA',
-            nazione: 'ITALIA',
-            provinciaNascita: 'MT',
-            comuneNascita: 'MATERA',
-            indirizzo: 'c.da serra d\'alto snc',
-            cap: '75100',
-            cellulare: '3385269726',
-            mail: 'fg.randazzo@hotmail.it',
-            telefono: ''
-        },
-        {
-            id: 2,
-            nome: 'silvana',
-            cognome: 'colomba',
-            dataNascita: '03/11/1974',
-            fiscale: 'clmsvn74n43f423k',
-            sesso: 'F',
-            provinciaResidenza: 'MT',
-            comuneResidenza: 'MATERA',
-            nazione: 'ITALIA',
-            provinciaNascita: 'TP',
-            comuneNascita: 'BUSETO PALIZZOLO',
-            indirizzo: 'c.da serra d\'alto snc',
-            cap: '75100',
-            cellulare: '3385226362',
-            mail: 'silvana.colomba@tiscali.it',
-            telefono: ''
-        },
-        {
-            id: 3,
-            nome: 'vittorio',
-            cognome: 'randazzo',
-            dataNascita: '16/02/2015',
-            fiscale: 'rndvtt15f16f052f',
-            sesso: 'M',
-            provinciaResidenza: 'MT',
-            comuneResidenza: 'MATERA',
-            nazione: 'ITALIA',
-            provinciaNascita: 'PZ',
-            comuneNascita: 'POTENZA',
-            indirizzo: 'c.da serra d\'alto snc',
-            cap: '75100',
-            cellulare: '',
-            mail: '',
-            telefono: ''
-        },
-        {
-            id: 4,
-            nome: 'mariaelena',
-            cognome: 'randazzo',
-            dataNascita: '16/02/2015',
-            fiscale: 'rndvtt15f56f052f',
-            sesso: 'F',
-            provinciaResidenza: 'MT',
-            comuneResidenza: 'MATERA',
-            nazione: 'ITALIA',
-            provinciaNascita: 'PZ',
-            comuneNascita: 'POTENZA',
-            indirizzo: 'c.da serra d\'alto snc',
-            cap: '75100',
-            cellulare: '',
-            mail: '',
-            telefono: ''
-        }
-    ];
-
-    var listaAziende = [
-        {
-            id: 1,
-            descrizione: 'Natuzzi',
-            provincia: 'MT',
-            comune: 'Matera',
-            indirizzo: 'via delle chianche 18',
-            cap: '75100',
-            iscritti: [
-                {
-                    nome: 'francesco',
-                    cognome: 'randazzo',
-                    dataNascita: '14/07/1977',
-                    fiscale: 'rndfnc77l14f052f',
-                    sesso: 'M',
-                    provinciaResidenza: 'MT',
-                    comuneResidenza: 'MATERA',
-                    nazione: 'ITALIA',
-                    provinciaNascita: 'MT',
-                    comuneNascita: 'MATERA',
-                    indirizzo: 'c.da serra d\'alto snc',
-                    cap: '75100',
-                    cellulare: '3385269726',
-                    mail: 'fg.randazzo@hotmail.it',
-                    telefono: ''
-
-                }],
-            nonIscritti: [
-               {
-                   nome: 'Francesco Randazzo DellaVedova di Magliano Sabina',
-                   fiscale: 'rndfnc77l14f052f',
-                   provincia: 'Bolzano',
-                   ente: 'CASSA EDILE',
-                   liberoAl: '31/12/2016',
-                   azienda: 'Alla Spa',
-                   iscrittoA: 'FILLEA',
-                   badge: '3',
-                   delegheOwner: true
-
+            provincia: 'Bolzano',
+            ente: 'CASSA EDILE',
+            liberoAl: '31/12/2016',
+            azienda: 'Alla Spa',
+            iscrittoA: 'FILLEA',
                    
-               },
-               {
-                   nome: 'Francesco Randazzo1',
-                   fiscale: 'rndfnc77l14f052f11',
-                   provincia: 'Trento',
-                   ente: 'CASSA EDILE',
-                   liberoAl: '15/07/2016',
-                   azienda: '',
-                   iscrittoA: '',
-                   delegheOwner: false
-                   
-               }
-            ]
+            
         },
         {
-            id: 2,
-            descrizione: 'Euroedil',
-            provincia: 'MT',
-            comune: 'Matera',
-            indirizzo: 'via dell\'acqua',
-            cap: '75100'
-        },
-        {
-            id: 3,
-            descrizione: 'Nicoletti',
-            provincia: 'MT',
-            comune: 'Matera',
-            indirizzo: 'zona paip 2',
-            cap: '75100'
-        }
-
-
-
-    ];
-
-    var listaLavoratoriDbNazionale = [
-        {
-            id:1,
-            nome: 'francesco',
-            cognome: 'randazzo',
-            dataNascita: '14/07/1977',
+            nome: 'Francesco Randazzo',
             fiscale: 'rndfnc77l14f052f',
-            sesso: 'M',
-            provinciaResidenza: 'MT',
-            comuneResidenza: 'MATERA',
-            nazione: 'ITALIA',
-            provinciaNascita: 'MT',
-            comuneNascita: 'MATERA',
-            indirizzo: 'c.da serra d\'alto snc',
-            cap: '75100',
-            cellulare: '3385269726',
-            mail: 'fg.randazzo@hotmail.it',
-            telefono: '',
-            badge:'6',
-            stampeTessera:[
-                'TRENTO',
-                'BARI'
-            ],
-            quote: [
-                {
-                    provincia: 'Bolzano',
-                    settore: 'EDILE',
-                    ente: 'CASSA EDILE',
-                    azienda: 'zzzz',
-                    data: '31/12/2016',
-                    dataRegistrazione: '31/12/2016',
-                    tipo: 'IQA',
-                    competenza:'1-2016',
-                    livello: 'NUOVA ISCRIZIONE',
-                    quota: '0,01',
-                    contratto: '',
-                    showChevron : true
-
-                }],
-            deleghe: [
-                {
-                    provincia: 'Bolzano',
-                    settore: 'EDILE',
-                    ente: 'CASSA EDILE',
-                    azienda:'',
-                    data: '31/12/2016',
-                    causale: 'NUOVA ISCRIZIONE',
-                    causaleAnnullamento: '',
-                    causaleRevoca: '',
-                    stato: 'SOTTOSCRITTA',
-                    collaboratore: 'Spinelli Patrizia',
-                    note: '',
-                    showChevron: true
-                    
-
-                },
-                {
-                    provincia: 'Bolzano',
-                    settore: 'IMPIANTI FISSI',
-                    ente: '',
-                    azienda: 'NATUZZI',
-                    data: '31/12/2016',
-                    causale: 'CON REVOCA FILCA',
-                    causaleAnnullamento: '',
-                    causaleRevoca: '',
-                    stato: 'ATTIVATA',
-                    collaboratore: '',
-                    note: '',
-                    showChevron: true
-                }
-            ],
-            magazzino: [
-                {
-                    provincia: 'Bolzano',
-                    ente: 'CASSA EDILE',
-                    data: '31/12/2016',
-                    collaboratore: 'Spinelli Patrizia'
-                   
-                },
-                {
-                    provincia: 'Bolzano',
-                    ente: 'EDILCASSA',
-                    data: '31/12/2016',
-                    collaboratore: 'Spinelli Patrizia'
-                }
-            ],
-            nonIscrizioni:[
-                {
-                    provincia: 'Bolzano',
-                    ente: 'CASSA EDILE',
-                    liberoAl: '31/12/2016',
-                    azienda: 'Alla Spa',
-                    iscrittoA: 'FILLEA'
-                },
-                {
-                    provincia: 'Trento',
-                    ente: 'CASSA EDILE',
-                    liberoAl: '15/07/2016',
-                    azienda: '',
-                    iscrittoA: ''
-                }
-            ],
-            iscrizioni: [
-                {
-                    provincia: 'MATERA',
-                    settore: 'EDILE',
-                    ente: 'CASSA EDILE',
-                    periodo: 1,
-                    anno: 2014,
-                    azienda: 'SAS srl',
-                    piva: '',
-                    livello: '',
-                    quota: '0.01',
-                    contratto: '',
-                    showChevron: true
-                },
-                {
-                    provincia: 'POTENZA',
-                    settore: 'INPS',
-                    ente: '',
-                    periodo: -1,
-                    anno: 2016,
-                    azienda: '',
-                    piva: '',
-                    livello: '',
-                    quota: '',
-                    contratto: '',
-                    showChevron: true
-                }
-            ]
+            provincia: 'Bolzano',
+            ente: 'CASSA EDILE',
+            liberoAl: '31/12/2016',
+            azienda: 'Alla Spa',
+            iscrittoA: 'FILLEA',
         },
         {
-            id: 2,
-            nome: 'silvana',
-            cognome: 'colomba',
-            dataNascita: '03/11/1974',
-            fiscale: 'clmsvn74n43f423k',
-            sesso: 'F',
-            provinciaResidenza: 'MT',
-            comuneResidenza: 'MATERA',
-            nazione: 'ITALIA',
-            provinciaNascita: 'TP',
-            comuneNascita: 'BUSETO PALIZZOLO',
-            indirizzo: 'c.da serra d\'alto snc',
-            cap: '75100',
-            cellulare: '3385226362',
-            mail: 'silvana.colomba@tiscali.it',
-            telefono: '',
-            stampeTessera: [
-               
-            ],
-            iscrizioni: [
-                {
-                    provincia: 'MATERA',
-                    settore: 'IMPIANTI FISSI',
-                    ente: '',
-                    periodo: 1,
-                    anno: 2014,
-                    azienda: 'Progetto popolare',
-                    piva: '',
-                    livello: '',
-                    quota: '',
-                    contratto: ''
-                }
-            ]
+            nome: 'Francesco Randazzo',
+            fiscale: 'rndfnc77l14f052f',
+            provincia: 'Bolzano',
+            ente: 'CASSA EDILE',
+            liberoAl: '31/12/2016',
+            azienda: 'Alla Spa',
+            iscrittoA: 'FILLEA',
         },
         {
-            id: 3,
-            nome: 'vittorio',
-            cognome: 'randazzo',
-            dataNascita: '16/02/2015',
-            fiscale: 'rndvtt15f16f052f',
-            sesso: 'M',
-            provinciaResidenza: 'MT',
-            comuneResidenza: 'MATERA',
-            nazione: 'ITALIA',
-            provinciaNascita: 'PZ',
-            comuneNascita: 'POTENZA',
-            indirizzo: 'c.da serra d\'alto snc',
-            cap: '75100',
-            cellulare: '',
-            mail: '',
-            telefono: '',
-            stampeTessera: [
-                
-            ],
-            iscrizioni: [
-                {
-                    provincia: 'MATERA',
-                    settore: 'IMPIANTI FISSI',
-                    ente: '',
-                    periodo: 1,
-                    anno: 2016,
-                    azienda: 'Progetto popolare',
-                    piva: '',
-                    livello: '',
-                    quota: '',
-                    contratto: ''
-                }
-            ]
-        },
-        {
-            id: 4,
-            nome: 'mariaelena',
-            cognome: 'randazzo',
-            dataNascita: '16/02/2015',
-            fiscale: 'rndvtt15f56f052f',
-            sesso: 'F',
-            provinciaResidenza: 'MT',
-            comuneResidenza: 'MATERA',
-            nazione: 'ITALIA',
-            provinciaNascita: 'PZ',
-            comuneNascita: 'POTENZA',
-            indirizzo: 'c.da serra d\'alto snc',
-            cap: '75100',
-            cellulare: '',
-            mail: '',
-            telefono: '',
-            stampeTessera: [
-                
-                'BARI'
-            ],
-            iscrizioni: []
+            nome: 'Francesco Randazzo',
+            fiscale: 'rndfnc77l14f052f',
+            provincia: 'Bolzano',
+            ente: 'CASSA EDILE',
+            liberoAl: '31/12/2016',
+            azienda: 'Alla Spa',
+            iscrittoA: 'FILLEA',
         }
     ];
+
+    
 
 
 }());
 
-//var precedingDataPromise = db.getCredentials();
-//precedingDataPromise.done(function (data) {
 
-//    //se esistono mostro le precedenti
-//    if (data) {
-//        alert('esitono altre credenziali: username: ' + data.username + ' e password ' + data.password);
-//    } else {
-//        alert('non esistono altre credenziali');
-//    }
-
-//    //salvo le nuove creenziali
-//    var promise = db.setCredentials(username, password);
-
-//    //recupro le ultime credenziali per vedere se esistono
-//    promise.done(function () {
-//        //a questo punto posso notificare tutto
-//        alert('nuove credenziali salvate');
-//    });
-//});

@@ -22,9 +22,36 @@
 
     var dataSourceIscrizioni = ko.observable(new DevExpress.data.DataSource({ store: [] }));
     var dataSourceNonIscritto = ko.observable(new DevExpress.data.DataSource({ store: [] }));
+    var currentSelectedAzienda = ko.observable('');
+    var currentSelectedLavoratore = ko.observable('');
 
     var viewModel = {
-
+        //parametri actionsheet
+        actionSheetData: [
+            { text: "Vai al lavoratore" },
+            //{ text: "Vai all'azienda" }
+        ],
+        actionSheetVisible: ko.observable(false),
+        processSheetClick: function (e) {
+            //document.location.href = 'tel:445546456';
+            if (e.itemData.text == "Vai al lavoratore") {
+                //navigo al lavoratore...
+                Fenealweb.app.navigate({
+                    view: 'lavoratore',
+                    fiscale: currentSelectedLavoratore()
+                });
+                return;
+            }
+            //if (currentSelectedAzienda()) {
+            //    Fenealweb.app.navigate({
+            //        view: 'azienda',
+            //        id: currentSelectedAzienda()
+            //    });
+            //} else {
+            //    DevExpress.ui.notify("Azienda non presente", "error", 2500);
+            //}
+            
+        },
         //queste sono le proprietà della navbar
         navData: navData,
         navSelectedIndex: currentTab,
@@ -32,11 +59,14 @@
         iscrittiOptions: {
             dataSource: dataSourceIscrizioni,
             noDataText: 'Nessuna iscrizione trovata',
-            onItemSwipe: function (e) {
-                DevExpress.ui.notify("swiped", "success", 1500);
-            },
+            //onItemSwipe: function (e) {
+            //    DevExpress.ui.notify("swiped", "success", 1500);
+            //},
             onItemClick: function (e) {
-                alert('clickkk');
+                var iscritto = e.itemData;
+                currentSelectedLavoratore(iscritto.fiscale)
+
+                viewModel.actionSheetVisible(true);
             }
         },
         nonIscrittiOptions: {
@@ -45,6 +75,13 @@
             onItemSwipe: function (e) {
                 DevExpress.ui.notify("swiped", "success", 1500);
             },
+            onItemClick: function (e) {
+                var nonIscritto = e.itemData;
+                currentSelectedAzienda(nonIscritto.azienda);
+                currentSelectedLavoratore(nonIscritto.fiscale)
+               
+                viewModel.actionSheetVisible(true);
+            }
 
         },
         //queste le proprietà di base

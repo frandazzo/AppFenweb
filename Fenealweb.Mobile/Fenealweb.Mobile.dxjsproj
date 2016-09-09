@@ -3,7 +3,7 @@
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a1ae969b-fc0b-4387-aa53-3b14c560df77</ProjectGuid>
-    <AutoAssignPort>False</AutoAssignPort>
+    <AutoAssignPort>True</AutoAssignPort>
     <RunInSimulator>True</RunInSimulator>
     <UploadPluginsToTheCourier>True</UploadPluginsToTheCourier>
     <RootNamespace>Fenealweb</RootNamespace>
@@ -125,6 +125,21 @@
     <Content Include="views\home\home.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="views\iscritti\iscrittiResult.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\iscritti\iscrittiResult.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\iscritti\nonIscrittiResult.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\iscritti\quota1.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\iscritti\quota1.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="views\iscritti\reportIscritti.dxview">
       <SubType>Content</SubType>
     </Content>
@@ -195,6 +210,12 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\login\login.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\noniscritti\nonIscrittiResult.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\noniscritti\nonIscrittiResult.js">
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\noniscritti\reportNonIscritti.dxview">

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Fenealweb</title>
@@ -68,30 +68,29 @@
     <!--<script type="text/javascript">
         window.Fenealweb = window.Fenealweb || {};
         window.Fenealweb.data = window.Fenealweb.data || {};
+        $(function () {
+            Fenealweb.localizationInitiated = $.when(
 
-        function getPromise() {
-            try{
-                return $.get("js/localization/dx.all.it.json");
-            } catch (e) {
-                return {};
-            }
-           
-        }
-
-        Fenealweb.localizationInitiated = $.when(
-            getPromise()
-           
-         ).then(function (data) {
-             Globalize.loadMessages(data);
-         }).
-            then(
-                Globalize.load
+              $.getJSON("js/cldr/supplemental/likelySubtags.json"),
+              $.getJSON("js/cldr/supplemental/timeData.json"),
+              $.getJSON("js/cldr/supplemental/weekData.json"),
+              $.getJSON("js/cldr/supplemental/currencyData.json"),
+              $.getJSON("js/cldr/supplemental/numberingSystems.json")
             ).then(function () {
+                // Normalize $.get results, we only need the JSON, not the request statuses.
+                return [].slice.apply(arguments, [0]).map(function (result) {
+                    return result[0];
+                });
+            }).then(Globalize.load).then(function () {
+                    $.get("js/localization/dx.all.it.json").done(function (data) {
 
-                Globalize.locale('it');
-
+                        Globalize.loadMessages(JSON.parse(data))
+                        Globalize.locale('it');
+                    });
             });
+        });
     </script>-->
+
 
     <link rel="stylesheet" type="text/css" href="index.css" />
     <script type="text/javascript" src="fenealweb.shared.config.js"></script>
@@ -181,6 +180,16 @@
 
 		<script type="text/javascript" src="views/aziende/partialAzienda.js"></script>
 		<link rel="dx-template" type="text/html" href="views/aziende/partialAzienda.dxview"/>
+
+
+		<script type="text/javascript" src="views/iscritti/iscrittiResult.js"></script>
+		<link rel="dx-template" type="text/html" href="views/iscritti/iscrittiResult.dxview"/>
+
+		<script type="text/javascript" src="views/noniscritti/nonIscrittiResult.js"></script>
+		<link rel="dx-template" type="text/html" href="views/noniscritti/nonIscrittiResult.dxview"/>
+
+		<script type="text/javascript" src="views/iscritti/quota1.js"></script>
+		<link rel="dx-template" type="text/html" href="views/iscritti/quota1.dxview"/>
 </head>
 <body>
     <div class="dx-viewport"></div>

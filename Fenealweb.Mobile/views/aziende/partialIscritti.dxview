@@ -1,5 +1,13 @@
 <div data-options="dxView : { name: 'partialIscritti', title: 'partialIscritti' } " >
-   
+    <div data-bind="dxActionSheet: {
+                dataSource: actionSheetData,
+                visible: actionSheetVisible,
+                title: 'Scegli operazione',
+                onItemClick: processSheetClick,
+                showTitle: true,
+                showCancelButton: true,
+                cancelText: 'Annulla'
+            }"></div>
     <div class="azienda-partial-list-container" data-bind="dxList: iscrittiOptions">
         <div data-options="dxTemplate: { name:'item' }">
             <div class="iscrizioneItem">

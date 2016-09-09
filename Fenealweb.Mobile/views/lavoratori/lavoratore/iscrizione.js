@@ -13,7 +13,10 @@
             viewModel.actionSheetVisible(true);
         },
         processSheetClick: function (e) {
-            alert(iscrizione.azienda);
+            Fenealweb.app.navigate({
+                view: 'azienda',
+                id: iscrizione.azienda
+            });
         }
     };
 

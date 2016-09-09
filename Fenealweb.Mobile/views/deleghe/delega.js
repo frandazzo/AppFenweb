@@ -14,7 +14,13 @@
             viewModel.actionSheetVisible(true);
         },
         processSheetClick: function (e) {
-            alert(delega.azienda);
+            
+            Fenealweb.app.navigate({
+                view: 'azienda',
+                id: delega.azienda
+            });
+           
+            
         }
     };
 

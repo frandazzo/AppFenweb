@@ -13,7 +13,10 @@
             viewModel.actionSheetVisible(true);
         },
         processSheetClick: function (e) {
-            alert(quota.azienda);
+            Fenealweb.app.navigate({
+                view: 'azienda',
+                id: quota.azienda
+            });
         }
     };
 

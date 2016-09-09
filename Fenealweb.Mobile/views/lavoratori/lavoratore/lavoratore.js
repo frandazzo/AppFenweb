@@ -56,7 +56,14 @@
         actionSheetVisible: ko.observable(false),
         processSheetClick: function (e) {
             //document.location.href = 'tel:445546456';
-           alert(currentSelectedAzienda());
+
+        
+            Fenealweb.app.navigate({
+                view: 'azienda',
+                id: currentSelectedAzienda()
+            });
+           
+          
         },
         //paramtri popup
         changeParamsPopupVisible: ko.observable(false),

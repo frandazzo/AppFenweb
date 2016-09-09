@@ -13,10 +13,6 @@
                 p = a.searchLavoratoriDbNazionale(loadOptions);
             else
                 p = a.searchLavoratori(loadOptions);
-
-
-           
-          
             return p;
         },
         //store: listaLavoratori,
@@ -48,9 +44,9 @@
             bounceEnabled:false,
             dataSource: dataSource,
             noDataText: 'Nessun lavoratore trovato!',
-            onItemSwipe: function (e) {
-                DevExpress.ui.notify("The \"" + e.itemData.completeName + "\" item is swiped", "success", 1500);
-            },
+            //onItemSwipe: function (e) {
+            //    DevExpress.ui.notify("The \"" + e.itemData.completeName + "\" item is swiped", "success", 1500);
+            //},
             onItemClick: function (e) {
                 
                 Fenealweb.app.navigate({

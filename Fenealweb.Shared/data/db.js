@@ -431,7 +431,7 @@
 
     //*********************************************
     //*********************************************
-    //classe per la gesrione delle entita geografiche
+    //classe per la gesrione dei lavoratori
     var lavoratoriStore = AbstractRemoteStore.extend({
         ctor: function () {
             lavoratoriStore.super.ctor.call(this);
@@ -536,7 +536,47 @@
     //*********************************************
 
 
+    //*********************************************
+    //*********************************************
+    //classe per la gesrione delle aziende
+    var aziendeStore = AbstractRemoteStore.extend({
+        ctor: function () {
+            aziendeStore.super.ctor.call(this);
+        },
+        getAzienda: function (ragioneSociale) {
 
+          
+            var params = {
+                route: '/firmforapp?description=' + encodeURIComponent(ragioneSociale),
+                method: 'GET'
+
+            }
+
+            return this.loadProtectedService(params);
+        },
+        getAziende: function (ragioneSociale) {
+
+            if (!ragioneSociale) {
+                ragioneSociale = '';
+            }
+
+            var queryString = '?description=' + encodeURIComponent(ragioneSociale);
+            
+
+            var params = {
+                route: '/remotefirmsearchforapp' + queryString,
+                method: 'GET'
+
+            }
+
+            return this.loadProtectedService(params);
+        }
+      
+
+    });
+
+    //*********************************************
+    //*********************************************
 
 
 
@@ -546,4 +586,5 @@
     Fenealweb.db.geoRemoteStore = geoRemoteStore;
     Fenealweb.db.lavoratoriStore = lavoratoriStore;
     Fenealweb.db.dashboardStore = dashboardStore
+    Fenealweb.db.aziendeStore = aziendeStore;
 }());

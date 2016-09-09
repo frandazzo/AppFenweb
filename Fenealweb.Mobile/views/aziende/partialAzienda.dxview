@@ -4,30 +4,24 @@
     <div  class="dx-fieldset">
 
         <div style="clear:both" class="dx-fieldset-header worker">Dati azienda</div>
-        <div class="dx-field">
-            <div class="dx-field-label">Rag. sociale</div>
-            <div class="dx-field-value-static">Natuzzi soa</div>
-        </div>
+       
         <div class="dx-field">
             <div class="dx-field-label">Provincia</div>
-            <div class="dx-field-value-static">MT</div>
+            <div class="dx-field-value-static" data-bind="text:currentAzienda().provincia"></div>
         </div>
         <div class="dx-field">
             <div class="dx-field-label">Comune</div>
-            <div class="dx-field-value-static">Matera</div>
+            <div class="dx-field-value-static" data-bind="text:currentAzienda().comune"></div>
         </div>
         <div class="dx-field">
             <div class="dx-field-label">Indirizzo</div>
-            <div class="dx-field-value-static">Via Gravina 39</div>
+            <div class="dx-field-value-static" data-bind="text:currentAzienda().indirizzo"></div>
         </div>
         <div class="dx-field">
             <div class="dx-field-label">Cap</div>
-            <div class="dx-field-value-static">75100</div>
+            <div class="dx-field-value-static" data-bind="text:currentAzienda().cap"></div>
         </div>
-        <div class="dx-field">
-            <div class="dx-field-label">Note</div>
-            <div class="dx-field-value-static">...</div>
-        </div>
+      
     </div>
 
 
