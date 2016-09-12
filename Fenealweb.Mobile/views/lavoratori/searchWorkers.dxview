@@ -1,4 +1,5 @@
 <div data-options="dxView : { name: 'searchWorkers', title: 'Cerca lavoratori' } " >
+    <div data-bind="dxCommand: {onExecute:newLav, title: 'Crea', id: 'create' }"></div>
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
         <div data-bind="dxScrollView: {}">
 

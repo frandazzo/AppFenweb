@@ -1,4 +1,5 @@
 <div data-options="dxView : { name: 'delega', title: 'Delega lavoratore' } " >
+    <div data-bind="dxCommand: {icon:'edit', title: 'Modifica', id: 'edit' }"></div>
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
        
         <div data-bind="dxScrollView: {  }">

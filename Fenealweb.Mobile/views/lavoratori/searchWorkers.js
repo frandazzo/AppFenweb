@@ -8,6 +8,37 @@
     
 
     var viewModel = {
+
+        newLav:function(){
+
+            var lav = {
+                id: '0',
+                nome: '',
+                cognome: '',
+                dataNascita: '',
+                dataNascitaTime: 0,
+                sesso: 'M',
+                fiscale: '',
+                nazione: '',
+                provinciaResidenza: '',
+                comuneResidenza: '',
+                provinciaNascita: '',
+                comuneNascita: '',
+                indirizzo: '',
+                cap: '',
+                cellulare: '',
+                telefono: '',
+                mail:''
+
+            };
+
+
+            Fenealweb.app.navigate({
+                view: 'editLavoratore',
+                id: lav
+            });
+
+        },
         search: function () {
 
             var searchParams = {

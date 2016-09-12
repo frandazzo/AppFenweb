@@ -3,6 +3,8 @@
 
 
     var lavoratore = params.id;
+    var updateOperation = lavoratore.id != "0" ? true : false;
+
     var title = ko.observable('Aggiorna dati');
     if (lavoratore.id == "0")
         title('Crea lavoratore');
@@ -60,6 +62,9 @@
     var loadPanelVisibile = ko.observable(false);
 
     var viewModel = {
+        fiscaleOptions : function(){
+            alert('ciao');
+        },
         loadOptions:  {
                 visible: loadPanelVisibile,
                 showIndicator: true,
@@ -72,6 +77,7 @@
         title: title,
         save: function(){
             var formInstance = $('#form').dxForm('instance');
+            var data = formInstance.option('formData');
             //valido
             var res = formInstance.validate();
             if (!res.isValid) {
@@ -80,15 +86,35 @@
                 return;
             }
             loadPanelVisibile(true);
-            var data = formInstance.option('formData');
             
-            //invio tutti i dati al server previa correzione del campo dataNascita...
+
+            //invio tutti i dati al server previa correzione del campo dataNascita... id ecc
+            data.dataNascitaTime = formInstance.getEditor('dataNascita').option('value'),
+            data.id = lavoratore.id;
+
+           
             var svc = new Fenealweb.services.lavoratoriService();
             svc.saveLavoratore(data)
             .done(function () {
                 Fenealweb.app.currentViewModel = null;
                 loadPanelVisibile(false);
-                Fenealweb.app.back();
+                //se creo un nuovo elemento
+                //vado direttemtne alla vista per il caricamento dei dati
+                //altrimenti vado indietro
+                if (updateOperation) {
+                    Fenealweb.app.back();
+                } else {
+                   
+                    Fenealweb.app.navigate({
+                        view: 'lavoratore',
+                        fiscale: data.fiscale
+                    }, { target: 'current' });
+                    
+                }
+
+               
+               
+                
 
             })
             .fail(function (error) {
@@ -215,6 +241,25 @@
                        },
                        {
                            dataField: "fiscale",
+                           //template: function (data, itemElement) {
+
+                           //    console.log(data);
+                           //    var instance1 = $('<div>').dxTextBox({
+                           //        value: data.editorOptions.value
+
+                           //    });
+                           //    var instance = $('<div>').dxButton({
+
+                           //        text: 'ciao',
+                           //        onClick: function () {
+                           //            alert('cica ciao');
+                           //        }
+                           //    });
+
+                           //    instance1.appendTo(itemElement);
+                           //     instance.appendTo(itemElement);
+                               
+                           //},
                            editorOptions: {
                                placeholder: 'Codice fiscale'
                            },

@@ -146,10 +146,22 @@
     <Content Include="views\iscritti\reportIscritti.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="views\lavoratori\editing\editDelega.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\editing\editDelega.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="views\lavoratori\editing\editLavoratore.dxview">
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\lavoratori\editing\editLavoratore.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\editing\editMagDelega.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\editing\editMagDelega.js">
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\lavoratori\lavoratore\partialDeleghe.css">

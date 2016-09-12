@@ -54,6 +54,22 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 					{
 						"id": "checkTesseramento",
 						"location": "menu"
+					},
+					{
+						"id": "delega",
+						"location": "menu"
+					},
+					{
+						"id": "nuovadelega",
+						"location": "menu"
+					},
+					{
+						"id": "nuovadelegamagazzino",
+						"location": "menu"
+					},
+					{
+						"id": "nuovaricerca",
+						"location": "menu"
 					}
 				]
 			},
@@ -61,6 +77,22 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 				"commands": [
 					{
 						"id": "checkTesseramento",
+						"location": "menu"
+					},
+					{
+						"id": "delega",
+						"location": "menu"
+					},
+					{
+						"id": "nuovadelega",
+						"location": "menu"
+					},
+					{
+						"id": "nuovadelegamagazzino",
+						"location": "menu"
+					},
+					{
+						"id": "nuovaricerca",
 						"location": "menu"
 					}
 				]
@@ -70,6 +102,22 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 					{
 						"id": "checkTesseramento",
 						"location": "menu"
+					},
+					{
+						"id": "delega",
+						"location": "menu"
+					},
+					{
+						"id": "nuovadelega",
+						"location": "menu"
+					},
+					{
+						"id": "nuovadelegamagazzino",
+						"location": "menu"
+					},
+					{
+						"id": "nuovaricerca",
+						"location": "menu"
 					}
 				]
 			},
@@ -78,6 +126,22 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 					{
 						"id": "checkTesseramento",
 						"location": "menu"
+					},
+					{
+						"id": "delega",
+						"location": "menu"
+					},
+					{
+						"id": "nuovadelega",
+						"location": "menu"
+					},
+					{
+						"id": "nuovadelegamagazzino",
+						"location": "menu"
+					},
+					{
+						"id": "nuovaricerca",
+						"location": "menu"
 					}
 				]
 			},
@@ -85,6 +149,22 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 				"commands": [
 					{
 						"id": "checkTesseramento",
+						"location": "menu"
+					},
+					{
+						"id": "delega",
+						"location": "menu"
+					},
+					{
+						"id": "nuovadelega",
+						"location": "menu"
+					},
+					{
+						"id": "nuovadelegamagazzino",
+						"location": "menu"
+					},
+					{
+						"id": "nuovaricerca",
 						"location": "menu"
 					}
 				]

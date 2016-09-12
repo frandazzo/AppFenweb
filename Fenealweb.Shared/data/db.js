@@ -579,6 +579,42 @@
     //*********************************************
 
 
+    //*********************************************
+    //*********************************************
+    //classe per la gesrione delle deleghe
+    var delegheStore = AbstractRemoteStore.extend({
+        ctor: function () {
+            delegheStore.super.ctor.call(this);
+        },
+        getCollaboratori: function () {
+
+
+            var params = {
+                route: '/values/collaborators',
+                method: 'GET'
+
+            }
+
+            return this.loadProtectedService(params);
+        },
+        getCausaliDelega: function () {
+
+
+            var params = {
+                route: '/values/causalideleghe',
+                method: 'GET'
+            }
+
+            return this.loadProtectedService(params);
+        }
+       
+
+    });
+
+    //*********************************************
+    //*********************************************
+
+
 
     Fenealweb.db = {};
     Fenealweb.db.securityLocalStore = securityLocalStore;
@@ -587,4 +623,5 @@
     Fenealweb.db.lavoratoriStore = lavoratoriStore;
     Fenealweb.db.dashboardStore = dashboardStore
     Fenealweb.db.aziendeStore = aziendeStore;
+    Fenealweb.db.delegheStore = delegheStore;
 }());

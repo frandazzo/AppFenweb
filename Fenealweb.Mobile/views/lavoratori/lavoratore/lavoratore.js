@@ -73,7 +73,7 @@
             });
     }
 
-    var current = ko.observable({});
+    var current = ko.observable(null);
     var currentTab = ko.observable(0);
 
  
@@ -88,6 +88,17 @@
     var currentSelectedAzienda = ko.observable('');
 
     var viewModel = {
+
+        //comandi
+        nuovaDelegaMag: function(){
+
+        },
+        nuovaDelega: function(){
+
+        },
+        nuovaRicerca: function(){
+
+        },
         modifica:function(){
             Fenealweb.app.navigate({
                 view: 'editLavoratore',
@@ -116,6 +127,8 @@
             viewModel.changeParamsPopupVisible(false);
         },
         stampeTesseraLavoratore: ko.computed(function () {
+            if (!current())
+                return '';
             if (!current().stampeTessera)
                 return 'Nessuno';
             if (current().stampeTessera.length == 0)
@@ -224,7 +237,9 @@
             
         }),
         currentWorker: current,
-        currentWorkerCompleteName: function(){
+        currentWorkerCompleteName: function () {
+            if (!current())
+                return '';
             return current().nome.toUpperCase() + ' ' + current().cognome.toUpperCase();
         },
         //smsClick: function(){

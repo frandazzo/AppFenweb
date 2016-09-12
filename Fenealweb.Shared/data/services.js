@@ -216,7 +216,16 @@
         getGeoComuni: function (provincia) {
             var svc = new Fenealweb.db.geoRemoteStore();
             return svc.getCities(provincia);
+        },
+        getListaCollaboratori: function () {
+            var svc = new Fenealweb.db.delegheStore();
+            return svc.getCollaboratori();
+        },
+        getListaCausaliDelega: function () {
+            var svc = new Fenealweb.db.delegheStore();
+            return svc.getCausaliDelega();
         }
+
 
     });
     var dashboardService = Fenealweb.core.AObject.extend({

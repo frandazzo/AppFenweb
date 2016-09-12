@@ -1,4 +1,5 @@
-<div data-options="dxView : { name: 'magazzino', title: 'Delega in magazino' } " >
+<div data-options="dxView : { name: 'magazzino', title: 'Delega in magazzino' } " >
+    <div data-bind="dxCommand: { title: 'Modifica', id: 'edit', icon:'edit' }"></div>
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
      
 
@@ -25,8 +26,6 @@
                 <div class="dx-field-label">Collaboratore</div>
                 <div class="dx-field-value-static" data-bind="text:magazzino.collaboratore ">Patrizia spinelli</div>
             </div>
-           
-           
         </div>
 
 

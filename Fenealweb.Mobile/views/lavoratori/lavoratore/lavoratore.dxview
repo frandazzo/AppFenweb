@@ -1,4 +1,8 @@
 <div data-options="dxView : { name: 'lavoratore' } " >
+    <div data-bind="dxCommand: { onExecute: nuovaRicerca, title: 'Nuova ricerca', id: 'nuovaricerca' }"></div>
+    <div data-bind="dxCommand: {  onExecute: nuovaDelega,title: 'Nuova delega', id: 'nuovadelega' }"></div>
+    <div data-bind="dxCommand: {  onExecute: nuovaDelegaMag,title: 'Nuova delega mag.', id: 'nuovadelegamagazzino' }"></div>
+   
     <div data-bind="dxCommand: {icon:'edit', onExecute:modifica, title: 'Modifica', id: 'edit' }"></div>
     <div data-bind="dxCommand: { onExecute: tessereClick, title: 'Verifica tesseramento', id: 'checkTesseramento' }"></div>
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
@@ -10,34 +14,41 @@
                 
                 <div class="worker-header" data-bind="text:currentWorkerCompleteName()"></div>
                 <br />
-                <div class="worker-call" data-bind="style:{display: currentWorker().cellulare ? 'block': 'none' }">
+                <!-- ko ifnot: currentWorker() -->
+                    <h1>Nessun dato trovato</h1>
+                <!-- /ko -->
 
-                    <span class="worker-cell " data-bind="text: currentWorker().cellulare"></span>
-                    <div class="worker-cell-functions">
-                        <a style="text-decoration: initial;" data-bind="attr:{href:'sms:' + currentWorker().cellulare }" ><span class="dx-icon-tel base-icon"></span></a>
-                        <a style="text-decoration: initial;" data-bind="attr:{href:'sms:' + currentWorker().cellulare }"><span class="dx-icon-message  base-icon"></span></a>
+                <!-- ko if: currentWorker() -->
+                    <div class="worker-call" data-bind="style:{display: currentWorker().cellulare ? 'block': 'none' }">
+
+                        <span class="worker-cell " data-bind="text: currentWorker().cellulare"></span>
+                        <div class="worker-cell-functions">
+                            <a style="text-decoration: initial;" data-bind="attr:{href:'sms:' + currentWorker().cellulare }"><span class="dx-icon-tel base-icon"></span></a>
+                            <a style="text-decoration: initial;" data-bind="attr:{href:'sms:' + currentWorker().cellulare }"><span class="dx-icon-message  base-icon"></span></a>
+                        </div>
+
                     </div>
-                    
-                </div>
-                
              
-                <!-- ko if: navSelectedIndex() == 0 -->
-                <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialLavoratore' } "></div>
-                <!-- /ko -->
-                <!-- ko if: navSelectedIndex() == 1 -->
-                <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialDbNazionale' } "></div>
-                <!-- /ko -->
-                <!-- ko if: navSelectedIndex() == 2 -->
-                <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialDeleghe' } "></div>
-                <!-- /ko -->
-                <!-- ko if: navSelectedIndex() == 3 -->
-                <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialNonIscritto' } "></div>
-                <!-- /ko -->
-                <!-- ko if: navSelectedIndex() == 4 -->
-                <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialMagazzino' } "></div>
-                <!-- /ko -->
-                <!-- ko if: navSelectedIndex() == 5 -->
-                <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialQuote' } "></div>
+                    <!-- ko if: navSelectedIndex() == 0 -->
+                    <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialLavoratore' } "></div>
+                    <!-- /ko -->
+                    <!-- ko if: navSelectedIndex() == 1 -->
+                    <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialDbNazionale' } "></div>
+                    <!-- /ko -->
+                    <!-- ko if: navSelectedIndex() == 2 -->
+                    <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialDeleghe' } "></div>
+                    <!-- /ko -->
+                    <!-- ko if: navSelectedIndex() == 3 -->
+                    <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialNonIscritto' } "></div>
+                    <!-- /ko -->
+                    <!-- ko if: navSelectedIndex() == 4 -->
+                    <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialMagazzino' } "></div>
+                    <!-- /ko -->
+                    <!-- ko if: navSelectedIndex() == 5 -->
+                    <div class="worker-clear" data-options="dxViewPlaceholder : { viewName: 'partialQuote' } "></div>
+                    <!-- /ko -->
+
+
                 <!-- /ko -->
             </div>
 
