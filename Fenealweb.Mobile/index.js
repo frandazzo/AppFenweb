@@ -56,6 +56,36 @@ $(function() {
         navigateToRootViewMode: "keepHistory",
         useViewTitleAsBackText: true
     });
+
+
+    //imposto la richiestaq di uscita dalla vista nel caso di maschere che hanno la finalità
+    //di aggiornare un dato
+   
+    Fenealweb.app.on("navigatingBack", function (e) {
+        if (!Fenealweb.app.currentViewModel)
+            return;
+        if (Fenealweb.app.currentViewModel.name.startsWith("edit")) {
+
+
+            if (!confirm("I dati non sono stati salvati. Uscire comunque?")) {
+                e.cancel = true;
+                return;
+            };
+
+
+            //var result = DevExpress.ui.dialog.confirm("I dati non sono stati salvati. Uscrire comunque?", "Annulla");
+            //result.done(function (dialogResult) {
+
+            //    if (dialogResult == "Confirmed") {
+            //        e.cancel = true;
+            //        return;
+            //    }
+            //});
+
+            //Execute the required code
+        };
+        Fenealweb.app.currentViewModel = null;
+    });
     
 
     $(window).unload(function() {

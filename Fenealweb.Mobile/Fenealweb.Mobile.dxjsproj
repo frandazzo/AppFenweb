@@ -146,6 +146,12 @@
     <Content Include="views\iscritti\reportIscritti.js">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="views\lavoratori\editing\editLavoratore.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\lavoratori\editing\editLavoratore.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="views\lavoratori\lavoratore\partialDeleghe.css">
       <SubType>Content</SubType>
     </Content>
@@ -253,6 +259,7 @@
     <Folder Include="Resources\" />
     <Folder Include="views\" />
     <Folder Include="views\lavoratori\lavoratore" />
+    <Folder Include="views\lavoratori\editing" />
     <Folder Include="views\login" />
     <Folder Include="views\home" />
     <Folder Include="views\lavoratori" />

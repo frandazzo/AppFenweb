@@ -104,8 +104,6 @@
         }
        
     });
-   
-
     var commonsService = Fenealweb.core.AObject.extend({
         ctor: function () {
             commonsService.super.ctor.call(this);
@@ -221,9 +219,6 @@
         }
 
     });
-
-
-
     var dashboardService = Fenealweb.core.AObject.extend({
         ctor: function () {
             dashboardService.super.ctor.call(this);
@@ -578,7 +573,6 @@
         }
 
     });
-
     var lavoratoriService = Fenealweb.core.AObject.extend({
         ctor: function () {
             lavoratoriService.super.ctor.call(this);
@@ -661,13 +655,57 @@
             //}, 2000);
 
             //return d.promise();
+        },
+
+        saveLavoratore: function(lavoratore){
+            var d = $.Deferred();
+
+            setTimeout(function () {
+
+               d.resolve("ok");
+
+            }, 2000);
+
+            return d.promise();
+        },
+        saveDelega: function (delega) {
+            var d = $.Deferred();
+
+            setTimeout(function () {
+
+                d.resolve("ok");
+
+            }, 2000);
+
+            return d.promise();
+        },
+        saveMagazzinoDelega: function (delega) {
+            var d = $.Deferred();
+
+            setTimeout(function () {
+
+                d.resolve("ok");
+
+            }, 2000);
+
+            return d.promise();
         }
 
     });
-
     var aziendeService = Fenealweb.core.AObject.extend({
         ctor: function () {
             aziendeService.super.ctor.call(this);
+        },
+        saveAzienda: function(azienda){
+            var d = $.Deferred();
+
+            setTimeout(function () {
+
+                d.resolve("ok");
+
+            }, 2000);
+
+            return d.promise();
         },
         searchAziende: function (descrizione) {
 
@@ -707,8 +745,6 @@
         }
 
     });
-
-
     var reportService = Fenealweb.core.AObject.extend({
         ctor: function () {
             reportService.super.ctor.call(this);

@@ -29,7 +29,49 @@
 
    
    
+    function loadData() {
+        viewModel.dataReady(false);
+        var svc = new Fenealweb.services.lavoratoriService();
+        svc.getLavoratoreByFiscalCode(params.fiscale)
+            .done(function (data) {
+                if (data.iscrizioni) {
+                    navData()[1].badge = data.iscrizioni.length;
+                    dataSourceIscrizioni(new DevExpress.data.DataSource(data.iscrizioni));
+                }
 
+                if (data.nonIscrizioni) {
+                    navData()[3].badge = data.nonIscrizioni.length;
+                    dataSourceNonIscritto(new DevExpress.data.DataSource(data.nonIscrizioni));
+                }
+
+                if (data.deleghe) {
+                    navData()[2].badge = data.deleghe.length;
+                    dataSourceDeleghe(new DevExpress.data.DataSource(data.deleghe));
+                }
+
+
+                if (data.magazzino) {
+                    navData()[4].badge = data.magazzino.length;
+                    dataSourceMagazzino(new DevExpress.data.DataSource(data.magazzino));
+                }
+
+
+                if (data.quote) {
+                    navData()[5].badge = data.quote.length;
+                    dataSourceQuote(new DevExpress.data.DataSource(data.quote));
+                }
+
+                current(data);
+                viewModel.dataReady(true);
+
+
+
+            })
+            .fail(function (error) {
+                DevExpress.ui.notify(error, "error", 2500);
+                viewModel.dataReady(true);
+            });
+    }
 
     var current = ko.observable({});
     var currentTab = ko.observable(0);
@@ -47,7 +89,10 @@
 
     var viewModel = {
         modifica:function(){
-            alert('modifca');
+            Fenealweb.app.navigate({
+                view: 'editLavoratore',
+                id: current()
+            });
         },
         //parametri actionsheet
         actionSheetData: [
@@ -197,51 +242,16 @@
         },
         dataReady: ko.observable(false),
         viewRendered: function () {
-            var svc = new Fenealweb.services.lavoratoriService();
-            svc.getLavoratoreByFiscalCode(params.fiscale)
-                .done(function (data) {
-                    if (data.iscrizioni) {
-                        navData()[1].badge = data.iscrizioni.length;
-                        dataSourceIscrizioni(new DevExpress.data.DataSource(data.iscrizioni));
-                    }
-                       
-                    if (data.nonIscrizioni) {
-                        navData()[3].badge = data.nonIscrizioni.length;
-                        dataSourceNonIscritto(new DevExpress.data.DataSource(data.nonIscrizioni));
-                    }
-                        
-                    if (data.deleghe) {
-                        navData()[2].badge = data.deleghe.length;
-                        dataSourceDeleghe(new DevExpress.data.DataSource(data.deleghe));
-                    }
-
-
-                    if (data.magazzino) {
-                        navData()[4].badge = data.magazzino.length;
-                        dataSourceMagazzino(new DevExpress.data.DataSource(data.magazzino));
-                    }
-
-
-                    if (data.quote) {
-                        navData()[5].badge = data.quote.length;
-                        dataSourceQuote(new DevExpress.data.DataSource(data.quote));
-                    }
-
-                    current(data);
-                    viewModel.dataReady(true);
-
-
-                    
-                })
-                .fail(function (error) {
-                    DevExpress.ui.notify(error, "error", 2500);
-                    viewModel.dataReady(true);
-                });
+            loadData();
             
         },
-        viewShown: function(){
+        viewShown: function(e){
 
-           
+            if (e.direction == 'backward') {
+                //se sto venendo dalla maschera di edit allora posso ricarficare...
+                //....se necessario
+                loadData();
+            }
            
         }
 

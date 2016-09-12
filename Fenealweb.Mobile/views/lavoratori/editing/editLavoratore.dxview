@@ -1,0 +1,12 @@
+<div data-options="dxView : { name: 'editLavoratore' } " >
+    <div data-bind="dxCommand: { title: 'Salva', id: 'save' , onExecute: save}"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+
+        <div style="margin:12px" data-bind="dxScrollView: {  }">
+
+            <div id="form" data-bind="dxForm: formOptions"></div>
+           
+        </div>
+        <div data-bind="dxLoadPanel: loadOptions"></div>
+    </div>
+</div>

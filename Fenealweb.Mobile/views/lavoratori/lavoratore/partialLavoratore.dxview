@@ -68,6 +68,10 @@
                     <div class="dx-field-value-static" data-bind="text:currentWorker().dataNascita"></div>
                 </div>
                 <div class="dx-field">
+                    <div class="dx-field-label">Sesso</div>
+                    <div class="dx-field-value-static" data-bind="text:currentWorker().sesso"></div>
+                </div>
+                <div class="dx-field">
                     <div class="dx-field-label">Nazione</div>
                     <div class="dx-field-value-static" data-bind="text:currentWorker().nazione"></div>
                 </div>
