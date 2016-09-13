@@ -27,7 +27,8 @@
 
     //normalizzo la data di nascita
     lavoratore.dataNascita = new Date(lavoratore.dataNascitaTime);
-
+    //faccio diventare un observabile la stringa del codice fiscale
+    lavoratore.fiscale = ko.observable(lavoratore.fiscale);
 
     var geoProvinceNascitaSelected = ko.observable('');
     var comuneValue = ko.observable('');
@@ -83,6 +84,7 @@
         save: function(){
             var formInstance = $('#form').dxForm('instance');
             var data = formInstance.option('formData');
+            
             //valido
             var res = formInstance.validate();
             if (!res.isValid) {
@@ -156,7 +158,19 @@
             });
            
         },
-       
+        calcolaFiscale:function(){
+            viewModel.lavoratoreData.fiscale("cciicciilloo");
+
+            var inst = $('#form').dxForm('instance');
+            var data = inst.option('formData');
+            
+
+            //devo recuperare i dati per il calcolo del codice fiscale...
+
+
+
+        },
+        lavoratoreData : lavoratore,
         formOptions: {
             colCount: 2,
             formData: lavoratore,
@@ -274,25 +288,7 @@
                        },
                        {
                            dataField: "fiscale",
-                           //template: function (data, itemElement) {
-
-                           //    console.log(data);
-                           //    var instance1 = $('<div>').dxTextBox({
-                           //        value: data.editorOptions.value
-
-                           //    });
-                           //    var instance = $('<div>').dxButton({
-
-                           //        text: 'ciao',
-                           //        onClick: function () {
-                           //            alert('cica ciao');
-                           //        }
-                           //    });
-
-                           //    instance1.appendTo(itemElement);
-                           //     instance.appendTo(itemElement);
-                               
-                           //},
+                           template: 'fiscaleTemplate',
                            editorOptions: {
                                placeholder: 'Codice fiscale'
                            },
