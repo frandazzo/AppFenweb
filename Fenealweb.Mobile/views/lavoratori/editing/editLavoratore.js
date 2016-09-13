@@ -3,6 +3,9 @@
 
 
     var lavoratore = params.id;
+
+
+
     var updateOperation = lavoratore.id != "0" ? true : false;
 
     var title = ko.observable('Aggiorna dati');
@@ -62,8 +65,10 @@
     var loadPanelVisibile = ko.observable(false);
 
     var viewModel = {
-        fiscaleOptions : function(){
-            alert('ciao');
+        cleanForm: function(){
+            var formInstance = $('#form').dxForm('instance');
+            formInstance.resetValues();
+            formInstance.option('formData', lavoratore);
         },
         loadOptions:  {
                 visible: loadPanelVisibile,
@@ -89,7 +94,18 @@
             
 
             //invio tutti i dati al server previa correzione del campo dataNascita... id ecc
-            data.dataNascitaTime = formInstance.getEditor('dataNascita').option('value'),
+            data.dataNascitaTime = formInstance.getEditor('dataNascita').option('value');
+
+            var dataNas = new Date(data.dataNascitaTime);
+            var year = dataNas.getFullYear();
+            var day = dataNas.getDate();
+            var month = dataNas.getMonth() + 1; //da 0 a 11 deve essere corretto con il +1
+
+            //adesso devo mettere in piedi una stringa del tipo dd/MM/yyyy
+            var dayString = day < 10 ? '0' + day.toString() : day.toString();
+            var monthString = month < 10 ? '0' + month.toString() : month.toString();
+
+            data.dataNascita = dayString + "/" + monthString + "/" + year.toString();
             data.id = lavoratore.id;
 
            
@@ -98,23 +114,40 @@
             .done(function () {
                 Fenealweb.app.currentViewModel = null;
                 loadPanelVisibile(false);
+               
+
                 //se creo un nuovo elemento
                 //vado direttemtne alla vista per il caricamento dei dati
                 //altrimenti vado indietro
                 if (updateOperation) {
-                    Fenealweb.app.back();
+                    //nel caso sto aggiornando devo fare attenzione a tornare indietro
+                    //poichè la chiave di identificazione della vista è la descrizione dell'azienda e
+                    //non il suo id. pertanto una varizaione della descrizione fa ripartire una query che se non trova
+                    //la descrizione ne crea una nuova.... regola del server
+                    if (lavoratore.fiscale != data.fiscale) {
+
+                        ////rimuovo la vista precedetne dallla cache
+                        //var cache = Fenealweb.app.viewCache;
+                        //cache.removeView(previousViewKey);
+                        Fenealweb.app.navigate({
+                            view: 'lavoratore',
+                            fiscale: data.fiscale
+                        }, { target: 'back' });
+
+                    } else {
+                        Fenealweb.app.back();
+                    }
+
+
                 } else {
-                   
+                    var fiscale = data.fiscale;
+                    viewModel.cleanForm();
                     Fenealweb.app.navigate({
                         view: 'lavoratore',
-                        fiscale: data.fiscale
+                        fiscale: fiscale
                     }, { target: 'current' });
                     
                 }
-
-               
-               
-                
 
             })
             .fail(function (error) {

@@ -1,19 +1,17 @@
-<div data-options="dxView : { name: 'editMagDelega' } " >
-   <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+<div data-options="dxView : {cacheDisabled: true,  name: 'editMagDelega' } " >
+    <div data-bind="dxCommand: {onExecute:save, title: 'Salva', id: 'save' }"></div><div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
        
 
-        <div style="margin:12px" data-bind="dxScrollView: {  }">
+       <div style="margin:12px" data-bind="dxScrollView: {  }">
 
-            <div id="form" data-bind="dxForm: formOptions">
+           <div id="form" data-bind="dxForm: formOptions">
 
-                <div data-options="dxTemplate: { name: 'fiscaleTemplate' }">
+           </div>
 
-                </div>
+       </div>
+       <div data-bind="dxLoadPanel: loadOptions"></div>
 
-            </div>
 
-        </div>
-        <div data-bind="dxLoadPanel: loadOptions"></div>
 
 
 

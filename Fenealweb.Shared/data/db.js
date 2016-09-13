@@ -527,8 +527,54 @@
             }
 
             return this.loadProtectedService(params);
-        }
+        },
+        saveLavoratore: function (lavoratore) {
 
+            //devo creare una ui anagraficaAzienda
+            var lav = {
+                id: lavoratore.id,
+                name: lavoratore.nome,
+                surname: lavoratore.cognome,
+                sex: lavoratore.sesso,
+                fiscalcode: lavoratore.fiscale,
+                birthDate: lavoratore.dataNascita,
+                //birthDateTime: lavoratore.lavoratore.dataNascita.getTime(),
+                nationality: lavoratore.nazione,
+                birthProvince: lavoratore.provinciaNascita,
+                birthPlace: lavoratore.comuneNascita,
+                livingProvince: lavoratore.provinciaResidenza,
+                livingCity: lavoratore.comuneResidenza,
+                address: lavoratore.indirizzo,
+                cap: lavoratore.cap,
+                phone: lavoratore.telefono,
+                cellphone: lavoratore.cellulare,
+                mail: lavoratore.mail,
+              
+
+            };
+        
+            //private String nationality;
+            //private String birthProvince;
+            //private String birthPlace;
+            //private String livingProvince;
+            //private String livingCity;
+
+            //private String address;
+            //private String cap;
+            //private String phone;
+            //private String cellphone;
+            //private String mail;
+
+            var params = {
+                route: '/worker',
+                isJsonContentType: true,
+                data: lav,
+                method: 'POST'
+
+            }
+
+            return this.loadProtectedService(params);
+        },
 
     });
 
@@ -543,11 +589,44 @@
         ctor: function () {
             aziendeStore.super.ctor.call(this);
         },
+        saveAzienda: function (azienda) {
+
+            //devo creare una ui anagraficaAzienda
+            var az = {
+                id: azienda.id,
+                description: azienda.descrizione,
+                province: azienda.provincia,
+                city: azienda.comune,
+                address: azienda.indirizzo,
+                cap: azienda.cap
+
+            };
+
+
+            var params = {
+                route: '/firm',
+                isJsonContentType: true,
+                data: az,
+                method: 'POST'
+
+            }
+
+            return this.loadProtectedService(params);
+        },
         getAzienda: function (ragioneSociale) {
 
           
             var params = {
                 route: '/firmforapp?description=' + encodeURIComponent(ragioneSociale),
+                method: 'GET'
+
+            }
+
+            return this.loadProtectedService(params);
+        },
+        getAziendaById: function(id){
+            var params = {
+                route: '/firmforappbyid?id=' + encodeURIComponent(id),
                 method: 'GET'
 
             }

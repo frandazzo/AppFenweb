@@ -1,4 +1,4 @@
-<div data-options="dxView : { name: 'editLavoratore' } " >
+<div data-options="dxView : {cacheDisabled: true, name: 'editLavoratore' } " >
     <div data-bind="dxCommand: { title: 'Salva', id: 'save' , onExecute: save}"></div>
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
 

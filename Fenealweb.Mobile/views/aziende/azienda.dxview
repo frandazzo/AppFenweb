@@ -1,5 +1,5 @@
-<div data-options="dxView : { name: 'azienda', title: 'Azienda' } " >
-    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+<div data-options="dxView : {cacheDisabled: true,  name: 'azienda', title: 'Azienda' } " >
+    <div data-bind="dxCommand: { onExecute: newsearch, title: 'Nuova ricerca', id: 'newSearch' }"></div><div data-bind="dxCommand: {onExecute:edit, icon:'edit', title: 'Modifica', id: 'edit' }"></div><div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
        
 
 

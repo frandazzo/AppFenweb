@@ -70,6 +70,10 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 					{
 						"id": "nuovaricerca",
 						"location": "menu"
+					},
+					{
+						"id": "newSearch",
+						"location": "menu"
 					}
 				]
 			},
@@ -93,6 +97,10 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 					},
 					{
 						"id": "nuovaricerca",
+						"location": "menu"
+					},
+					{
+						"id": "newSearch",
 						"location": "menu"
 					}
 				]
@@ -118,6 +126,10 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 					{
 						"id": "nuovaricerca",
 						"location": "menu"
+					},
+					{
+						"id": "newSearch",
+						"location": "menu"
 					}
 				]
 			},
@@ -142,6 +154,10 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 					{
 						"id": "nuovaricerca",
 						"location": "menu"
+					},
+					{
+						"id": "newSearch",
+						"location": "menu"
 					}
 				]
 			},
@@ -165,6 +181,10 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 					},
 					{
 						"id": "nuovaricerca",
+						"location": "menu"
+					},
+					{
+						"id": "newSearch",
 						"location": "menu"
 					}
 				]

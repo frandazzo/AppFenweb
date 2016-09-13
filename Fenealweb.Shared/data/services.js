@@ -666,16 +666,20 @@
             //return d.promise();
         },
 
-        saveLavoratore: function(lavoratore){
-            var d = $.Deferred();
+        saveLavoratore: function (lavoratore) {
 
-            setTimeout(function () {
+            var svc = new Fenealweb.db.lavoratoriStore();
+            return svc.saveLavoratore(lavoratore);
 
-               d.resolve("ok");
+            //var d = $.Deferred();
 
-            }, 2000);
+            //setTimeout(function () {
 
-            return d.promise();
+            //   d.resolve("ok");
+
+            //}, 2000);
+
+            //return d.promise();
         },
         saveDelega: function (delega) {
             var d = $.Deferred();
@@ -705,16 +709,10 @@
         ctor: function () {
             aziendeService.super.ctor.call(this);
         },
-        saveAzienda: function(azienda){
-            var d = $.Deferred();
+        saveAzienda: function (azienda) {
 
-            setTimeout(function () {
-
-                d.resolve("ok");
-
-            }, 2000);
-
-            return d.promise();
+            var svc = new Fenealweb.db.aziendeStore();
+            return svc.saveAzienda(azienda);
         },
         searchAziende: function (descrizione) {
 
@@ -746,6 +744,23 @@
             //setTimeout(function () {
 
                
+            //        d.resolve(listaAziende[0]);
+
+            //}, 2000);
+
+            //return d.promise();
+        },
+        getAziendaByRealId: function (id) {
+
+            var svc = new Fenealweb.db.aziendeStore();
+            return svc.getAziendaById(id);
+
+
+            //var d = $.Deferred();
+
+            //setTimeout(function () {
+
+
             //        d.resolve(listaAziende[0]);
 
             //}, 2000);

@@ -1,7 +1,33 @@
-﻿Fenealweb.azienda = function (params) {
+﻿Fenealweb.azienda = function (params, viewInfo) {
     "use strict";
 
+    function loadData() {
+        var svc = new Fenealweb.services.aziendeService();
+        svc.getAziendaById(params.id)
+            .done(function (data) {
+                if (data.iscritti) {
+                    navData()[1].badge = data.iscritti.length;
+                    dataSourceIscrizioni(new DevExpress.data.DataSource(data.iscritti));
+                }
 
+                if (data.nonIscritti) {
+                    navData()[2].badge = data.nonIscritti.length;
+                    dataSourceNonIscritto(new DevExpress.data.DataSource(data.nonIscritti));
+                }
+
+
+
+                current(data);
+                viewModel.dataReady(true);
+
+
+
+            })
+            .fail(function (error) {
+                DevExpress.ui.notify(error, "error", 2500);
+                viewModel.dataReady(true);
+            });
+    }
     //questa è la lista degli items nella navbar
     var navData = ko.observableArray([{
         text: "Azienda",
@@ -26,6 +52,19 @@
     var currentSelectedLavoratore = ko.observable('');
 
     var viewModel = {
+        newsearch: function(){
+            Fenealweb.app.navigate({
+                view: 'searchCompanies',
+            },
+            {root: true});
+        },
+        edit:function(){
+            Fenealweb.app.navigate({
+                view: 'editAzienda',
+                id: current(),
+                viewInfoKey: viewInfo.key
+            });
+        },
         //parametri actionsheet
         actionSheetData: [
             { text: "Vai al lavoratore" },
@@ -96,36 +135,16 @@
         currentAzienda: current,
         dataReady: ko.observable(false),
         viewRendered: function () {
-            var svc = new Fenealweb.services.aziendeService();
-            svc.getAziendaById(params.id)
-                .done(function (data) {
-                    if (data.iscritti) {
-                        navData()[1].badge = data.iscritti.length;
-                        dataSourceIscrizioni(new DevExpress.data.DataSource(data.iscritti));
-                    }
-
-                    if (data.nonIscritti) {
-                        navData()[2].badge = data.nonIscritti.length;
-                        dataSourceNonIscritto(new DevExpress.data.DataSource(data.nonIscritti));
-                    }
-
-
-
-                    current(data);
-                    viewModel.dataReady(true);
-
-
-
-                })
-                .fail(function (error) {
-                    DevExpress.ui.notify(error, "error", 2500);
-                    viewModel.dataReady(true);
-                });
+            loadData();
 
         },
-        viewShown: function () {
+        viewShown: function (e) {
 
-
+            if (e.direction == 'backward') {
+                //se sto venendo dalla maschera di edit allora posso ricarficare...
+                //....se necessario
+                loadData();
+            }
 
         }
 

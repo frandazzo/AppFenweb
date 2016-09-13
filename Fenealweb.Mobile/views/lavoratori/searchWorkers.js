@@ -19,7 +19,7 @@
                 dataNascitaTime: 0,
                 sesso: 'M',
                 fiscale: '',
-                nazione: '',
+                nazione: undefined,
                 provinciaResidenza: '',
                 comuneResidenza: '',
                 provinciaNascita: '',

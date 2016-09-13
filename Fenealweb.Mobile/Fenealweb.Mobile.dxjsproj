@@ -80,6 +80,12 @@
     <Content Include="views\aziende\aziende.css">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="views\aziende\editAzienda.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\aziende\editAzienda.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="views\aziende\partialAzienda.dxview">
       <SubType>Content</SubType>
     </Content>

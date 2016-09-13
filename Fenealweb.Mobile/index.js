@@ -72,6 +72,9 @@ $(function() {
                 return;
             };
 
+            if (Fenealweb.app.currentViewModel)
+                if (Fenealweb.app.currentViewModel.cleanForm)
+                    Fenealweb.app.currentViewModel.cleanForm();
 
             //var result = DevExpress.ui.dialog.confirm("I dati non sono stati salvati. Uscrire comunque?", "Annulla");
             //result.done(function (dialogResult) {

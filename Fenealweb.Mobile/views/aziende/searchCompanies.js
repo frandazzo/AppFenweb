@@ -16,7 +16,22 @@
 
 
     var viewModel = {
-        
+        create: function(){
+            var lav = {
+                id: '0',
+                descrizione: '',
+                provincia: '',
+                comune: '',
+                indirizzo: '',
+                cap: '',
+            };
+
+
+            Fenealweb.app.navigate({
+                view: 'editAzienda',
+                id: lav
+            });
+        },
         listOptions: {
             
             dataSource: dataSource,
