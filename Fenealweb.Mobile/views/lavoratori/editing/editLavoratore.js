@@ -190,14 +190,33 @@
            
         },
         calcolaFiscale:function(){
-            viewModel.lavoratoreData.fiscale("cciicciilloo");
-
-            var inst = $('#form').dxForm('instance');
-            var data = inst.option('formData');
             
 
-            //devo recuperare i dati per il calcolo del codice fiscale...
+            var inst = $('#form').dxForm('instance');
+           // var formdata = inst.option('formData');
 
+            var nome = inst.getEditor('nome').option('value');
+            var cognome = inst.getEditor('cognome').option('value');
+            var comuneNascita = inst.getEditor('comuneNascita').option('value');
+            var dataNascita = inst.getEditor('dataNascita').option('value');
+            var nazione = inst.getEditor('nazione').option('value');
+            var sesso = inst.getEditor('sesso').option('value');
+
+
+
+            loadPanelVisibile(true);
+
+            //devo recuperare i dati per il calcolo del codice fiscale...
+            var svc = new Fenealweb.services.lavoratoriService();
+            svc.calculateFiscalCode(nome, cognome, comuneNascita, dataNascita, nazione, sesso)
+            .done(function (data) {
+                loadPanelVisibile(false);
+                viewModel.lavoratoreData.fiscale(data);
+            })
+            .fail(function (error) {
+                loadPanelVisibile(false);
+                DevExpress.ui.notify(error, "error", 2500);
+            });
 
 
         },

@@ -665,7 +665,26 @@
 
             //return d.promise();
         },
+        calculateFiscalCode: function (nome, cognome, comuneNascita, dataNascita, nazione, sesso) {
 
+
+            function normalizeDataNascita(dataNas) {
+               
+                var year = dataNas.getFullYear();
+                var day = dataNas.getDate();
+                var month = dataNas.getMonth() + 1; //da 0 a 11 deve essere corretto con il +1
+
+                //adesso devo mettere in piedi una stringa del tipo dd/MM/yyyy
+                var dayString = day < 10 ? '0' + day.toString() : day.toString();
+                var monthString = month < 10 ? '0' + month.toString() : month.toString();
+
+                return dayString + "/" + monthString + "/" + year.toString();
+            }
+
+            var svc = new Fenealweb.db.lavoratoriStore();
+            return svc.calculateFiscalCode(nome, cognome, comuneNascita, normalizeDataNascita(dataNascita), nazione, sesso);
+
+        },
         saveLavoratore: function (lavoratore) {
 
             var svc = new Fenealweb.db.lavoratoriStore();

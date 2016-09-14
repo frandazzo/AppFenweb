@@ -438,10 +438,33 @@
         },
         getLavoratore: function (fiscale) {
            
+
+
+
             var params = {
                 route: '/workerforapp/' + fiscale,
                 method: 'GET'
 
+            }
+
+            return this.loadProtectedService(params);
+        },
+        calculateFiscalCode: function (nome, cognome, comuneNascita, dataNascita, nazione, sesso ) {
+
+
+            var lav = {
+                 name : nome, 
+                 surname: cognome,
+                 dateBirth: dataNascita,
+                 birthPlaceName: comuneNascita,
+                 sex: sesso,
+                 birthNationName: nazione
+            };
+
+            var params = {
+                route: '/worker/fiscalcodeforapp',
+                method: 'GET',
+                data: lav
             }
 
             return this.loadProtectedService(params);
