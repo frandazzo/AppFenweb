@@ -30,21 +30,38 @@
     //faccio diventare un observabile la stringa del codice fiscale
     lavoratore.fiscale = ko.observable(lavoratore.fiscale);
 
-    var geoProvinceNascitaSelected = ko.observable('');
-    var comuneValue = ko.observable('');
+    var geoProvinceNascitaSelected = ko.observable(lavoratore.provinciaNascita);
+    var comuneNascitaValue = ko.observable(lavoratore.comuneNascita);
+
+    var geoProvinceResidenzaSelected = ko.observable(lavoratore.provinciaResidenza);
+    var comuneResidenzaValue = ko.observable(lavoratore.comuneResidenza);
 
     var comuniNascitaDataSource = new DevExpress.data.DataSource({
         load(loadOptions) {
 
             if (!loadOptions.searchValue) {
-                var d = $.Deferred();
-                return d.resolve([]).promise();
+                //se non cè un valore lo recupero dall'editor della provincia
+                //solo se è nullo anche quello rispondo cin una trivial promise...
+                var formInstance = $('#form').dxForm('instance');
+                var prov = formInstance.getEditor('provinciaNascita').option('value');
+
+                if (!prov) {
+                    var d = $.Deferred();
+                    return d.resolve([]).promise();
+                }
+
+
+                var a = new Fenealweb.services.commonsService();
+                return a.getGeoComuni(prov);
             }
             var a = new Fenealweb.services.commonsService();
             return a.getGeoComuni(loadOptions.searchValue);
         },
         byKey(key) {
-            return $.Deferred().resolve(key).promise();
+            var d = {
+                label: key
+            }
+            return $.Deferred().resolve(d).promise();
         }
     });
 
@@ -52,14 +69,28 @@
         load(loadOptions) {
 
             if (!loadOptions.searchValue) {
-                var d = $.Deferred();
-                return d.resolve([]).promise();
+                //se non cè un valore lo recupero dall'editor della provincia
+                //solo se è nullo anche quello rispondo cin una trivial promise...
+                var formInstance = $('#form').dxForm('instance');
+                var prov = formInstance.getEditor('provinciaResidenza').option('value');
+
+                if (!prov) {
+                    var d = $.Deferred();
+                    return d.resolve([]).promise();
+                }
+
+
+                var a = new Fenealweb.services.commonsService();
+                return a.getGeoComuni(prov);
             }
             var a = new Fenealweb.services.commonsService();
             return a.getGeoComuni(loadOptions.searchValue);
         },
         byKey(key) {
-            return $.Deferred().resolve(key).promise();
+            var d = {
+                label: key
+            }
+            return $.Deferred().resolve(d).promise();
         }
     });
    
@@ -236,7 +267,10 @@
                                        return a.getGeoNazioni();
                                    },
                                    byKey(key) {
-                                       return $.Deferred().resolve(key).promise();
+                                       var d = {
+                                           label: key
+                                       }
+                                       return $.Deferred().resolve(d).promise();
                                    }
                                }),
                                valueExpr: 'label',
@@ -258,7 +292,10 @@
                                        return a.getGeoProvinces();
                                    },
                                    byKey(key) {
-                                       return $.Deferred().resolve(key).promise();
+                                       var d = {
+                                           label: key
+                                       }
+                                       return $.Deferred().resolve(d).promise();
                                    }
                                }),
                                valueExpr: 'label',
@@ -283,7 +320,7 @@
                                placeholder: 'Comune nascita',
                                valueExpr: 'label',
                                displayExpr: 'label',
-                               value: comuneValue
+                               value: comuneNascitaValue
                            }
                        },
                        {
@@ -312,7 +349,10 @@
                                         return a.getGeoProvinces();
                                     },
                                     byKey(key) {
-                                        return $.Deferred().resolve(key).promise();
+                                        var d = {
+                                            label: key
+                                        }
+                                        return $.Deferred().resolve(d).promise();
                                     }
                                 }),
                                 valueExpr: 'label',
@@ -326,7 +366,7 @@
                                     comuniResidenzaDataSource.searchValue(idProvincia);
                                     comuniResidenzaDataSource.load();
                                 },
-                                value: geoProvinceNascitaSelected
+                                value: geoProvinceResidenzaSelected
                             }
                         },
                         {
@@ -337,7 +377,7 @@
                                 placeholder: 'Comune residenza',
                                 valueExpr: 'label',
                                 displayExpr: 'label',
-                                value: comuneValue
+                                value: comuneResidenzaValue
                             }
                         },
                         {

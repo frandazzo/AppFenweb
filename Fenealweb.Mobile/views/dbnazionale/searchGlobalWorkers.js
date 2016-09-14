@@ -51,13 +51,28 @@
             });
         },
         cognomeOptions: {
-            value: cognome, mode: 'search', showClearButton: true, placeholder: 'Cognome'
+            value: cognome, mode: 'search', showClearButton: true, placeholder: 'Cognome',
+            onKeyDown: function (e) {
+                if (e.jQueryEvent.keyCode === 13) {
+                    document.activeElement.blur();
+                }
+            },
         },
         nomeOptions: {
-            value: nome, mode: 'search', showClearButton: true, placeholder: 'Nome'
+            value: nome, mode: 'search', showClearButton: true, placeholder: 'Nome',
+            onKeyDown: function (e) {
+                if (e.jQueryEvent.keyCode === 13) {
+                    document.activeElement.blur();
+                }
+            },
         },
         fiscaleOptions: {
-            value: fiscale, mode: 'search', showClearButton: true, placeholder: 'Codice fiscale'
+            value: fiscale, mode: 'search', showClearButton: true, placeholder: 'Codice fiscale',
+            onKeyDown: function (e) {
+                if (e.jQueryEvent.keyCode === 13) {
+                    document.activeElement.blur();
+                }
+            },
         },
         provinceSelectOptions: {
             value: provincia,
