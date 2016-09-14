@@ -208,7 +208,11 @@
 
                 numDeleghe = numDeleghe - 1;
                 navData()[2].badge = numDeleghe == 0 ? '' : numDeleghe;
-                console.log(navData());
+
+
+                var ss = $('#nav1').dxNavBar('instance');
+                ss.option('dataSource', navData());
+
 
                 var svc = new Fenealweb.services.lavoratoriService();
                 svc.deleteDelega(delega.id).done(function () {
@@ -271,11 +275,19 @@
                
 
                 numDelegheMagazzino = numDelegheMagazzino - 1;
+
                 navData()[4] = {
                     text: "Mag. deleghe",
                     icon: "tags",
                     badge: numDelegheMagazzino == 0 ? '' : numDelegheMagazzino
                 };
+                var ss = $('#nav1').dxNavBar('instance');
+                ss.option('dataSource', navData());
+
+
+
+
+                
 
                 var svc = new Fenealweb.services.lavoratoriService();
                 svc.deleteMagazzinoDelega(delega.id).done(function () {
