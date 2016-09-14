@@ -2,16 +2,21 @@
     "use strict";
 
     var delega = params.id;
-    var updateOperation = lavoratore.id != "0" ? true : false;
+    var updateOperation = delega.id != "0" ? true : false;
 
     var title = ko.observable('Aggiorna magazzino');
-    if (lavoratore.id == "0")
+    if (delega.id == "0")
         title('Crea delega mag.');
 
 
     var loadPanelVisibile = ko.observable(false);
 
     var viewModel = {
+        cleanForm: function () {
+            var formInstance = $('#form').dxForm('instance');
+            formInstance.resetValues();
+            formInstance.option('formData', delega);
+        },
         loadOptions: {
             visible: loadPanelVisibile,
             showIndicator: true,
@@ -36,36 +41,27 @@
 
             data.id = delega.id;
 
-            alert('save');
-
-            //var svc = new Fenealweb.services.lavoratoriService();
-            //svc.saveLavoratore(data)
-            //.done(function () {
-            //    Fenealweb.app.currentViewModel = null;
-            //    loadPanelVisibile(false);
-            //    //se creo un nuovo elemento
-            //    //vado direttemtne alla vista per il caricamento dei dati
-            //    //altrimenti vado indietro
-            //    if (updateOperation) {
-            //        Fenealweb.app.back();
-            //    } else {
-
-            //        Fenealweb.app.navigate({
-            //            view: 'lavoratore',
-            //            fiscale: data.fiscale
-            //        }, { target: 'current' });
-
-            //    }
+            //aggiungo il lavoratore..
+            data.idLavoratore = delega.idLavoratore;
 
 
+            var svc = new Fenealweb.services.lavoratoriService();
+            svc.saveMagazzinoDelega(data)
+            .done(function () {
+                Fenealweb.app.currentViewModel = null;
+                loadPanelVisibile(false);
+                viewModel.cleanForm();
+                Fenealweb.app.navigate({
+                    view: 'lavoratore',
+                    fiscale: delega.fiscale
+                }, { target: 'back' });
 
 
-
-            //})
-            //.fail(function (error) {
-            //    loadPanelVisibile(false);
-            //    DevExpress.ui.notify(error, "error", 2500);
-            //});
+            })
+            .fail(function (error) {
+                loadPanelVisibile(false);
+                DevExpress.ui.notify(error, "error", 2500);
+            });
 
         },
         viewShown: function (e) {
@@ -114,7 +110,11 @@
                                    }
                                }),
                                placeholder: 'Ente'
-                           }
+                           },
+                           validationRules: [{
+                               type: "required",
+                               message: "Obbligatorio"
+                           }]
                        }]
                 },
                  {

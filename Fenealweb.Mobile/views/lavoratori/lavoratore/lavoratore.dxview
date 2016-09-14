@@ -56,7 +56,7 @@
           
 
 
-            <div data-bind="dxNavBar: {
+            <div id="nav1" data-bind="dxNavBar: {
                 dataSource: navData,
                 selectedIndex: navSelectedIndex
             }"></div>

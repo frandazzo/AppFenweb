@@ -27,7 +27,8 @@
      }
     ]);
 
-   
+    var numDeleghe = 0;
+    var numDelegheMagazzino = 0;
    
     function loadData() {
         viewModel.dataReady(false);
@@ -45,12 +46,14 @@
                 }
 
                 if (data.deleghe) {
+                    numDeleghe = data.deleghe.length;
                     navData()[2].badge = data.deleghe.length;
                     dataSourceDeleghe(new DevExpress.data.DataSource(data.deleghe));
                 }
 
 
                 if (data.magazzino) {
+                    numDelegheMagazzino = data.magazzino.length;
                     navData()[4].badge = data.magazzino.length;
                     dataSourceMagazzino(new DevExpress.data.DataSource(data.magazzino));
                 }
@@ -90,14 +93,48 @@
     var viewModel = {
 
         //comandi
-        nuovaDelegaMag: function(){
+        nuovaDelegaMag: function () {
+
+            var delega = {
+                id: 0,
+                provincia: undefined,        
+                ente: undefined,
+                collaboratore: undefined,
+                idLavoratore: current().id,
+                fiscale: current().fiscale
+            }
+
+            Fenealweb.app.navigate({
+                view: 'editMagDelega',
+                id: delega
+            });
 
         },
-        nuovaDelega: function(){
+        nuovaDelega: function () {
 
+            var delega = {
+                id: 0,
+                provincia: undefined,
+                causaleIscrizione: undefined,
+                settore: undefined,
+                ente: undefined,
+                azienda: undefined,
+                collaboratore: undefined,
+                idLavoratore: current().id,
+                fiscale : current().fiscale
+            }
+
+            Fenealweb.app.navigate({
+                view: 'editDelega',
+                id: delega
+            });
         },
         nuovaRicerca: function(){
-
+            Fenealweb.app.navigate({
+                    view: 'searchWorkers'
+            }, {
+                root:true
+            });
         },
         modifica:function(){
             Fenealweb.app.navigate({
@@ -161,8 +198,28 @@
             }
         },
         delegheOptions: {
+           
             dataSource: dataSourceDeleghe,
             noDataText: 'Nessuna delega trovata',
+            allowItemDeleting: true,
+            itemDeleteMode: 'slideItem',
+            onItemDeleted: function(data) {
+                var delega = data.itemData;
+
+                numDeleghe = numDeleghe - 1;
+                navData()[2].badge = numDeleghe == 0 ? '' : numDeleghe;
+                console.log(navData());
+
+                var svc = new Fenealweb.services.lavoratoriService();
+                svc.deleteDelega(delega.id).done(function () {
+
+                    DevExpress.ui.notify("Operazione conclusa correttamente", "success", 2500);
+
+                }).fail(function(error){
+                    DevExpress.ui.notify(error, "error", 2500);
+                });
+
+            },
             //onItemSwipe: function (e) {
             //    DevExpress.ui.notify("swiped", "success", 1500);
             //},
@@ -205,8 +262,32 @@
             
         },
         magazzinoOptions: {
-            dataSource: dataSourceDeleghe,
+            dataSource: dataSourceMagazzino,
             noDataText: 'Nessuna delega in magazzino',
+            allowItemDeleting: true,
+            itemDeleteMode: 'slideItem',
+            onItemDeleted: function (data) {
+                var delega = data.itemData;
+               
+
+                numDelegheMagazzino = numDelegheMagazzino - 1;
+                navData()[4] = {
+                    text: "Mag. deleghe",
+                    icon: "tags",
+                    badge: numDelegheMagazzino == 0 ? '' : numDelegheMagazzino
+                };
+
+                var svc = new Fenealweb.services.lavoratoriService();
+                svc.deleteMagazzinoDelega(delega.id).done(function () {
+
+                    DevExpress.ui.notify("Operazione conclusa correttamente", "success", 2500);
+
+                }).fail(function (error) {
+                    DevExpress.ui.notify(error, "error", 2500);
+                });
+               
+               
+            },
             //onItemSwipe: function (e) {
             //    DevExpress.ui.notify("swiped", "success", 1500);
             //},

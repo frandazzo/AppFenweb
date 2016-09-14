@@ -701,26 +701,20 @@
             //return d.promise();
         },
         saveDelega: function (delega) {
-            var d = $.Deferred();
-
-            setTimeout(function () {
-
-                d.resolve("ok");
-
-            }, 2000);
-
-            return d.promise();
+            var svc = new Fenealweb.db.delegheStore();
+            return svc.saveDelega(delega);
         },
         saveMagazzinoDelega: function (delega) {
-            var d = $.Deferred();
-
-            setTimeout(function () {
-
-                d.resolve("ok");
-
-            }, 2000);
-
-            return d.promise();
+            var svc = new Fenealweb.db.delegheStore();
+            return svc.saveMagazzinoDelega(delega);
+        },
+        deleteDelega: function (id) {
+            var svc = new Fenealweb.db.delegheStore();
+            return svc.deleteDelega(id);
+        },
+        deleteMagazzinoDelega: function (id) {
+            var svc = new Fenealweb.db.delegheStore();
+            return svc.deleteMagazzinoDelega(id);
         }
 
     });

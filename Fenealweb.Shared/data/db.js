@@ -708,6 +708,62 @@
             }
 
             return this.loadProtectedService(params);
+        },
+        saveDelega: function (delega) {
+
+           
+
+            var params = {
+                route: '/delegaforapp',
+                isJsonContentType: true,
+                data: delega,
+                method: 'POST'
+
+            }
+
+            return this.loadProtectedService(params);
+
+        },
+        deleteDelega: function (id) {
+
+
+
+            var params = {
+                route: '/delega/' + id,
+                method: 'DELETE'
+
+            }
+
+            return this.loadProtectedService(params);
+
+        },
+        saveMagazzinoDelega: function (delega) {
+
+
+
+            var params = {
+                route: '/magdelegaforapp',
+                isJsonContentType: true,
+                data: delega,
+                method: 'POST'
+
+            }
+
+            return this.loadProtectedService(params);
+
+        },
+        deleteMagazzinoDelega: function (id) {
+
+
+
+            var params = {
+                route: '/magdelegaforapp/' + id,
+                method: 'DELETE'
+
+            }
+
+            return this.loadProtectedService(params);
+
         }
        
 
