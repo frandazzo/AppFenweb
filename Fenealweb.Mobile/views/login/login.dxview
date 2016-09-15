@@ -10,7 +10,7 @@
             <br />
             <div style="float:right" data-bind="dxButton: {onClick: login, text: 'Login' }"></div>
 
-
+            
             <div class="loadpanel" data-bind="dxLoadPanel: loadOptions"></div>
 
         </div>
