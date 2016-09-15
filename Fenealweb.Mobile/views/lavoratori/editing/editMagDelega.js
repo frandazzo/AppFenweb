@@ -51,10 +51,7 @@
                 Fenealweb.app.currentViewModel = null;
                 loadPanelVisibile(false);
                 viewModel.cleanForm();
-                Fenealweb.app.navigate({
-                    view: 'lavoratore',
-                    fiscale: delega.fiscale
-                }, { target: 'back' });
+                Fenealweb.app.back();
 
 
             })

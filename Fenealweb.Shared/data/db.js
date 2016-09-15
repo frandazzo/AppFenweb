@@ -772,7 +772,45 @@
     //*********************************************
     //*********************************************
 
+    //*********************************************
+    //*********************************************
+    //classe per la gesrione delle deleghe
+    var reportStore = AbstractRemoteStore.extend({
+        ctor: function () {
+            reportStore.super.ctor.call(this);
+        },
+        reportIscritti: function (searchParams) {
 
+
+            var params = {
+                route: '/iscritti/reportforapp',
+                isJsonContentType: true,
+                data: searchParams,
+                method: 'POST'
+
+            }
+
+            return this.loadProtectedService(params);
+        },
+        reportNonIscritti: function (searchParams) {
+
+
+            var params = {
+                route: '/liberi/reportforapp',
+                isJsonContentType: true,
+                data: searchParams,
+                method: 'POST'
+            }
+
+            return this.loadProtectedService(params);
+        }
+       
+
+
+    });
+
+    //*********************************************
+    //*********************************************
 
     Fenealweb.db = {};
     Fenealweb.db.securityLocalStore = securityLocalStore;
@@ -782,4 +820,5 @@
     Fenealweb.db.dashboardStore = dashboardStore
     Fenealweb.db.aziendeStore = aziendeStore;
     Fenealweb.db.delegheStore = delegheStore;
+    Fenealweb.db.reportStore = reportStore;
 }());

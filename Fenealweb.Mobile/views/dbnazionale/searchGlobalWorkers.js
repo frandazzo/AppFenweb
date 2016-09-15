@@ -85,6 +85,7 @@
                     return $.Deferred().resolve(key).promise();
                 }
             }),
+            showClearButton: true,
             valueExpr: 'value',
             displayExpr: 'label',
             placeholder: 'Provincia residenza',
@@ -107,12 +108,14 @@
                     return $.Deferred().resolve(key).promise();
                 }
             }),
+            showClearButton: true,
             valueExpr: 'value',
             displayExpr: 'label',
             placeholder: 'Nazione'
         },
         comuniSelectOptions: {
             value: comune,
+            showClearButton: true,
             dataSource: comuniDataSource,
             placeholder: 'Comune residenza',
             valueExpr: 'value',

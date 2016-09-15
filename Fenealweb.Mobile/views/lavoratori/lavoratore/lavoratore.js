@@ -30,7 +30,7 @@
     var numDeleghe = 0;
     var numDelegheMagazzino = 0;
    
-    function loadData() {
+    function loadData(callback) {
         viewModel.dataReady(false);
         var svc = new Fenealweb.services.lavoratoriService();
         svc.getLavoratoreByFiscalCode(params.fiscale)
@@ -67,7 +67,8 @@
                 current(data);
                 viewModel.dataReady(true);
 
-
+                if (callback)
+                    callback();
 
             })
             .fail(function (error) {
@@ -275,12 +276,8 @@
                
 
                 numDelegheMagazzino = numDelegheMagazzino - 1;
-
-                navData()[4] = {
-                    text: "Mag. deleghe",
-                    icon: "tags",
-                    badge: numDelegheMagazzino == 0 ? '' : numDelegheMagazzino
-                };
+                navData()[4].badge = numDelegheMagazzino == 0 ? '' : numDelegheMagazzino;
+                
                 var ss = $('#nav1').dxNavBar('instance');
                 ss.option('dataSource', navData());
 
@@ -358,7 +355,11 @@
             if (e.direction == 'backward') {
                 //se sto venendo dalla maschera di edit allora posso ricarficare...
                 //....se necessario
-                loadData();
+                loadData(function () {
+                    var ss = $('#nav1').dxNavBar('instance');
+                    ss.option('dataSource', navData());
+                });
+               
             }
            
         }

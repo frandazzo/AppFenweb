@@ -1,0 +1,52 @@
+<div data-options="dxView : { name: 'nonIscrittiResult' } " >
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+        <div data-bind="dxActionSheet: {
+                dataSource: actionSheetData,
+                visible: actionSheetVisible,
+                title: 'Scegli operazione',
+                onItemClick: processSheetClick,
+                showTitle: true,
+                showCancelButton: true,
+                cancelText: 'Annulla'
+            }"></div>
+
+        <div data-bind="dxList: listOptions">
+            <div data-options="dxTemplate: { name : 'item' }">
+
+                <div class="non-iscrizioneItem">
+
+                    <div class="non-iscrizione-main" data-bind="text:nome "> </div>
+                    <div>
+                        <div class="non-iscrizione-left-panel">
+                            <span class="non-iscrizione-settore" data-bind="text: provincia"></span>
+                        </div>
+                        <div class="non-iscrizione-right-panel">
+                            <span class="non-iscrizioneLabel"> al: </span>  <span class="non-iscrizione-italic" data-bind="text: liberoAl"></span>
+                        </div>
+
+                    </div>
+
+                    <div style="clear:both; padding-top: 5px;">
+
+                        <div class="non-iscrizione-left-panel">
+                            <span class="non-iscrizione-settore" data-bind="text: ente"></span>
+                        </div>
+                        <div class="non-iscrizione-right-panel">
+                            <span class="non-iscrizioneLabel"> iscritto a: </span>  <span class="non-iscrizione-italic" data-bind="text: iscrittoA ? iscrittoA: 'Nessuno'"></span>
+                        </div>
+                    </div>
+
+
+                    <div style="clear:both; padding-top: 5px;" data-bind="style:{display:azienda?'block':'none'}">
+                        <span data-bind="text:azienda"> </span>
+                    </div>
+
+                    <div style="clear:both; margin-bottom: 10px;"></div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -151,7 +151,7 @@
             var lista = [
                  "Quote associative",
                  "Quote inps",
-                 "quote previsionali"
+                 "Quote previsionali"
 
             ];
 
@@ -788,37 +788,13 @@
         },
         reportIscritti: function (params) {
 
-            var d = $.Deferred();
-
-            setTimeout(function () {
-
-
-                d.resolve({
-                    params: params,
-                    result: listaIscritti
-                });
-               
-
-            }, 2000);
-
-            return d.promise();
+            var svc = new Fenealweb.db.reportStore();
+            return svc.reportIscritti(params);
         },
         reportNonIscritti: function (params) {
 
-            var d = $.Deferred();
-
-            setTimeout(function () {
-
-
-                d.resolve({
-                    params: params,
-                    result: listaNonIscritti
-                });
-
-
-            }, 2000);
-
-            return d.promise();
+            var svc = new Fenealweb.db.reportStore();
+            return svc.reportNonIscritti(params);
         }
 
     });

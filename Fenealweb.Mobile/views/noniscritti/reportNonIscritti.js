@@ -54,11 +54,11 @@
         search: function () {
 
             var searchParams = {
-                selectedProvincia: selectedProvincia,
+                selectedProvincia: selectedProvincia(),
                 geoNazioneSelected: selectedNazione(),
                 geoProvinceSelected: geoProvinceSelected(),
                 geoComuneSelected: comuneValue(),
-                iscrittiA: selectedIscrittoA,
+                iscrittoA: selectedIscrittoA(),
                 selectedEnte: selectedEnte(),
                 selectedAzienda: selectedAzienda(),
                
@@ -103,12 +103,16 @@
                     return a.getGeoProvinces();
                 },
                 byKey(key) {
-                    return $.Deferred().resolve(key).promise();
+                    var lab = {
+                        label: key
+                    }
+                    return $.Deferred().resolve(lab).promise();
                 }
             }),
-            valueExpr: 'value',
+            valueExpr: 'label',
             displayExpr: 'label',
             placeholder: 'Provincia residenza',
+           
             onValueChanged: function (e) {
                 var idProvincia = e.value;
                 comuneValue('');
@@ -125,19 +129,22 @@
                     return a.getGeoNazioni();
                 },
                 byKey(key) {
+                  
                     return $.Deferred().resolve(key).promise();
                 }
             }),
-            valueExpr: 'value',
+            valueExpr: 'label',
             displayExpr: 'label',
             placeholder: 'Nazione',
+            showClearButton: true,
             value: selectedNazione
         },
         comuniSelectOptions: {
             dataSource: comuniDataSource,
             placeholder: 'Comune residenza',
-            valueExpr: 'value',
+            valueExpr: 'label',
             displayExpr: 'label',
+            showClearButton: true,
             value: comuneValue
         },
 
@@ -173,6 +180,8 @@
             var svc = new Fenealweb.services.commonsService();
             svc.getListaProvince().done(function (data) {
                 selectedProvincia(data[0]);
+                //impongo che nel report non iscrittti ci sia almeno la provincia di residenzxa come filtro
+                geoProvinceSelected(data[0]);
             });
         }
 

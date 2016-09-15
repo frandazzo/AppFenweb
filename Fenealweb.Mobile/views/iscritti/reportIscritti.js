@@ -52,8 +52,8 @@
         search: function () {
 
              var searchParams = {
-                    selectedProvincia: selectedProvincia,
-                    tipoQuota: tipoQuota,
+                    selectedProvincia: selectedProvincia(),
+                    tipoQuota: tipoQuota(),
                     geoNazioneSelected : selectedNazione(),
                     geoProvinceSelected : geoProvinceSelected(),
                     geoComuneSelected: comuneValue(),
@@ -172,7 +172,8 @@
                     return $.Deferred().resolve(key).promise();
                 }
             }),
-            valueExpr: 'value',
+            showClearButton:true,
+            valueExpr: 'label',
             displayExpr: 'label',
             placeholder: 'Provincia residenza',
             onValueChanged: function (e) {
@@ -194,7 +195,8 @@
                     return $.Deferred().resolve(key).promise();
                 }
             }),
-            valueExpr: 'value',
+            showClearButton: true,
+            valueExpr: 'label',
             displayExpr: 'label',
             placeholder: 'Nazione',
             value: selectedNazione
@@ -202,9 +204,10 @@
         comuniSelectOptions: {
             dataSource: comuniDataSource,
             placeholder: 'Comune residenza',
-            valueExpr: 'value',
+            valueExpr: 'label',
             displayExpr: 'label',
-            value: comuneValue
+            value: comuneValue,
+            showClearButton: true,
         },
 
         provinceCasseEdiliSelectOptions: {
