@@ -45,8 +45,8 @@ window.Fenealweb = $.extend(true, window.Fenealweb, {
 			}
 		],
 		"services": {
-			"remoteLoginPath": "http://localhost:8080/auth/remotelogin",
-			"remoteApiBasePath": "http://localhost:8080/"
+			"remoteLoginPath": "http://www.fenealgest.it:8080/auth/remotelogin",
+			"remoteApiBasePath": "http://www.fenealgest.it:8080/"
 		},
 		"commandMapping": {
 			"ios-header-toolbar": {
