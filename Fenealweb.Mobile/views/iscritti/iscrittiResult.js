@@ -3,7 +3,7 @@
 
 
     var dataSource = new DevExpress.data.DataSource({
-        paginate: false,
+        pageSize: 20,
         load(loadOptions) {
             var d = $.Deferred();
             loadOptions = $.extend(loadOptions, params.id);
@@ -12,14 +12,13 @@
                 if (data.length == 0) {
                     viewModel.title('Lista iscritti');
                 } else {
-                    viewModel.title('Lista iscritti' + ' (' + data.length + ')');
+                    viewModel.title('Lista iscritti' + ' (' + data[0].results + ')');
                 }
                 d.resolve(data);
             });
 
             return d.promise();
-        },
-        paginate:false
+        }
        
 
     });
@@ -30,7 +29,6 @@
     var viewModel = {
         title: ko.observable('Lista iscritti'),
         listOptions: {
-            bounceEnabled: false,
             dataSource: dataSource,
             noDataText: 'Nessuna iscrizione trovata!',
            

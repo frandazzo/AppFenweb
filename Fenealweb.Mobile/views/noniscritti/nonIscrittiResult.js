@@ -3,7 +3,7 @@
 
 
     var dataSource = new DevExpress.data.DataSource({
-        paginate: false,
+        pageSize:20,
         load(loadOptions) {
             var d = $.Deferred();
             loadOptions = $.extend(loadOptions, params.id);
@@ -13,7 +13,7 @@
                 if (data.length == 0) {
                     viewModel.title('Lista non iscritti');
                 } else {
-                    viewModel.title('Lista non iscritti' + ' (' + data.length  +')');
+                    viewModel.title('Lista non iscritti' + ' (' + data[0].results  +')');
                 }
 
                 d.resolve(data);
@@ -21,7 +21,7 @@
 
             return d.promise();
         },
-        paginate: false
+        
 
 
     });
@@ -64,7 +64,6 @@
         },
         title:ko.observable('Lista non iscritti '),
         listOptions: {
-            bounceEnabled: false,
             dataSource: dataSource,
             noDataText: 'Nessuna non iscrizione trovata!',
 

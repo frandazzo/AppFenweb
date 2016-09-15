@@ -249,10 +249,6 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="views\readme.txt" />
-    <None Include="Resources\PackageIcons.Android.ic_launcher_36_36.png" />
-    <None Include="Resources\PackageIcons.Android.ic_launcher_48_48.png" />
-    <None Include="Resources\PackageIcons.Android.ic_launcher_72_72.png" />
-    <None Include="Resources\PackageIcons.Android.ic_launcher_96_96.png" />
     <None Include="Resources\PackageIcons.Android.splash_1280_720.png" />
     <None Include="Resources\PackageIcons.Android.splash_200_320.png" />
     <None Include="Resources\PackageIcons.Android.splash_320_200.png" />

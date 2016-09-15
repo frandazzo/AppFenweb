@@ -1,16 +1,14 @@
-<div data-options="dxView : { name: 'login', title: 'login', disableCache:true  } " >
+<div data-options="dxView : { name: 'login', title: 'Login (v 1.0.0.0)', disableCache:true  } " >
     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
         <div class="loginpanel"  style="margin:5px" data-bind="dxDeferRendering: {renderWhen: modelIsReady, showLoadIndicator: true}">
 
-            <h1>
-                Login Fenealweb
-            </h1>
+           
 
             <div data-bind="dxTextBox: { value:username, placeholder: 'Nome utente' }"></div>
             <br />
             <div data-bind="dxTextBox: { value:password, mode:'password', placeholder: 'Password' }"></div>
             <br />
-            <div data-bind="dxButton: {onClick: login, text: 'Login' }"></div>
+            <div style="float:right" data-bind="dxButton: {onClick: login, text: 'Login' }"></div>
 
 
             <div class="loadpanel" data-bind="dxLoadPanel: loadOptions"></div>
