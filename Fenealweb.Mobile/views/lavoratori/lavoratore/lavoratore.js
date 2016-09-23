@@ -7,8 +7,7 @@
         icon: "user"
     }, {
         text: "Db nazionale",
-        icon: "fa fa-database",
-        badge: 3
+        icon: "fa fa-database"
     }, {
         text: "Deleghe",
         icon: "folder"
@@ -33,7 +32,10 @@
     function loadData(callback) {
         viewModel.dataReady(false);
         var svc = new Fenealweb.services.lavoratoriService();
-        svc.getLavoratoreByFiscalCode(params.fiscale)
+
+        var provincia = params.provincia ? params.provincia : '';
+
+        svc.getLavoratoreByFiscalCode(params.fiscale, provincia)
             .done(function (data) {
                 if (data.iscrizioni) {
                     navData()[1].badge = data.iscrizioni.length;

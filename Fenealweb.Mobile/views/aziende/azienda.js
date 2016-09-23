@@ -50,6 +50,7 @@
     var dataSourceNonIscritto = ko.observable(new DevExpress.data.DataSource({ store: [] }));
     var currentSelectedAzienda = ko.observable('');
     var currentSelectedLavoratore = ko.observable('');
+    var currentSelectedProvincia = ko.observable('');
 
     var viewModel = {
         newsearch: function(){
@@ -77,7 +78,8 @@
                 //navigo al lavoratore...
                 Fenealweb.app.navigate({
                     view: 'lavoratore',
-                    fiscale: currentSelectedLavoratore()
+                    fiscale: currentSelectedLavoratore(),
+                    provincia: currentSelectedProvincia()
                 });
                 return;
             }
@@ -118,7 +120,7 @@
                 var nonIscritto = e.itemData;
                 currentSelectedAzienda(nonIscritto.azienda);
                 currentSelectedLavoratore(nonIscritto.fiscale)
-               
+                currentSelectedProvincia(nonIscritto.provincia);
                 viewModel.actionSheetVisible(true);
             }
 

@@ -449,6 +449,19 @@
 
             return this.loadProtectedService(params);
         },
+        getLavoratoreForNonIscritti: function (fiscale, provincia) {
+
+
+
+
+            var params = {
+                route: '/workernoniscrittoforapp/' + fiscale + '?province=' + encodeURIComponent(provincia),
+                method: 'GET'
+
+            }
+
+            return this.loadProtectedService(params);
+        },
         calculateFiscalCode: function (nome, cognome, comuneNascita, dataNascita, nazione, sesso ) {
 
 

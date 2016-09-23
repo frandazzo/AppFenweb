@@ -26,6 +26,7 @@
     <DefaultDevice>iPhone6</DefaultDevice>
     <DeviceOrientation>Portrait</DeviceOrientation>
     <DisplayUnhandledExceptions>True</DisplayUnhandledExceptions>
+    <UpgradeNotifyShown>16.1.6</UpgradeNotifyShown>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
