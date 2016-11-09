@@ -26,9 +26,9 @@
     <DefaultDevice>iPhone6</DefaultDevice>
     <DeviceOrientation>Portrait</DeviceOrientation>
     <DisplayUnhandledExceptions>True</DisplayUnhandledExceptions>
-    <KeyIpaPath />
-    <ProvisionProfile />
-    <IpaPrivateKeyFile />
+    <KeyIpaPath>certificates\ios_certificate.p12</KeyIpaPath>
+    <ProvisionProfile>..\..\..\..\..\..\Downloads\FenealWeb_App_Store_Distribution(1).mobileprovision</ProvisionProfile>
+    <IpaPrivateKeyFile>certificates\ios_private_key.txt</IpaPrivateKeyFile>
     <TemplateFileIpa />
     <UseCustomTemplateNameIpa>False</UseCustomTemplateNameIpa>
     <IpaDevicesFamily>Universal</IpaDevicesFamily>
@@ -54,6 +54,10 @@
     <Content Include="index.css" />
     <Content Include="cordova.js" />
     <None Include="certificates\android_certificate.p12" />
+    <None Include="certificates\ios_certificate.cer" />
+    <None Include="certificates\ios_certificate.p12" />
+    <None Include="certificates\ios_certificate_request.txt" />
+    <None Include="certificates\ios_private_key.txt" />
     <None Include="config.xml" />
     <Content Include="index.js">
       <SubType>Content</SubType>
