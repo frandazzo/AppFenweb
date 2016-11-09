@@ -40,8 +40,8 @@
     
     var loadingVisible = ko.observable(false);
     var viewModel = {
-        username: ko.observable('maurizio'),
-        password: ko.observable('maurizio'),
+        username: ko.observable(''),
+        password: ko.observable(''),
         //in base al paramtro logout decido se effettuare un check di primo accesso oopure sto arrivando qui perchè ho cliccato
         //esci dallo slide out. Vedi metodo ExitApp in index.js
         modelIsReady: ko.observable(params.logout ? $.Deferred().resolve().promise() :checkFirstAccess()),

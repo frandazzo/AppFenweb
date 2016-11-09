@@ -26,6 +26,14 @@
     <DefaultDevice>iPhone6</DefaultDevice>
     <DeviceOrientation>Portrait</DeviceOrientation>
     <DisplayUnhandledExceptions>True</DisplayUnhandledExceptions>
+    <KeyIpaPath />
+    <ProvisionProfile />
+    <IpaPrivateKeyFile />
+    <TemplateFileIpa />
+    <UseCustomTemplateNameIpa>False</UseCustomTemplateNameIpa>
+    <IpaDevicesFamily>Universal</IpaDevicesFamily>
+    <BundleIdentifier>Fenealweb.Mobile</BundleIdentifier>
+    <IpaSupportedLanguages />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -261,6 +269,15 @@
     <None Include="Resources\PackageIcons.Android.splash_480_800.png" />
     <None Include="Resources\PackageIcons.Android.splash_720_1280.png" />
     <None Include="Resources\PackageIcons.Android.splash_800_480.png" />
+    <None Include="Resources\PackageIcons.iOS.icon%402x.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-60%402x.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-60%403x.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-60.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-72%402x.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-72.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-76%402x.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-76.png" />
+    <None Include="Resources\PackageIcons.iOS.icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="certificates\" />
