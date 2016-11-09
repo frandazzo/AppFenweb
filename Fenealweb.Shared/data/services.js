@@ -570,12 +570,16 @@
 
             //return d.promise();
         },
-        getLavoratoreByFiscalCode: function (fiscalCode) {
+        getLavoratoreByFiscalCode: function (fiscalCode, provincia) {
 
-
+            if (!provincia) {
+                var svc = new Fenealweb.db.lavoratoriStore();
+                return svc.getLavoratore(fiscalCode);
+            }
+            
+            //se c'è una provincia è perchè probabilemtne sto cercando un lavoratore dalla lista dei non iscirtti
             var svc = new Fenealweb.db.lavoratoriStore();
-            return svc.getLavoratore(fiscalCode);
-
+            return svc.getLavoratoreForNonIscritti(fiscalCode, provincia);
             //var d = $.Deferred();
 
             //setTimeout(function () {

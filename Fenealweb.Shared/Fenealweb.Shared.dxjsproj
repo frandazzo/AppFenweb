@@ -8,6 +8,7 @@
     <UploadPluginsToTheCourier>True</UploadPluginsToTheCourier>
     <Name>Shared</Name>
     <RootNamespace>Fenealweb</RootNamespace>
+    <UpgradeNotifyShown>16.1.6</UpgradeNotifyShown>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +56,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="images\logo.png" />
+    <Content Include="js\cldr\supplemental\ca-gregorian.json">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="js\cldr\supplemental\currencyData.json">
       <SubType>Content</SubType>
     </Content>
@@ -62,6 +66,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="js\cldr\supplemental\numberingSystems.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\cldr\supplemental\numbers.json">
       <SubType>Content</SubType>
     </Content>
     <Content Include="js\cldr\supplemental\timeData.json">

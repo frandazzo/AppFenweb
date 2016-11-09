@@ -59,7 +59,7 @@
     <script type="text/javascript" src="js/globalize/currency.min.js"></script>
 
 
-    <script type="text/javascript" src="js/dx.all.js"></script>
+    <script type="text/javascript" src="js/dx.all.debug.js"></script>
 
 
     <!--<script type="text/javascript" src="js/dx.all.debug.js"></script>-->
@@ -75,7 +75,7 @@
         window.Fenealweb = window.Fenealweb || {};
         window.Fenealweb.data = window.Fenealweb.data || {};
         $(function () {
-            Fenealweb.localizationInitiated = $.when(
+            $.when(
 
               $.getJSON("js/cldr/supplemental/likelySubtags.json"),
               $.getJSON("js/cldr/supplemental/timeData.json"),
