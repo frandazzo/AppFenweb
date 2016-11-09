@@ -269,6 +269,13 @@
     <None Include="Resources\PackageIcons.Android.splash_480_800.png" />
     <None Include="Resources\PackageIcons.Android.splash_720_1280.png" />
     <None Include="Resources\PackageIcons.Android.splash_800_480.png" />
+    <None Include="Resources\PackageIcons.iOS.Default%402x~iphone.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-568h%402x~iphone.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-667h.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-736h.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-Portrait%402x~ipad.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-Portrait~ipad.png" />
+    <None Include="Resources\PackageIcons.iOS.Default~iphone.png" />
     <None Include="Resources\PackageIcons.iOS.icon%402x.png" />
     <None Include="Resources\PackageIcons.iOS.icon-60%402x.png" />
     <None Include="Resources\PackageIcons.iOS.icon-60%403x.png" />
