@@ -12,14 +12,14 @@
     <PhoneGapTokenKey>rgSNprqo8opS7myT_BPL</PhoneGapTokenKey>
     <KeyApkPath>certificates\android_certificate.p12</KeyApkPath>
     <KeyApkAlias>tmpl</KeyApkAlias>
-    <VersionCode>3</VersionCode>
+    <VersionCode>7</VersionCode>
     <TemplateFileApk />
     <UseCustomTemplateNameApk>False</UseCustomTemplateNameApk>
-    <ApkDexFilePackageName>com.devextreme.Fenealweb.Mobile</ApkDexFilePackageName>
+    <ApkDexFilePackageName>it.noesis.Fenealweb.Mobile</ApkDexFilePackageName>
     <KeyDebuggable>False</KeyDebuggable>
     <ScreenOrientation>Default</ScreenOrientation>
     <ApplicationTitle>Fenealweb</ApplicationTitle>
-    <VersionPackage>1.0.0.0</VersionPackage>
+    <VersionPackage>1.6.0.0</VersionPackage>
     <ShowSplashScreen>True</ShowSplashScreen>
     <DebugSitePortNumber>50000</DebugSitePortNumber>
     <UseWebDev>False</UseWebDev>
@@ -27,13 +27,16 @@
     <DeviceOrientation>Portrait</DeviceOrientation>
     <DisplayUnhandledExceptions>True</DisplayUnhandledExceptions>
     <KeyIpaPath>certificates\ios_certificate.p12</KeyIpaPath>
-    <ProvisionProfile>..\..\..\..\..\..\Downloads\FenealWeb_App_Store_Distribution(1).mobileprovision</ProvisionProfile>
+    <ProvisionProfile>..\..\..\..\..\..\Downloads\Feneal_TEST.mobileprovision</ProvisionProfile>
     <IpaPrivateKeyFile>certificates\ios_private_key.txt</IpaPrivateKeyFile>
     <TemplateFileIpa />
     <UseCustomTemplateNameIpa>False</UseCustomTemplateNameIpa>
     <IpaDevicesFamily>Universal</IpaDevicesFamily>
     <BundleIdentifier>Fenealweb.Mobile</BundleIdentifier>
     <IpaSupportedLanguages />
+    <PackagePublisherID>b6f37889-b813-4cac-9ce9-b25b24b55d56</PackagePublisherID>
+    <AppxPackageProductID>d0327d73-8ba9-47d7-a018-a84c9ccebf81</AppxPackageProductID>
+    <KeyPackageIdentityPublisher>CN=b6f37889-b813-4cac-9ce9-b25b24b55d56</KeyPackageIdentityPublisher>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

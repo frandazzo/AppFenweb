@@ -293,6 +293,11 @@
         rappresentanzaTassoSindacalizzazione:rappresentanzaTassoSindacalizzazione,
         //************************************
         loggedUser: data,
+
+        
+        company: ko.observable(data.company),
+
+
         completeName : ko.computed(function(){
             return data.name + " " + data.surname;
         }),
@@ -499,11 +504,11 @@
               
             //},
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getListaProvince();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -513,11 +518,11 @@
         },
         entiSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function(loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getListaEntiBilaterali();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -527,11 +532,11 @@
         },
         anniSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getListaAnniRiferimento();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),

@@ -4,7 +4,7 @@
 
     var dataSource = new DevExpress.data.DataSource({
         paginate:false,
-        load(loadOptions) {
+        load: function (loadOptions) {
             // return $.Deferred().resolve(listaLavoratori).promise();
             loadOptions = $.extend(loadOptions, JSON.parse(params.searchParams.replace('json:', '')));
             var a = new Fenealweb.services.lavoratoriService();

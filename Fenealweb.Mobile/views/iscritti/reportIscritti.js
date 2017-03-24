@@ -2,7 +2,7 @@
     "use strict";
 
     var comuniDataSource = new DevExpress.data.DataSource({
-        load(loadOptions) {
+        load: function (loadOptions) {
 
             if (!loadOptions.searchValue) {
                 var d = $.Deferred();
@@ -11,12 +11,12 @@
             var a = new Fenealweb.services.commonsService();
             return a.getGeoComuni(loadOptions.searchValue);
         },
-        byKey(key) {
+        byKey: function (key) {
             return $.Deferred().resolve(key).promise();
         }
     });
     var aziendaDataSource = new DevExpress.data.DataSource({
-        load(loadOptions) {
+        load: function (loadOptions) {
 
             var a = new Fenealweb.services.aziendeService();
             var p = a.searchAziende(loadOptions.searchValue);
@@ -86,11 +86,11 @@
         },
         settoriSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getSettoriBase();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -99,11 +99,11 @@
         },
         anniDaSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getListaAnniRiferimento();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -112,11 +112,11 @@
         },
         tipoQuoteSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getTipoQuote();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -125,11 +125,11 @@
         },
         mesiDaSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getMesi();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -138,11 +138,11 @@
         },
         mesiASelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getMesi();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -151,11 +151,11 @@
         },
         anniASelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getListaAnniRiferimento();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -164,11 +164,11 @@
         },
         provinceSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getGeoProvinces();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -187,11 +187,11 @@
         },
         nazioniSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getGeoNazioni();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -212,11 +212,11 @@
 
         provinceCasseEdiliSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getListaProvince();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -225,11 +225,11 @@
         },
         entiSelectOptions: {
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getListaEntiBilaterali();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),

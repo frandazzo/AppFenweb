@@ -23,7 +23,7 @@
 
                         <span class="worker-cell " data-bind="text: currentWorker().cellulare"></span>
                         <div class="worker-cell-functions">
-                            <a style="text-decoration: initial;" data-bind="attr:{href:'sms:' + currentWorker().cellulare }"><span class="dx-icon-tel base-icon"></span></a>
+                            <a style="text-decoration: initial;" data-bind="attr:{href:'tel:' + currentWorker().cellulare }"><span class="dx-icon-tel base-icon"></span></a>
                             <a style="text-decoration: initial;" data-bind="attr:{href:'sms:' + currentWorker().cellulare }"><span class="dx-icon-message  base-icon"></span></a>
                         </div>
 

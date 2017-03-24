@@ -16,7 +16,7 @@
  
 
     var comuniDataSource = new DevExpress.data.DataSource({
-        load(loadOptions) {
+        load:function(loadOptions) {
 
             if (!loadOptions.searchValue) {
 
@@ -37,7 +37,7 @@
             var a = new Fenealweb.services.commonsService();
             return a.getGeoComuni(loadOptions.searchValue);
         },
-        byKey(key) {
+        byKey:function(key) {
             var d = {
                 label: key
             }
@@ -155,11 +155,11 @@
                            editorType: "dxSelectBox",
                            editorOptions: {
                                dataSource: new DevExpress.data.DataSource({
-                                   load(loadOptions) {
+                                   load: function (loadOptions) {
                                        var a = new Fenealweb.services.commonsService();
                                        return a.getGeoProvinces();
                                    },
-                                   byKey(key) {
+                                   byKey: function (key) {
                                        var d = {
                                            label: key
                                        }

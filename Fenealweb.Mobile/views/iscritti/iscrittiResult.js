@@ -4,7 +4,7 @@
 
     var dataSource = new DevExpress.data.DataSource({
         pageSize: 20,
-        load(loadOptions) {
+        load: function (loadOptions) {
             var d = $.Deferred();
             loadOptions = $.extend(loadOptions, params.id);
             var a = new Fenealweb.services.reportService();

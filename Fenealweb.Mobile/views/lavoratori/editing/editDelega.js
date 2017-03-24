@@ -11,7 +11,7 @@
 
 
     var aziendaDataSource = new DevExpress.data.DataSource({
-        load(loadOptions) {
+        load: function (loadOptions) {
 
             var a = new Fenealweb.services.aziendeService();
             var p = a.searchAziende(loadOptions.searchValue);
@@ -114,11 +114,11 @@
                            editorType: "dxSelectBox",
                            editorOptions: {
                                dataSource: new DevExpress.data.DataSource({
-                                   load(loadOptions) {
+                                   load: function (loadOptions) {
                                        var a = new Fenealweb.services.commonsService();
                                        return a.getListaProvince();
                                    },
-                                   byKey(key) {
+                                   byKey: function (key) {
                                        return $.Deferred().resolve(key).promise();
                                    }
                                }),
@@ -134,11 +134,11 @@
                            editorType: "dxSelectBox",
                            editorOptions: {
                                dataSource: new DevExpress.data.DataSource({
-                                   load(loadOptions) {
+                                   load: function (loadOptions) {
                                        var a = new Fenealweb.services.commonsService();
                                        return a.getListaCausaliDelega();
                                    },
-                                   byKey(key) {
+                                   byKey: function (key) {
                                        return $.Deferred().resolve(key).promise();
                                    }
                                }),
@@ -156,11 +156,11 @@
                            editorType: "dxSelectBox",
                            editorOptions: {
                                dataSource: new DevExpress.data.DataSource({
-                                   load(loadOptions) {
+                                   load: function (loadOptions) {
                                        var a = new Fenealweb.services.commonsService();
                                        return a.getSettoriBase();
                                    },
-                                   byKey(key) {
+                                   byKey: function (key) {
                                        return $.Deferred().resolve(key).promise();
                                    }
                                }),
@@ -176,11 +176,11 @@
                            editorType: "dxSelectBox",
                            editorOptions: {
                                dataSource: new DevExpress.data.DataSource({
-                                   load(loadOptions) {
+                                   load: function (loadOptions) {
                                        var a = new Fenealweb.services.commonsService();
                                        return a.getListaEntiBilaterali();
                                    },
-                                   byKey(key) {
+                                   byKey: function (key) {
                                        return $.Deferred().resolve(key).promise();
                                    }
                                }),
@@ -218,11 +218,11 @@
                             editorType: "dxSelectBox",
                             editorOptions: {
                                 dataSource: new DevExpress.data.DataSource({
-                                    load(loadOptions) {
+                                    load: function (loadOptions) {
                                         var a = new Fenealweb.services.commonsService();
                                         return a.getListaCollaboratori();
                                     },
-                                    byKey(key) {
+                                    byKey: function (key) {
                                         return $.Deferred().resolve(key).promise();
                                     }
                                 }),

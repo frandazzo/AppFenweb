@@ -4,15 +4,22 @@
 
             <h3 class="">Benvenuto </h3>
             
-            <div class="infobox">
+            <!--<div class="infobox">
                 <div class="label">Utente</div>
                 <div class="val"><span data-bind="text:$data.completeName"></span></div>
             </div>
             <div class="infobox">
                 <div class="label">Segreteria</div>
                 <div class="val"><span data-bind="text:$data.loggedUser.company"></span></div>
+            </div>-->
+            <div class="infobox">
+                <div class="label">Utente</div>
+                <div class="val"><span data-bind="text:completeName"></span></div>
             </div>
-
+            <div class="infobox">
+                <div class="label">Segreteria</div>
+                <div class="val"><span data-bind="text:company"></span></div>
+            </div>
 
         </div>
 

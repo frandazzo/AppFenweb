@@ -10,7 +10,7 @@
     var nazione = ko.observable('');
 
     var  comuniDataSource=  new DevExpress.data.DataSource({
-        load(loadOptions) {
+        load: function (loadOptions) {
 
             if (!loadOptions.searchValue) {
                 var d = $.Deferred();
@@ -19,7 +19,7 @@
             var a = new Fenealweb.services.commonsService();
             return a.getGeoComuni(loadOptions.searchValue);
         },
-        byKey(key) {
+        byKey: function (key) {
             return $.Deferred().resolve(key).promise();
         }
     });
@@ -77,11 +77,11 @@
         provinceSelectOptions: {
             value: provincia,
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getGeoProvinces();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),
@@ -100,11 +100,11 @@
         nazioniSelectOptions: {
             value: nazione,
             dataSource: new DevExpress.data.DataSource({
-                load(loadOptions) {
+                load: function (loadOptions) {
                     var a = new Fenealweb.services.commonsService();
                     return a.getGeoNazioni();
                 },
-                byKey(key) {
+                byKey: function (key) {
                     return $.Deferred().resolve(key).promise();
                 }
             }),

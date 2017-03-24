@@ -4,7 +4,7 @@
 
     var dataSource = new DevExpress.data.DataSource({
         paginate:false,
-        load(loadOptions) {
+        load: function (loadOptions) {
             
             var a = new Fenealweb.services.aziendeService();
             var p = a.searchAziende(loadOptions.searchValue);
