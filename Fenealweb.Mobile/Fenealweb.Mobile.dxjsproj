@@ -16,7 +16,7 @@
     <TemplateFileApk />
     <UseCustomTemplateNameApk>False</UseCustomTemplateNameApk>
     <ApkDexFilePackageName>it.noesis.Fenealweb.Mobile</ApkDexFilePackageName>
-    <KeyDebuggable>False</KeyDebuggable>
+    <KeyDebuggable>True</KeyDebuggable>
     <ScreenOrientation>Default</ScreenOrientation>
     <ApplicationTitle>Fenealweb</ApplicationTitle>
     <VersionPackage>1.6.0.0</VersionPackage>
@@ -37,6 +37,7 @@
     <PackagePublisherID>b6f37889-b813-4cac-9ce9-b25b24b55d56</PackagePublisherID>
     <AppxPackageProductID>d0327d73-8ba9-47d7-a018-a84c9ccebf81</AppxPackageProductID>
     <KeyPackageIdentityPublisher>CN=b6f37889-b813-4cac-9ce9-b25b24b55d56</KeyPackageIdentityPublisher>
+    <UpgradeNotifyShown>18.1.3</UpgradeNotifyShown>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>

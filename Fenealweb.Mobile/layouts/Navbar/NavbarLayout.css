@@ -1,4 +1,4 @@
-﻿/* Layout */
+/* Layout */
 
 .navbar-layout,
 .navbar-layout-tablet {
@@ -94,13 +94,16 @@
 }
 
 .dx-theme-android5 .navbar-layout .layout-footer {
-    bottom: 0;
     height: 56px;
-    display: none;
+    bottom: -9999px;
+    left: -9999px;
+    visibility: hidden;
 }
 
 .dx-theme-android5 .navbar-layout.has-toolbar .layout-footer {
-    display: block;
+    bottom: 0;
+    left: 0;
+    visibility: visible;
 }
 
 /* win8 */
@@ -251,7 +254,7 @@
     bottom: 68px;
 }
 
-.dx-theme-generic .navbar-layout .layout-footer, 
+.dx-theme-generic .navbar-layout .layout-footer,
 .dx-theme-generic .navbar-layout .layout-footer .dx-navbar {
     bottom: 0;
     height: 68px;

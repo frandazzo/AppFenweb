@@ -8,7 +8,7 @@
     <UploadPluginsToTheCourier>True</UploadPluginsToTheCourier>
     <Name>Shared</Name>
     <RootNamespace>Fenealweb</RootNamespace>
-    <UpgradeNotifyShown>16.1.6</UpgradeNotifyShown>
+    <UpgradeNotifyShown>18.1.3</UpgradeNotifyShown>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,6 +79,10 @@
     </Content>
     <Content Include="js\dx.all.js" />
     <Content Include="js\dx.all.debug.js" />
+    <Content Include="js\localization\dx.messages.ru.js" />
+    <Content Include="js\localization\dx.messages.ja.js" />
+    <Content Include="js\localization\dx.messages.en.js" />
+    <Content Include="js\localization\dx.messages.de.js" />
     <Content Include="js\localization\dx.all.de.js" />
     <Content Include="js\localization\dx.all.it.json">
       <SubType>Content</SubType>

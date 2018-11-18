@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="js/cldr.min.js"></script>
+    <script type="text/javascript" src="js/cldr/event.min.js"></script>
+    <script type="text/javascript" src="js/cldr/supplemental.min.js"></script>
+    <script type="text/javascript" src="js/cldr/unresolved.min.js"></script>
+
+    <script type="text/javascript" src="js/globalize.min.js"></script>
+    <script type="text/javascript" src="js/globalize/message.min.js"></script>
+    <script type="text/javascript" src="js/globalize/number.min.js"></script>
+    <script type="text/javascript" src="js/globalize/date.min.js"></script>
+    <script type="text/javascript" src="js/globalize/currency.min.js"></script>
+    <script type="text/javascript" src="js/dx.all.debug.js"></script>
+
+    <!--<script src="libs/js/dx.web.debug.js"></script>-->
+    <!--<script src="libs/js/dx.mobile.debug.js"></script>-->
+    <script>
+
+        $(function() {
+          var data = { en: Globalize.locale().get("globalize-messages/en") },
+              dataString = encodeURIComponent(JSON.stringify(data, null, "\t"));
+          $("a").attr("href", "data:text/plain;charset=utf-8," + dataString);
+        });
+    </script>
+</head>
+<body>
+    <a download="dx.all.en.json">Download localization messages JSON</a>
+    <!--<a download="dx.web.en.json">Download localization messages JSON</a>-->
+    <!--<a download="dx.mobile.en.json">Download localization messages JSON</a>-->
+</body>
+</html>
